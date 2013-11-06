@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="#f6f6f6">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:layout_margin="10dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/program_detail"
+                android:id="@+id/program_tvDetailsTitle"
+                android:textColor="#333333" android:textStyle="bold" android:typeface="sans"
+                android:textSize="@dimen/program_tvName_size"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/program_detail_content"
+                android:id="@+id/program_tvDetailsContent" android:textColor="@color/grey_while"
+                android:textSize="@dimen/program_tvTime_size"/>
+    </LinearLayout>
+</LinearLayout>

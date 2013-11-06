@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:background="#f6f6f6"
+                xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/relativeLayout">
+    <ImageView android:layout_width="30dp"
+               android:layout_height="30dp"
+               android:id="@+id/comment_ivAvatarDetail"
+               android:background="@drawable/comment_image_item_background"
+               android:layout_marginLeft="10dp"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sound of Silence"
+              android:id="@+id/comment_tvName" android:layout_marginLeft="55dp" android:drawablePadding="5dp"
+              android:layout_alignLeft="@+id/ivAvatar" android:textStyle="bold" android:typeface="sans"
+              android:textColor="#333333" android:enabled="false"
+              android:layout_marginTop="5dp"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="s days ago"
+              android:drawablePadding="2dp"
+              android:id="@+id/comment_tvTime"
+              android:textColor="#a7a7a7" android:layout_alignRight="@+id/comment_tvContent"
+              android:layout_alignTop="@+id/comment_ivAvatarDetail" android:layout_marginRight="10dp"/>
+
+    <TextView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/comment_tvName"
+              android:layout_marginLeft="55dp"
+              android:id="@+id/comment_tvContent"
+              android:text="@string/comment_content"
+              android:typeface="sans"
+              android:layout_marginTop="5dp"/>
+
+</RelativeLayout>

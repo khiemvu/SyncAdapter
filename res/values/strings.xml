@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OnlineDio</string>
+    <string name="fl_text1">ONE PICTURE SAYS A THOUSAND WORD</string>
+    <string name="fl_text2">WHAT IF ONE CLIP CAN SAY YOU</string>
+    <string name="fl_text3">By joining OnlineDIO you agree to the
+        <b>Terms of Service</b>
+        \n
+        and
+        <b>Privacy Policy</b>
+    </string>
+    <string name="reset_pass">
+        <u>I forgot my password</u>
+    </string>
+    <string name="home">Home</string>
+    <string name="OK">OK</string>
+    <string name="message">To reset your password, please
+        \n
+        enter your email address
+    </string>
+    <string name="reset">Reset</string>
+    <string name="cancel">Cancel</string>
+
+
+    <string name="pr_lblTitle">Profile setup</string>
+    <string name="pr_lblProfile">Profile</string>
+    <string name="pr_lblAccountInfo">Account Information</string>
+    <string name="pr_lblFullName">Full name</string>
+    <string name="pr_lblBirthday">Birthday</string>
+    <string name="pr_lblGender">Gender</string>
+    <string name="pr_lblCountry">Country</string>
+    <string name="pr_lblDescription">Description</string>
+
+
+    <string name="show_dialog">Show Dialog</string>
+    <string name="pr_dialog_title">Profile picture</string>
+    <string name="pr_dialog_header">How would you likes to set your picture?</string>
+    <string name="pr_dialog_btTakePicture">Take picture</string>
+    <string name="pr_dialog_btChoosePicture">Choose Picture</string>
+    <string name="pr_displayName">Display name</string>
+
+
+    <string name="program">Content</string>
+    <string name="program_time">a day ago</string>
+    <string name="program_name">Mr.Bean</string>
+    <string name="program_title">Sound of Silence</string>
+    <string name="program_view">100</string>
+    <string name="program_time_play">888</string>
+    <string name="program_tvLike">1000</string>
+    <string name="program_tvDelete">Delete</string>
+    <string name="program_timeCurPlay">1:68</string>
+    <string name="program_timePlay">4:86</string>
+    <string name="program_btThumnail">Thumnail</string>
+    <string name="program_btDetail">Detail</string>
+    <string name="program_btComment">Comments</string>
+    <string name="program_detail">Target
+    </string>
+    <string name="comment_content">Các máy bay trực thăng vận tải đa nhiệm còn tham gia các hoạt động đổ bộ các lực
+        lượng đặc nhiệm, trinh sát, yểm trợ hỏa lực đường không trong các cuộc chiến đấu bảo vệ biên giới phía Nam,
+        chống các lực lượng phản động khu vực miền núi.
+    </string>
+    <string name="comment_content_hint">Add a comment</string>
+    <string name="comment_tittle">
+        <b>Content</b>
+    </string>
+    <string name="program_detail_content">Báo chí Trung Quốc cho biết cuộc tập trận quy mô Parmenion 2013 của quân đội
+        Hy Lạp được tiến hành cả trên bộ lẫn trên biển, sau màn phô diễn sức mạnh trên bộ vào đầu tháng 10 giờ đây tới
+        lượt lực lượng hải quân của nước này được lệnh điều động thao diễn.
+    </string>
+    <string name="hint_search">Search</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="slidebar_tittle_item">Item</string>
+    <string name="name_song">My Station</string>
+    <string name="name_singer">Mr.Bean Aloha</string>
+    <string name="label">Online Dio</string>
+    <string name="login_label">Login</string>
+
+    <string name="provider_name">OnlineDio Sync</string>
+    <string name="name_provider">Profile Provider</string>
+</resources>

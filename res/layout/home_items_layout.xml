@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:background="#f6f6f6"
+                xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/relativeLayout">
+    <ImageView android:layout_width="68dp"
+               android:layout_height="68dp"
+               android:id="@+id/ivAvatar"
+               android:src="@drawable/ic_launcher"
+               android:layout_marginLeft="10dp"
+               android:layout_marginTop="10dp"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Sound of Silence"
+              android:id="@+id/tvTitle"
+              android:layout_toRightOf="@id/ivAvatar"
+              android:textStyle="bold"
+              android:typeface="sans"
+              android:textColor="#333333"
+              android:layout_alignTop="@id/ivAvatar"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Mr.Bean"
+              android:id="@+id/tvName"
+              android:layout_toRightOf="@id/ivAvatar"
+              android:layout_below="@+id/tvTitle"
+              android:layout_above="@+id/tvLike"
+              android:layout_marginTop="1dp"
+              android:textColor="#333333"
+              android:typeface="sans"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Like: 100"
+              android:id="@+id/tvLike"
+              android:layout_toRightOf="@+id/ivAvatar"
+              android:layout_alignBottom="@id/ivAvatar"
+              android:textColor="#777777" />
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Comment: 9"
+              android:id="@+id/tvComment"
+              android:layout_toRightOf="@id/tvLike"
+              android:layout_alignBottom="@id/tvLike"
+              android:textColor="#777777"
+              android:typeface="sans"
+              android:layout_marginLeft="20dp"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="3 days ago"
+              android:drawableRight="@drawable/arrows2x"
+              android:drawablePadding="10dp"
+              android:id="@+id/tvTime"
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="2dp"
+              android:layout_below="@+id/tvTitle"
+              android:textColor="#a7a7a7"/>
+</RelativeLayout>

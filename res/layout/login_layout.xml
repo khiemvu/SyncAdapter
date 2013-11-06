@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#eeeeee" android:orientation="vertical">
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" android:background="@drawable/nav_bar">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:id="@+id/textView" android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+                android:enabled="false" android:textColor="#ffffff" android:textStyle="bold"
+                android:typeface="normal" android:textSize="20dp"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/login_btBack" android:layout_alignParentLeft="true"
+                android:layout_margin="@dimen/title_bt_margin_all"
+                android:background="@drawable/login_bt_back"
+                />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/login_btLogin" android:layout_alignParentRight="true"
+                android:textColor="#ffffff" android:textStyle="bold" android:textSize="18dp"
+                android:layout_margin="@dimen/title_bt_margin_all" android:clickable="false" android:enabled="false"
+                android:background="@drawable/login_bt_normal"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:background="@drawable/login_background"
+            android:padding="5dp" android:layout_margin="10dp">
+        <EditText
+                android:layout_width="396dp"
+                android:layout_height="40dp"
+                android:id="@+id/etEmail" android:layout_alignParentLeft="true" android:layout_marginLeft="50dp"
+                android:layout_alignParentTop="true" android:layout_marginTop="5dp"
+                android:textColor="#5b5b5b" android:typeface="sans" android:hint="Email"
+                android:layout_marginRight="10dp" android:background="@null"
+                android:singleLine="true"/>
+        <ImageButton
+                android:id="@+id/ibtDelEmail"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/etEmail"
+                android:layout_alignBottom="@+id/etEmail"
+                android:layout_alignRight="@+id/etEmail"
+                android:src="@drawable/login_delete_text" android:background="#ffffff"
+                android:layout_margin="8dp" android:visibility="invisible"/>
+        <EditText
+                android:layout_width="396dp"
+                android:layout_height="40dp"
+                android:id="@+id/etPass" android:layout_alignParentLeft="true" android:layout_marginLeft="50dp"
+                android:layout_alignParentTop="true" android:layout_marginTop="60dp"
+                android:textColor="#5b5b5b" android:typeface="sans" android:hint="Password"
+                android:inputType="textPassword"
+                android:layout_marginRight="10dp" android:password="false" android:background="@null"
+                android:singleLine="true"/>
+        <ImageButton
+                android:id="@+id/ibtDelPass"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/etPass"
+                android:layout_alignBottom="@+id/etPass"
+                android:layout_alignRight="@+id/etPass"
+                android:src="@drawable/login_delete_text" android:visibility="invisible" android:background="#ffffff"
+                android:layout_margin="8dp"/>
+    </RelativeLayout>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reset_pass"
+            android:id="@+id/tvResetPass" android:singleLine="false" android:layout_gravity="center"
+            />
+</LinearLayout>
+

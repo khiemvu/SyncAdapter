@@ -1,0 +1,80 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="program_bt_back_margin_top">2dp</dimen>
+    <dimen name="program_tv_Program_margin_top">1dp</dimen>
+    <dimen name="program_tv_Program_margin_left">80dp</dimen>
+    <dimen name="Title_size">20dp</dimen>
+    <dimen name="program_iv_Program_margin_top">15dp</dimen>
+    <dimen name="program_iv_Program_margin_left">10dp</dimen>
+    <dimen name="program_tvTime_margin_left">140dp</dimen>
+    <dimen name="program_tvName_size">15dp</dimen>
+    <dimen name="program_tvTime_size">12dp</dimen>
+    <dimen name="program_tvTitle_size">20dp</dimen>
+    <dimen name="program_tvName_margin_left">5dp</dimen>
+    <dimen name="program_tvTitle_margin_left">5dp</dimen>
+
+    <dimen name="program_tvView_margin_left">5dp</dimen>
+    <dimen name="program_tvView_size">15dp</dimen>
+    <dimen name="program_tvView_margin_top">8dp</dimen>
+    <dimen name="program_tvView_padding_left">5dp</dimen>
+
+    <dimen name="program_tvPlayTime_margin_left">15dp</dimen>
+    <dimen name="program_tvPlayTime_margin_top">8dp</dimen>
+    <dimen name="program_tvPlayTime_size">15dp</dimen>
+
+    <dimen name="program_tvLike_margin_top">8dp</dimen>
+    <dimen name="program_tvLike_margin_left">15dp</dimen>
+    <dimen name="program_tvLike_size">15dp</dimen>
+
+    <dimen name="program_btEdit_margin_left">35dp</dimen>
+    <dimen name="program_btEdit_margin_top">5dp</dimen>
+    <dimen name="program_tvDelete_margin_left">2dp</dimen>
+    <dimen name="program_tvDelete_margin_top">20dp</dimen>
+    <dimen name="program_tvDelete_size">15dp</dimen>
+    <dimen name="program_btFavorite_margin_left">5dp</dimen>
+
+    <dimen name="program_btLike_margin_left">8dp</dimen>
+    <dimen name="program_etLine_margin_left">5dp</dimen>
+    <dimen name="program_btDelete_margin_left">0dp</dimen>
+    <dimen name="nv_sideBar_header_title_margin_left">5dp</dimen>
+    <dimen name="nv_sideBar_header_title_margin_top">10dp</dimen>
+    <dimen name="program_bt_PlayOrPause_margin_left">20dp</dimen>
+    <dimen name="program_bt_PlayOrPause_margin_top">10dp</dimen>
+
+    <dimen name="program_sbTime_margin_left">5dp</dimen>
+    <dimen name="program_tvTimeCur_margin_left">20dp</dimen>
+    <dimen name="program_sbTime_margin_right">50dp</dimen>
+    <dimen name="program_tvTimePlay_margin_left">3dp</dimen>
+    <dimen name="program_btMute_margin_left">35dp</dimen>
+    <dimen name="program_btMute_margin_top">20dp</dimen>
+    <dimen name="program_ivDetail_margin">10dp</dimen>
+    <dimen name="program_ivDetail_margin_top">60dp</dimen>
+    <dimen name="program_seekbar_length">190dp</dimen>
+
+
+    <dimen name="Title_comment_margin_left">55dp</dimen>
+    <dimen name="header_margin_top">8dp</dimen>
+
+
+    <dimen name="title_bt_margin_all">4dp</dimen>
+    <dimen name="program_sbTime_margin_top">4dp</dimen>
+    <dimen name="program_sbVolum_margin_top">8dp</dimen>
+    <dimen name="program_sbVolum_margin_left">8dp</dimen>
+    <dimen name="program_btMaxVolumn_margin_left">10dp</dimen>
+
+    <dimen name="phone_slidebar_width">260dp</dimen>
+    <dimen name="phone_divider_height">0dp</dimen>
+    <dimen name="phone_padding">5dp</dimen>
+    <dimen name="phone_radius">10dp</dimen>
+    <dimen name="phone_margin">10dp</dimen>
+    <dimen name="slidebar_title_text_size">16dp</dimen>
+    <dimen name="slidebar_userName_text_size">12dp</dimen>
+    <dimen name="phone_slidebar_padding">10dp</dimen>
+    <dimen name="phone_text_size">16dp</dimen>
+    <dimen name="search_background">40dp</dimen>
+
+</resources>

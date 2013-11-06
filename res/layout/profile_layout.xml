@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:fillViewport="false">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:scrollbarAlwaysDrawVerticalTrack="true"
+                  android:background="@android:color/white" android:gravity="fill_horizontal|fill|clip_vertical">
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:background="@drawable/nav_bar" android:paddingBottom="7dp">
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pr_btCancel" android:layout_alignParentLeft="true" android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true" android:background="@drawable/btn_cancel2x"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pr_btSave"
+                    android:background="@drawable/pr_btn_save2x" android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="240dp" android:layout_alignTop="@+id/button"
+                    android:layout_marginTop="10dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pr_lblTitle"
+                    android:id="@+id/pr_lblTitle"
+                    android:textColor="@android:color/black"
+                    android:layout_alignParentLeft="true" android:layout_marginLeft="120dp"
+                    android:layout_alignBaseline="@+id/pr_button_cancel" android:layout_marginTop="20dp"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/pr_rlBackGround"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="140dp" android:layout_gravity="left"
+                android:background="@drawable/pr_background"
+                android:baselineAligned="false" android:clickable="true" android:focusable="true">
+            <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/pr_imgAvatar" android:background="@drawable/pr_icon2x"
+                    android:layout_alignParentBottom="true"
+                    android:scaleType="centerCrop"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="left" android:layout_marginLeft="10dp"
+                    android:layout_alignParentLeft="false"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pr_ivConverImg"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="180dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/pr_cover"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pr_ivConverImg"
+                    android:layout_toRightOf="@id/pr_ivConverImg"
+                    android:layout_marginLeft="260dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/pr_icon_thunder"/>
+        </RelativeLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pr_lblProfile"
+                android:id="@+id/textView1" android:layout_gravity="left|center_vertical" android:layout_marginTop="7dp"
+                android:layout_marginLeft="20dp" android:textStyle="bold"
+                android:textColor="@android:color/black"
+                />
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_gravity="left|center_vertical"
+                android:background="@drawable/pr_image_cell_profile">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pr_displayName"
+                    android:id="@+id/pr_lblDisplayName"
+                    android:textStyle="bold" android:layout_alignParentLeft="true" android:layout_marginLeft="35dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@android:color/black"/>
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pr_edDisplayName"
+                    android:background="@null"
+                    android:singleLine="true" android:hint="Your display name" android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="130dp" android:layout_alignTop="@+id/textView2"
+                    android:layout_marginTop="4dp" android:maxLength="20" android:editable="false"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView" android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="198dp" android:layout_alignBottom="@+id/editText"/>
+
+        </RelativeLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pr_lblAccountInfo"
+                android:id="@+id/lblAccountInfo" android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="20dp" android:textStyle="bold"
+                android:textColor="@android:color/black"
+                />
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:layout_gravity="center"
+                android:background="@drawable/pr_image_cell_description">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pr_lblFullName"
+                    android:id="@+id/lblFullName" android:layout_alignParentLeft="true" android:layout_marginLeft="35dp"
+                    android:layout_alignParentTop="true" android:layout_marginTop="10dp" android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+            <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/pr_edFullName"
+                      android:singleLine="true" android:hint="Your full name"
+                      android:layout_alignParentLeft="true" android:layout_marginLeft="130dp"
+                      android:background="@null"
+                      android:layout_alignBottom="@+id/lblFullName" android:maxLength="100"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pr_ibDeleteFullName"
+                    android:layout_toRightOf="@id/pr_edFullName"
+
+                    android:background="@drawable/pr_icon_delete" android:layout_marginTop="10dp"
+                    android:paddingRight="3dp" android:layout_marginLeft="45dp" android:visibility="invisible"/>
+            <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_below="@id/lblFullName"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#DADADC"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone no."
+                    android:id="@+id/lblPhone"
+                    android:layout_below="@id/line1"
+                    android:layout_alignParentLeft="true" android:layout_marginLeft="35dp"
+                    android:layout_alignParentTop="true" android:layout_marginTop="40dp" android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+            <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/pr_edPhone"
+                      android:singleLine="true" android:hint="Your phone no."
+                      android:layout_alignParentLeft="true" android:layout_marginLeft="130dp"
+                      android:background="@null"
+                      android:layout_alignBottom="@+id/lblPhone" android:maxLength="15" android:phoneNumber="true"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pr_ibDeletePhone"
+                    android:layout_below="@id/line1"
+                    android:layout_toRightOf="@id/pr_edPhone"
+                    android:background="@drawable/pr_icon_delete" android:layout_marginTop="8dp"
+                    android:layout_marginRight="3dp" android:layout_marginLeft="40dp" android:visibility="invisible"/>
+            <View
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_below="@id/lblPhone"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#DADADC"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pr_lblBirthday"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/lblBirthday" android:layout_alignLeft="@id/lblPhone"
+                    android:layout_below="@id/line2"
+                    android:layout_marginTop="7dp" android:textStyle="bold"/>
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pr_edBirthday"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="130dp"
+                    android:background="@null"
+                    android:layout_alignBottom="@id/lblBirthday"
+                    android:hint="Your birthday" android:singleLine="true"/>
+            <View
+                    android:id="@+id/line3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_below="@id/lblBirthday"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#DADADC"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pr_lblGender"
+                    android:id="@+id/lblGender" android:layout_alignLeft="@id/lblBirthday"
+                    android:layout_below="@id/line3"
+                    android:layout_marginTop="7dp" android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+            <Button
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/pr_btnSelectLeft_check"
+                    android:background="@drawable/pr_btn_select_left"
+                    android:layout_toRightOf="@id/lblGender"
+                    android:layout_below="@id/line3"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="4dp"
+                    />
+            <Button
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/pr_btnSelectRight_uncheck"
+                    android:background="@drawable/pr_btn_unselect_right"
+                    android:layout_toRightOf="@+id/pr_btnSelectLeft_check"
+                    android:layout_below="@id/line3"
+                    android:layout_marginTop="4dp"
+                    />
+            <View
+                    android:id="@+id/line4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_below="@+id/pr_btnSelectLeft_check"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#DADADC"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pr_lblCountry"
+                    android:id="@+id/lblCountry"
+                    android:layout_marginLeft="35dp"
+                    android:textStyle="bold"
+                    android:layout_below="@id/line4"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@android:color/black"/>
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:id="@+id/pr_edCountry"
+                    android:hint="Your country"
+                    android:layout_below="@id/line4"
+                    android:layout_toRightOf="@id/lblCountry"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginTop="2dp" android:singleLine="true"/>
+            <ImageView
+                    android:id="@+id/pr_ivArrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/pr_edCountry"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:layout_below="@id/line4"
+                    android:src="@drawable/arrows2x"
+                    android:layout_alignRight="@+id/line1"
+                    android:layout_marginLeft="15dp"/>
+
+        </RelativeLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pr_lblDescription"
+                android:id="@+id/lblDescription" android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="20dp" android:textStyle="bold"
+                android:textColor="@android:color/black"
+                />
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:background="@drawable/pr_image_cell_description">
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:id="@+id/pr_etDescription" android:layout_alignParentLeft="true" android:layout_marginLeft="35dp"
+                    android:layout_alignParentTop="true" android:layout_marginTop="12dp"
+                    android:hint="Your profile description"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

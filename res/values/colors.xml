@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="grey_while">#bebebe</color>
+    <color name="program_background">#f6f6f6</color>
+    <color name="black">#161616</color>
+    <color name="White">#ffffff</color>
+    <color name="grey">#656565</color>
+    <color name="ColorTextViewTime">#8a8a8a</color>
+    <color name="Black">#000000</color>
+    <color name="LightGrey">#000000</color>
+</resources>

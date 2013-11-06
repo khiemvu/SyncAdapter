@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/launch_background"
+                android:clickable="false">
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fl_text1"
+            android:textColor="#a46e00"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:clickable="true" android:textStyle="bold" android:id="@+id/textView1"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#774f00"
+            android:textSize="18dp"
+            android:text="@string/fl_text2"
+            android:textStyle="bold"
+            android:layout_below="@+id/textView1"
+            android:id="@+id/textView2" android:gravity="center" android:paddingLeft="27dp"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fl_text3"
+            android:id="@+id/textView"
+            android:textColor="#885b00"
+            android:textSize="10dp"
+            android:gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="28dp"
+            android:layout_centerHorizontal="true"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/launch_btLogin"
+            android:background="@drawable/launch_bt_login"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/textView"
+            />
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btLoginFB"
+            android:background="@drawable/launch_bt_login_fb"
+            android:layout_toLeftOf="@id/launch_btLogin"
+            android:layout_marginRight="20dp"
+            android:layout_alignTop="@id/launch_btLogin"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btSignUp"
+            android:background="@drawable/launch_bt_signup"
+            android:layout_toRightOf="@id/launch_btLogin"
+            android:layout_marginLeft="20dp"
+            android:layout_alignTop="@id/launch_btLogin"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="#f6f6f6">
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:background="@drawable/nav_bar">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/comment_tittle"
+                android:id="@+id/tvTitle" android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:textColor="#ffffff" android:textSize="20dp" android:textStyle="bold" android:typeface="sans"
+                />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/comment_btCancel" android:layout_alignParentLeft="true"
+                android:background="@drawable/comment_bt_cancel" android:layout_margin="@dimen/title_bt_margin_all"
+                android:singleLine="false"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/comment_btPost"
+
+                android:background="@drawable/comment_bt_post"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="false" android:layout_margin="@dimen/title_bt_margin_all"/>
+    </RelativeLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="180dp" android:background="@drawable/comment_background_edittext"
+            android:layout_margin="10dp">
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText"
+                android:layout_margin="10dp" android:background="@null" android:hint="Add your comment"/>
+    </LinearLayout>
+</LinearLayout>

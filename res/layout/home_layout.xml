@@ -1,0 +1,73 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+    <!-- The main content view -->
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:background="@drawable/nav_bar">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home"
+                    android:id="@+id/tvTitle" android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"
+                    android:textColor="#ffffff" android:textSize="20dp" android:textStyle="bold" android:typeface="sans"
+                    />
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/btNavigate" android:layout_alignParentLeft="true"
+                    android:background="@drawable/home_bt_navigate" android:layout_margin="@dimen/title_bt_margin_all"
+                    android:singleLine="false"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btGlobal"
+
+                    android:background="@drawable/home_notifications"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="false" android:layout_margin="@dimen/title_bt_margin_all"
+                    />
+        </RelativeLayout>
+
+        <ImageView
+                android:id="@+id/home_ivContentFeed"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/home_content_feed"></ImageView>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:background="#f6f6f6" android:id="@+id/relativeLayout"
+                        android:layout_alignParentBottom="true" android:layout_gravity="center_horizontal">
+            <ListView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/home_lvDetail" android:background="#f6f6f6"/>
+            <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                         android:gravity="center"
+                         android:layout_centerHorizontal="true" android:id="@+id/ibtRecord"
+                         android:layout_alignParentBottom="true" android:background="@drawable/home_button_recorder"
+                         android:layout_alignRight="@+id/home_lvDetail" android:layout_alignLeft="@+id/home_lvDetail"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- The navigation drawer -->
+
+    <ListView
+            android:id="@+id/sideBar_lvDrawer"
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#F3F3F4"
+            android:cacheColorHint="@null"
+            android:choiceMode="singleChoice"
+            android:divider="@null"
+            android:dividerHeight="0dp"/>
+
+</android.support.v4.widget.DrawerLayout>

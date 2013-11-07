@@ -16,7 +16,7 @@ public class ProfileModel implements Serializable
     private int facebook_id;
     private String username;
     private String password;
-    private String avartar;
+    private String avatar;
     private String cover_image;
     private String display_name;
     private String full_name;
@@ -25,7 +25,7 @@ public class ProfileModel implements Serializable
     private int gender;
     private String country_id;
     private int storage_plan_id;
-    private String desccription;
+    private String description;
     private String created_at;
     private String updated_at;
     private int sounds;
@@ -74,14 +74,14 @@ public class ProfileModel implements Serializable
         this.password = password;
     }
 
-    public String getAvartar()
+    public String getAvatar()
     {
-        return avartar;
+        return avatar;
     }
 
-    public void setAvartar(String avartar)
+    public void setAvatar(String avatar)
     {
-        this.avartar = avartar;
+        this.avatar = avatar;
     }
 
     public String getCover_image()
@@ -164,14 +164,14 @@ public class ProfileModel implements Serializable
         this.storage_plan_id = storage_plan_id;
     }
 
-    public String getDesccription()
+    public String getDescription()
     {
-        return desccription;
+        return description;
     }
 
-    public void setDesccription(String desccription)
+    public void setDescription(String description)
     {
-        this.desccription = desccription;
+        this.description = description;
     }
 
     public String getCreated_at()
@@ -257,7 +257,7 @@ public class ProfileModel implements Serializable
         this.facebook_id = facebook_id;
         this.username = username;
         this.password = password;
-        this.avartar = avartar;
+        this.avatar = avartar;
         this.cover_image = cover_image;
         this.display_name = display_name;
         this.full_name = full_name;
@@ -266,7 +266,7 @@ public class ProfileModel implements Serializable
         this.gender = gender;
         this.country_id = country_id;
         this.storage_plan_id = storage_plan_id;
-        this.desccription = desccription;
+        this.description = desccription;
         this.created_at = created_at;
         this.updated_at = updated_at;
         this.sounds = sounds;
@@ -283,7 +283,7 @@ public class ProfileModel implements Serializable
         values.put(DbHelper.PROFILE_COL_FACEBOOK_ID, facebook_id);
         values.put(DbHelper.PROFILE_COL_USERNAME, username);
         values.put(DbHelper.PROFILE_COL_PASSWORD, password);
-        values.put(DbHelper.PROFILE_COL_AVATAR, avartar);
+        values.put(DbHelper.PROFILE_COL_AVATAR, avatar);
         values.put(DbHelper.PROFILE_COL_COVER_IMAGE, cover_image);
         values.put(DbHelper.PROFILE_COL_DISPLAY_NAME, display_name);
         values.put(DbHelper.PROFILE_COL_FULL_NAME, full_name);
@@ -292,7 +292,7 @@ public class ProfileModel implements Serializable
         values.put(DbHelper.PROFILE_COL_GENDER, gender);
         values.put(DbHelper.PROFILE_COL_COUNTRY_ID, country_id);
         values.put(DbHelper.PROFILE_COL_STORAGE_PLAN_ID, storage_plan_id);
-        values.put(DbHelper.PROFILE_COL_DESCRIPTION, desccription);
+        values.put(DbHelper.PROFILE_COL_DESCRIPTION, description);
         values.put(DbHelper.PROFILE_COL_CREATED_AT, created_at);
         values.put(DbHelper.PROFILE_COL_UPDATED_AT, updated_at);
         values.put(DbHelper.PROFILE_COL_SOUND, sounds);

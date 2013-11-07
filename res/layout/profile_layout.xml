@@ -233,7 +233,7 @@
             <Button
                     android:layout_width="50dp"
                     android:layout_height="20dp"
-                    android:id="@+id/pr_btnSelectRight_uncheck"
+                    android:id="@+id/pr_btnSelectRight_check"
                     android:background="@drawable/pr_btn_unselect_right"
                     android:layout_toRightOf="@+id/pr_btnSelectLeft_check"
                     android:layout_below="@id/line3"

@@ -83,22 +83,22 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
                     {
                         Log.i(TAG, "Data start update");
                         batch.add(ContentProviderOperation.newUpdate(existedUri)
-                                .withValue(DbHelper.HOMEFEED_COL_ID, temp.getId())
-                                .withValue(DbHelper.HOMEFEED_COL_USER_ID, temp.getUser_id())
-                                .withValue(DbHelper.HOMEFEED_COL_TITLE, temp.getTitle())
-                                .withValue(DbHelper.HOMEFEED_COL_THUMBNAIL, temp.getThumbnail())
-                                .withValue(DbHelper.HOMEFEED_COL_DESCRIPTION, temp.getDesccription())
-                                .withValue(DbHelper.HOMEFEED_COL_SOUND_PATH, temp.getSound_path())
-                                .withValue(DbHelper.HOMEFEED_COL_DURATION, temp.getDuration())
-                                .withValue(DbHelper.HOMEFEED_COL_PLAYED, temp.isPlayed())
-                                .withValue(DbHelper.HOMEFEED_COL_CREATED_AT, temp.getCreated_at())
-                                .withValue(DbHelper.HOMEFEED_COL_UPDATED_AT, temp.getUpdated_at())
-                                .withValue(DbHelper.HOMEFEED_COL_LIKES, temp.getLikes())
-                                .withValue(DbHelper.HOMEFEED_COL_VIEWED, temp.getViewed())
-                                .withValue(DbHelper.HOMEFEED_COL_COMMENTS, temp.getComments())
-                                .withValue(DbHelper.HOMEFEED_COL_USERNAME, temp.getUsername())
-                                .withValue(DbHelper.HOMEFEED_COL_DISPLAY_NAME, temp.getDisplay_name())
-                                .withValue(DbHelper.HOMEFEED_COL_AVATAR, temp.getAvatar()).build());
+                                .withValue(DbHelper.HOMEFEED_COL_ID, checkUpdate.getId())
+                                .withValue(DbHelper.HOMEFEED_COL_USER_ID, checkUpdate.getUser_id())
+                                .withValue(DbHelper.HOMEFEED_COL_TITLE, checkUpdate.getTitle())
+                                .withValue(DbHelper.HOMEFEED_COL_THUMBNAIL, checkUpdate.getThumbnail())
+                                .withValue(DbHelper.HOMEFEED_COL_DESCRIPTION, checkUpdate.getDesccription())
+                                .withValue(DbHelper.HOMEFEED_COL_SOUND_PATH, checkUpdate.getSound_path())
+                                .withValue(DbHelper.HOMEFEED_COL_DURATION, checkUpdate.getDuration())
+                                .withValue(DbHelper.HOMEFEED_COL_PLAYED, checkUpdate.isPlayed())
+                                .withValue(DbHelper.HOMEFEED_COL_CREATED_AT, checkUpdate.getCreated_at())
+                                .withValue(DbHelper.HOMEFEED_COL_UPDATED_AT, checkUpdate.getUpdated_at())
+                                .withValue(DbHelper.HOMEFEED_COL_LIKES, checkUpdate.getLikes())
+                                .withValue(DbHelper.HOMEFEED_COL_VIEWED, checkUpdate.getViewed())
+                                .withValue(DbHelper.HOMEFEED_COL_COMMENTS, checkUpdate.getComments())
+                                .withValue(DbHelper.HOMEFEED_COL_USERNAME, checkUpdate.getUsername())
+                                .withValue(DbHelper.HOMEFEED_COL_DISPLAY_NAME, checkUpdate.getDisplay_name())
+                                .withValue(DbHelper.HOMEFEED_COL_AVATAR, checkUpdate.getAvatar()).build());
 
                         syncResult.stats.numUpdates++;
                     }

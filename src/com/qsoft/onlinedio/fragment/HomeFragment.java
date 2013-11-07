@@ -62,17 +62,6 @@ public class HomeFragment extends Fragment
         getAuthenTokenAndAccount();
 
         performSyncData();
-//        ContentResolver.setIsSyncable(mConnectedAccount, authority, 1);
-//        ContentResolver.setSyncAutomatically(mConnectedAccount,authority, true);
-
-//        try
-//        {
-//            listHomeFeed =  parseComServerAccessor.getShows(auth_token);
-//        }
-//        catch (Exception e)
-//        {
-//            e.printStackTrace();
-//        }
         View view = inflater.inflate(R.layout.home_layout, null);
         setUpUI(view);
         setUpDataToHomeListView();
@@ -128,10 +117,11 @@ public class HomeFragment extends Fragment
 
     private void setUpDataToHomeListView()
     {
-        new AsyncTask<Void, Void, Void>()
+        Log.i(TAG, "Show data on view");
+        new AsyncTask<Void, Void, Cursor>()
         {
             @Override
-            protected Void doInBackground(Void... params)
+            protected Cursor doInBackground(Void... params)
             {
                 // Create an array
                 arraylist = new ArrayList<HashMap<String, String>>();
@@ -155,14 +145,15 @@ public class HomeFragment extends Fragment
                     }
                     cur.close();
                 }
-                return null;
+                return cur;
             }
 
             @Override
-            protected void onPostExecute(Void args)
+            protected void onPostExecute(Cursor cur)
             {
 
-                adapter = new HomeFeeds(getActivity(), arraylist);
+//                adapter = new HomeFeeds(getActivity(), cur);
+                adapter = new HomeFeeds(getActivity(), cur,arraylist);
                 home_lvDetail.setAdapter(adapter);
             }
         }.execute();

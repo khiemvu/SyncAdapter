@@ -83,7 +83,7 @@ public class ProfileParseToServer
         pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_BIRTHDAY, profile.getBirthday()));
         pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_GENDER, profile.getGender()+""));
         pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_COUNTRY_ID, profile.getCountry_id()));
-        pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_DESCRIPTION, profile.getDesccription()));
+        pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_DESCRIPTION, profile.getDescription()));
 
         httpPut.setEntity(new UrlEncodedFormEntity(pairs));
         try

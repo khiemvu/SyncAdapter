@@ -74,26 +74,34 @@ public class ContentProvider extends android.content.ContentProvider
             case PATH_TOKEN: {
                 SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
                 builder.setTables(DbHelper.HOMEFEED_TABLE_NAME);
-                return builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
+                Cursor cur = builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
+                cur.setNotificationUri(getContext().getContentResolver(), uri);
+                return cur;
             }
             case PATH_FOR_ID_TOKEN: {
                 int homeFeedId = (int) ContentUris.parseId(uri);
                 SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
                 builder.setTables(DbHelper.HOMEFEED_TABLE_NAME);
                 builder.appendWhere(DbHelper.HOMEFEED_COL_ID + "=" + homeFeedId);
-                return builder.query(db, projection, selection,selectionArgs, null, null, sortOrder);
+                Cursor cur = builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
+                cur.setNotificationUri(getContext().getContentResolver(), uri);
+                return cur;
             }
             case PATH_TOKEN_PROFILE: {
                 SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
                 builder.setTables(DbHelper.PROFILE_TABLE_NAME);
-                return builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
+                Cursor cur = builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
+                cur.setNotificationUri(getContext().getContentResolver(), uri);
+                return cur;
             }
             case PATH_FOR_PROFILE_ID_TOKEN: {
                 int profileId = (int) ContentUris.parseId(uri);
                 SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
                 builder.setTables(DbHelper.PROFILE_TABLE_NAME);
                 builder.appendWhere(DbHelper.PROFILE_COL_ID + "=" + profileId);
-                return builder.query(db, projection, selection,selectionArgs, null, null, sortOrder);
+                Cursor cur = builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
+                cur.setNotificationUri(getContext().getContentResolver(), uri);
+                return cur;
             }
             default:
                 return null;
@@ -148,7 +156,6 @@ public class ContentProvider extends android.content.ContentProvider
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
-        // Notifying the changes, if there are any
         if (rowsDeleted != -1)
             getContext().getContentResolver().notifyChange(uri, null);
         return rowsDeleted;

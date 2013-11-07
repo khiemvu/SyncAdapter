@@ -26,7 +26,6 @@ public class CommentList extends ArrayAdapter<CommentModel>
         super(context, resourceId, objects);
         this.context = context;
     }
-
     /*private view holder class*/
     private class ViewHolder
     {

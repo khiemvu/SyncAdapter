@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
@@ -66,6 +67,7 @@ public class ProfileActivity extends Activity
     final Context context = this;
 
     String code;
+    private boolean isSelected;
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -100,7 +102,7 @@ public class ProfileActivity extends Activity
         pr_edBirthday = (EditText) findViewById(R.id.pr_edBirthday);
         pr_edCountry = (EditText) findViewById(R.id.pr_edCountry);
         btGenderSelectLeft = (Button) findViewById(R.id.pr_btnSelectLeft_check);
-        btGenderSelectRight = (Button) findViewById(R.id.pr_btnSelectRight_uncheck);
+        btGenderSelectRight = (Button) findViewById(R.id.pr_btnSelectRight_check);
         pr_rlBackGround = (RelativeLayout) findViewById(R.id.pr_rlBackGround);
         pr_btCancel = (Button) findViewById(R.id.pr_btCancel);
         pr_btSave = (Button) findViewById(R.id.pr_btSave);
@@ -112,6 +114,7 @@ public class ProfileActivity extends Activity
 
     private void showDataOnView()
     {
+        Log.i(TAG, "Get data for show on view");
         new AsyncTask<String, Void, Void>() {
 
 
@@ -142,13 +145,15 @@ public class ProfileActivity extends Activity
                         pr_etDisplayName.setText(temp.getDisplay_name());
                         pr_edFullName.setText(temp.getFull_name());
                         pr_edPhone.setText(temp.getPhone());
-                        if(temp.getGender() == 0){
+                        if(temp.getGender() == 1){
+                            isSelected = true;
                             btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_left));
                             btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_right));
                         }
                         else{
-                            btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_right));
-                            btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_left));
+                            isSelected = false;
+                            btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_left));
+                            btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_right));
                         }
                         pr_edBirthday.setText(temp.getBirthday());
                         int posittion = 0;
@@ -157,8 +162,8 @@ public class ProfileActivity extends Activity
                                 posittion = i;
 
                         pr_edCountry.setText(countries[posittion].toString());
-                        pr_etDescription.setText(temp.getDesccription());
-                        imageLoader.DisplayImage(temp.getAvartar(),pr_imgAvatar);
+                        pr_etDescription.setText(temp.getDescription());
+                        imageLoader.DisplayImage(temp.getAvatar(),pr_imgAvatar);
                     }
                 cur.close();
                 }
@@ -219,19 +224,19 @@ public class ProfileActivity extends Activity
                     btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_left));
                     btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_right));
                     break;
-                case R.id.pr_btnSelectRight_uncheck:
+                case R.id.pr_btnSelectRight_check:
                     btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_left));
                     btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_right));
                     break;
                 case R.id.pr_btCancel:
-                    startActivity(new Intent(ProfileActivity.this, SlidebarActivity.class));
+                    callBackSlidebarActivity();
                     break;
                 case R.id.pr_btSave:
                     ProfileModel profileUpdate = new ProfileModel();
                     profileUpdate.setId(Integer.parseInt(user_id));
                     profileUpdate.setFull_name(pr_edFullName.getText().toString());
                     profileUpdate.setDisplay_name(pr_etDisplayName.getText().toString());
-                    profileUpdate.setDesccription(pr_etDescription.getText().toString());
+                    profileUpdate.setDescription(pr_etDescription.getText().toString());
                     profileUpdate.setPhone(pr_edPhone.getText().toString());
                     profileUpdate.setBirthday(pr_edBirthday.getText().toString());
                     String temp = pr_edCountry.getText().toString();
@@ -242,11 +247,11 @@ public class ProfileActivity extends Activity
                     }
                     profileUpdate.setCountry_id(countries_code[country_id]);
                     int gender;
-                    if (btGenderSelectLeft.isSelected()){
-                        gender = 0;
+                    if (isSelected){
+                        gender = 1;
                     }
                     else {
-                        gender = 1;
+                        gender = 0;
                     }
                     profileUpdate.setGender(gender);
 
@@ -266,12 +271,21 @@ public class ProfileActivity extends Activity
                     {
                         e.printStackTrace();
                     }
-                    getContentResolver().update(Contract.CONTENT_URI_PROFILE,model.getContentValues(),null,null);
-                    startActivity(new Intent(ProfileActivity.this, SlidebarActivity.class));
+                    getContentResolver().update(Contract.CONTENT_URI_PROFILE, model.getContentValues(), null, null);
+                    callBackSlidebarActivity();
                     break;
             }
         }
     };
+
+    private void callBackSlidebarActivity()
+    {
+        Intent intent = new Intent(this, SlidebarActivity.class);
+        intent.putExtra(FirstLaunchActivity.AUTHEN_TOKEN, auth_token);
+        intent.putExtra(LoginActivity.USER_ID,user_id);
+        intent.putExtra(FirstLaunchActivity.ACCOUNT_CONNECTED, mConnectedAccount);
+        startActivity(intent);
+    }
 
     private void onTextChange()
     {

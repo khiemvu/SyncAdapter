@@ -1,6 +1,9 @@
 package com.qsoft.onlinedio.fragment;
 
 import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.accounts.AuthenticatorException;
+import android.accounts.OperationCanceledException;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.AsyncTask;
@@ -18,10 +21,12 @@ import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.activity.FirstLaunchActivity;
 import com.qsoft.onlinedio.activity.SlidebarActivity;
 import com.qsoft.onlinedio.adapter.HomeFeeds;
+import com.qsoft.onlinedio.authenticate.AccountGeneral;
 import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.entity.HomeModel;
 import com.qsoft.onlinedio.util.DateTime;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -44,7 +49,7 @@ public class HomeFragment extends Fragment
     private String auth_token;
     private String TAG = this.getClass().getSimpleName();
     private Account mConnectedAccount;
-
+    private AccountManager mAccountManager;
     private Button btNavigate;
     private ListView home_lvDetail;
 
@@ -53,6 +58,7 @@ public class HomeFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+        mAccountManager = AccountManager.get(getActivity());
         getAuthenTokenAndAccount();
 
         performSyncData();
@@ -77,6 +83,7 @@ public class HomeFragment extends Fragment
     private void performSyncData()
     {
         Log.i(TAG, "Perform sync");
+        refreshAuthToken();
         String authority = Contract.AUTHORITY;
         Bundle bundle = new Bundle();
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
@@ -84,30 +91,27 @@ public class HomeFragment extends Fragment
         ContentResolver.requestSync(mConnectedAccount, authority, bundle);
     }
 
-
-//    private ArrayList<HomeModel> getDataFromLocal()
-//    {
-//        Cursor cur = getActivity().getContentResolver().query(Contract.CONTENT_URI, null, null, null, null);
-//        HashMap<String, String> map = new HashMap<String, String>();
-////        ArrayList<HomeModel> feedList = new ArrayList<HomeModel>();
-//        HomeModel temp = new HomeModel();
-//        if (cur != null) {
-//            while (cur.moveToNext()){
-//                temp = HomeModel.fromCursor(cur);
-//                long updated_at = dateTime.getTimeBefore(temp.updated_at);
-//                temp.updated_at = Long.toString(updated_at);
-//                map.put(HomeFragment.NAME, temp.username);
-//                map.put(HomeFragment.TITLE, temp.title);
-//                map.put(HomeFragment.LIKE, String.valueOf(temp.likes));
-//                map.put(HomeFragment.COMMENT, String.valueOf(temp.comments));
-//                map.put(HomeFragment.TITLE, temp.updated_at);
-//                map.put(HomeFragment.AVATAR, temp.avatar);
-//                arraylist.add(map);
-//            }
-//            cur.close();
-//        }
-//        return arraylist;
-//    }
+    private void refreshAuthToken()
+    {
+        mAccountManager.invalidateAuthToken(AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS, auth_token);
+        try
+        {
+            auth_token = mAccountManager.getAuthToken(mConnectedAccount,
+                    AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS, true, null, null).getResult().getString(AccountManager.KEY_AUTHTOKEN);
+        }
+        catch (OperationCanceledException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        catch (AuthenticatorException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     private void getAuthenTokenAndAccount()
     {

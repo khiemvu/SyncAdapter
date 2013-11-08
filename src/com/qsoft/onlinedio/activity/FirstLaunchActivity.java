@@ -4,6 +4,7 @@ import android.accounts.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ public class FirstLaunchActivity extends AccountAuthenticatorActivity
     private Button launch_btLogin;
     private AccountManager mAccountManager;
     private Account mConnectedAccount;
-
+    public static boolean isFirst = false;
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -47,6 +48,7 @@ public class FirstLaunchActivity extends AccountAuthenticatorActivity
 
     private void getTokenForAccountCreateIfNeeded(String accountType, String authTokenType)
     {
+        Log.i(TAG, "Get token if it existed");
         final AccountManagerFuture<Bundle> future = mAccountManager.getAuthTokenByFeatures(accountType, authTokenType, null, this, null, null,
                 new AccountManagerCallback<Bundle>()
                 {
@@ -61,6 +63,7 @@ public class FirstLaunchActivity extends AccountAuthenticatorActivity
                             showMessage(((authtoken != null) ? "SUCCESS!\ntoken: " + authtoken : "FAIL"));
                             if (authtoken != null)
                             {
+                                isFirst = true;
                                 String accountName = bnd.getString(AccountManager.KEY_ACCOUNT_NAME);
                                 mConnectedAccount = new Account(accountName, AccountGeneral.ACCOUNT_TYPE);
                                 String user_id = mAccountManager.getUserData(mConnectedAccount,LoginActivity.USER_ID);

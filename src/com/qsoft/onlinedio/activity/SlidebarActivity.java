@@ -1,6 +1,7 @@
 package com.qsoft.onlinedio.activity;
 
 import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -49,12 +50,12 @@ public class SlidebarActivity extends FragmentActivity
     private HomeFragment homeFragment;
     private RelativeLayout rlLeftDrawer;
     public static Context context;
-
+    private AccountManager mAccountManager;
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.slidebar);
-         context=this.getApplicationContext();
+        context = this.getApplicationContext();
 
         getAuthTokenAndAccount();
         setUpUI();
@@ -86,15 +87,20 @@ public class SlidebarActivity extends FragmentActivity
                 super.onDrawerClosed(drawerView);    //To change body of overridden methods use File | Settings | File Templates.
             }
         };
+        moveHomeFragment();
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    private void moveHomeFragment()
+    {
         homeFragment = new HomeFragment();
         Bundle bundle = new Bundle();
         bundle.putString(FirstLaunchActivity.AUTHEN_TOKEN, authen_token);
-        bundle.putParcelable(FirstLaunchActivity.ACCOUNT_CONNECTED,mConnectedAccount);
+        bundle.putParcelable(FirstLaunchActivity.ACCOUNT_CONNECTED, mConnectedAccount);
         homeFragment.setArguments(bundle);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.slidebar_homeFragment, homeFragment);
         fragmentTransaction.commit();
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
     private void getAuthTokenAndAccount()
@@ -107,6 +113,7 @@ public class SlidebarActivity extends FragmentActivity
 
     private void setUpUI()
     {
+        mAccountManager = AccountManager.get(this);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         lvOption = (ListView) findViewById(R.id.slidebar_listOption);
@@ -129,12 +136,12 @@ public class SlidebarActivity extends FragmentActivity
             switch (index)
             {
                 case HOME:
-                    ft.replace(R.id.slidebar_homeFragment, new HomeFragment(), "HomeFragment");
-                    ft.addToBackStack("HomeFragment");
-                    ft.commit();
+                    moveHomeFragment();
                     break;
                 case SIGN_OUT:
+                    mAccountManager.removeAccount(mConnectedAccount, null,null);
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    finish();
                     break;
             }
             setCloseListOption();
@@ -160,7 +167,7 @@ public class SlidebarActivity extends FragmentActivity
     {
         Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtra(FirstLaunchActivity.AUTHEN_TOKEN, authen_token);
-        intent.putExtra(LoginActivity.USER_ID,user_id);
+        intent.putExtra(LoginActivity.USER_ID, user_id);
         intent.putExtra(FirstLaunchActivity.ACCOUNT_CONNECTED, mConnectedAccount);
         startActivity(intent);
     }

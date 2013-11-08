@@ -27,6 +27,8 @@ import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.entity.HomeModel;
 import com.qsoft.onlinedio.syncadapter.HomeFeedSyncAdapter;
 import com.qsoft.onlinedio.util.DateTime;
+import com.qsoft.onlinedio.validate.Constant;
+import com.qsoft.onlinedio.validate.NetworkUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,11 +59,11 @@ public class HomeFragment extends Fragment
 
     public static Handler handler = new Handler()
     {
-
         public void handleMessage(Message msg)
         {
             String aResponse = msg.getData().getString(HomeFeedSyncAdapter.MESSAGE_KEY);
-            if(aResponse.equals(HomeFeedSyncAdapter.DONE)){
+            if (aResponse.equals(HomeFeedSyncAdapter.DONE))
+            {
                 setUpDataToHomeListView();
             }
         }
@@ -74,21 +76,40 @@ public class HomeFragment extends Fragment
         mAccountManager = AccountManager.get(getActivity());
         getAuthenTokenAndAccount();
 
-        //performSyncData();
-        background.start();
         View view = inflater.inflate(R.layout.home_layout, null);
         setUpUI(view);
+
+        Thread background = new Thread(new Runnable()
+        {
+            public void run()
+            {
+                performSyncData();
+            }
+        });
+        if (checkNetwork())
+        {
+            background.start();
+        }
+        else
+        {
+            setUpDataToHomeListView();
+        }
         setUpListenerController();
         return view;
     }
 
-    Thread background = new Thread(new Runnable()
+    private boolean checkNetwork()
     {
-        public void run()
+        Log.i(TAG, "Check network available");
+        boolean result = true;
+        String status = NetworkUtil.getConnectivityStatusString(SlidebarActivity.context);
+        if (status.equals(Constant.NOT_CONNECTED_TO_INTERNET.getValue()))
         {
-            performSyncData();
+            result = false;
         }
-    });
+        return result;
+    }
+
 
 
     private void performSyncData()
@@ -104,6 +125,7 @@ public class HomeFragment extends Fragment
 
     private void refreshAuthToken()
     {
+        Log.i(TAG, "Refresh auth token");
         mAccountManager.invalidateAuthToken(AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS, auth_token);
         try
         {
@@ -126,6 +148,7 @@ public class HomeFragment extends Fragment
 
     private void getAuthenTokenAndAccount()
     {
+        Log.i(TAG, "Get auth token");
         Bundle bundle = this.getArguments();
         auth_token = bundle.getString(FirstLaunchActivity.AUTHEN_TOKEN);
         mConnectedAccount = bundle.getParcelable(FirstLaunchActivity.ACCOUNT_CONNECTED);
@@ -139,29 +162,29 @@ public class HomeFragment extends Fragment
 
     private static void setUpDataToHomeListView()
     {
-                arraylist = new ArrayList<HashMap<String, String>>();
-                Cursor cur = SlidebarActivity.context.getContentResolver().query(Contract.CONTENT_URI, null, null, null, null);
-                HomeModel temp = new HomeModel();
-                if (cur != null)
-                {
-                    while (cur.moveToNext())
-                    {
-                        HashMap<String, String> map = new HashMap<String, String>();
-                        temp = HomeModel.fromCursor(cur);
-                        long updated_at = dateTime.getTimeBefore(temp.getUpdated_at());
-                        temp.setUpdated_at(Long.toString(updated_at));
-                        map.put(HomeFragment.NAME, temp.getDisplay_name());
-                        map.put(HomeFragment.TITLE, temp.getTitle());
-                        map.put(HomeFragment.LIKE, String.valueOf(temp.getLikes()));
-                        map.put(HomeFragment.COMMENT, String.valueOf(temp.getComments()));
-                        map.put(HomeFragment.TIME, temp.getUpdated_at());
-                        map.put(HomeFragment.AVATAR, temp.getAvatar());
-                        arraylist.add(map);
-                    }
-                    cur.close();
-                }
-                adapter = new HomeFeeds(SlidebarActivity.context, cur, arraylist);
-                home_lvDetail.setAdapter(adapter);
+        arraylist = new ArrayList<HashMap<String, String>>();
+        Cursor cur = SlidebarActivity.context.getContentResolver().query(Contract.CONTENT_URI, null, null, null, null);
+        HomeModel temp = new HomeModel();
+        if (cur != null)
+        {
+            while (cur.moveToNext())
+            {
+                HashMap<String, String> map = new HashMap<String, String>();
+                temp = HomeModel.fromCursor(cur);
+                long updated_at = dateTime.getTimeBefore(temp.getUpdated_at());
+                temp.setUpdated_at(Long.toString(updated_at));
+                map.put(HomeFragment.NAME, temp.getDisplay_name());
+                map.put(HomeFragment.TITLE, temp.getTitle());
+                map.put(HomeFragment.LIKE, String.valueOf(temp.getLikes()));
+                map.put(HomeFragment.COMMENT, String.valueOf(temp.getComments()));
+                map.put(HomeFragment.TIME, temp.getUpdated_at());
+                map.put(HomeFragment.AVATAR, temp.getAvatar());
+                arraylist.add(map);
+            }
+            cur.close();
+        }
+        adapter = new HomeFeeds(SlidebarActivity.context, cur, arraylist);
+        home_lvDetail.setAdapter(adapter);
     }
 
     private ListView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener()

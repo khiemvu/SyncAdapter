@@ -352,12 +352,12 @@ public class LoginActivity extends AccountAuthenticatorActivity
         String accountName = intent.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
         String accountPassword = intent.getStringExtra(PARAM_USER_PASS);
         String user_id = intent.getStringExtra(AccountManager.KEY_CALLER_UID);
-        final Account account = new Account(accountName, intent.getStringExtra(AccountManager.KEY_ACCOUNT_TYPE));
-
-        if (getIntent().getBooleanExtra(ARG_IS_ADDING_NEW_ACCOUNT, false))
+        final Account account = new Account(accountName, AccountGeneral.ACCOUNT_TYPE);
+        String authtoken = null;
+        if (getIntent().getBooleanExtra(ARG_IS_ADDING_NEW_ACCOUNT, false) || mAccountManager.getAccountsByType(AccountGeneral.ACCOUNT_TYPE).length == 0)
         {
             Log.d("onlinedio", TAG + "> finishLogin > addAccountExplicitly");
-            String authtoken = intent.getStringExtra(AccountManager.KEY_AUTHTOKEN);
+            authtoken = intent.getStringExtra(AccountManager.KEY_AUTHTOKEN);
             String authtokenType = mAuthTokenType;
 
             // Creating the account on the device and setting the auth token we got
@@ -372,7 +372,12 @@ public class LoginActivity extends AccountAuthenticatorActivity
             mAccountManager.setPassword(account, accountPassword);
         }
 
-        setAccountAuthenticatorResult(intent.getExtras());
+        Intent i = new Intent(this, SlidebarActivity.class);
+        i.putExtra(FirstLaunchActivity.AUTHEN_TOKEN, authtoken);
+        i.putExtra(LoginActivity.USER_ID,user_id);
+        i.putExtra(FirstLaunchActivity.ACCOUNT_CONNECTED, account);
+
+        startActivity(i);
         setResult(RESULT_OK, intent);
         finish();
     }

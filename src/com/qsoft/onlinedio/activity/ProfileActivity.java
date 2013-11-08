@@ -122,7 +122,6 @@ public class ProfileActivity extends Activity
                     else
                         getContentResolver().delete(Contract.CONTENT_URI_PROFILE,null,null);
                         getContentResolver().insert(Contract.CONTENT_URI_PROFILE,model.getContentValues());
-
                 }
                 catch (Exception e)
                 {
@@ -269,6 +268,7 @@ public class ProfileActivity extends Activity
                         e.printStackTrace();
                     }
                     getContentResolver().update(Contract.CONTENT_URI_PROFILE, model.getContentValues(), null, null);
+                    Toast.makeText(getApplicationContext(),"Update successfull",1);
                     callBackSlidebarActivity();
                     break;
             }
@@ -282,6 +282,7 @@ public class ProfileActivity extends Activity
         intent.putExtra(LoginActivity.USER_ID,user_id);
         intent.putExtra(FirstLaunchActivity.ACCOUNT_CONNECTED, mConnectedAccount);
         startActivity(intent);
+        finish();
     }
 
     private void onTextChange()
@@ -501,6 +502,5 @@ public class ProfileActivity extends Activity
         c.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2, bitmap.getWidth() / 2, paint);
         return circleBitmap;
     }
-
 
 }

@@ -8,12 +8,14 @@ import android.content.*;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
 import com.qsoft.onlinedio.authenticate.AccountGeneral;
 import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.DbHelper;
 import com.qsoft.onlinedio.database.entity.HomeModel;
+import com.qsoft.onlinedio.fragment.HomeFragment;
 import org.apache.http.client.ClientProtocolException;
 
 import java.io.IOException;
@@ -27,9 +29,11 @@ import java.util.HashMap;
 public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
 {
     private static final String TAG = "HomeFeedSyncAdapter";
+    public static final String DONE = "Done";
 
     private final AccountManager mAccountManager;
     private final ContentResolver mContentResolver;
+    public static final String MESSAGE_KEY = "key";
 
     public HomeFeedSyncAdapter(Context context, boolean autoInitialize)
     {
@@ -144,8 +148,13 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
                     false); // IMPORTANT: Do not sync to network
 
             Log.d(TAG, "Finished sync data");
-
+            Message msgObj = HomeFragment.handler.obtainMessage();
+            Bundle b = new Bundle();
+            b.putString(MESSAGE_KEY, DONE);
+            msgObj.setData(b);
+            HomeFragment.handler.sendMessage(msgObj);
         }
+
         catch (ClientProtocolException e)
         {
             e.printStackTrace();

@@ -80,6 +80,8 @@ public class LoginActivity extends AccountAuthenticatorActivity
         tvResetPas = (TextView) findViewById(R.id.tvResetPass);
         ibtDelEmail = (ImageButton) findViewById(R.id.ibtDelEmail);
         ibtDelPass = (ImageButton) findViewById(R.id.ibtDelPass);
+        etEmail.setText("qsoft@gmail.com");
+        etPass.setText("123456");
     }
 
     private void setUpOnclickListener()
@@ -260,7 +262,7 @@ public class LoginActivity extends AccountAuthenticatorActivity
             protected Intent doInBackground(String... params)
             {
 
-                Log.d("udinic", TAG + "> Started authenticating");
+                Log.d("onlinedio", TAG + "> Started authenticating");
 
                 String authtoken = null;
                 Bundle data = new Bundle();
@@ -345,7 +347,7 @@ public class LoginActivity extends AccountAuthenticatorActivity
 
     private void finishLogin(Intent intent)
     {
-        Log.d("udinic", TAG + "> finishLogin");
+        Log.d("onlinedio", TAG + "> finishLogin");
 
         String accountName = intent.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
         String accountPassword = intent.getStringExtra(PARAM_USER_PASS);
@@ -354,7 +356,7 @@ public class LoginActivity extends AccountAuthenticatorActivity
 
         if (getIntent().getBooleanExtra(ARG_IS_ADDING_NEW_ACCOUNT, false))
         {
-            Log.d("udinic", TAG + "> finishLogin > addAccountExplicitly");
+            Log.d("onlinedio", TAG + "> finishLogin > addAccountExplicitly");
             String authtoken = intent.getStringExtra(AccountManager.KEY_AUTHTOKEN);
             String authtokenType = mAuthTokenType;
 
@@ -366,7 +368,7 @@ public class LoginActivity extends AccountAuthenticatorActivity
         }
         else
         {
-            Log.d("udinic", TAG + "> finishLogin > setPassword");
+            Log.d("onlinedio", TAG + "> finishLogin > setPassword");
             mAccountManager.setPassword(account, accountPassword);
         }
 

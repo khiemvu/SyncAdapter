@@ -6,8 +6,9 @@ import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
 import android.content.ContentResolver;
 import android.database.Cursor;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -24,6 +25,7 @@ import com.qsoft.onlinedio.adapter.HomeFeeds;
 import com.qsoft.onlinedio.authenticate.AccountGeneral;
 import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.entity.HomeModel;
+import com.qsoft.onlinedio.syncadapter.HomeFeedSyncAdapter;
 import com.qsoft.onlinedio.util.DateTime;
 
 import java.io.IOException;
@@ -37,22 +39,33 @@ import java.util.HashMap;
 
 public class HomeFragment extends Fragment
 {
-    HomeFeeds adapter;
-    ArrayList<HashMap<String, String>> arraylist;
+    private static HomeFeeds adapter;
+    public static ArrayList<HashMap<String, String>> arraylist;
     public static final String COMMENT = "comment";
     public static final String LIKE = "like";
     public static final String NAME = "name";
     public static final String TITLE = "title";
     public static final String TIME = "time";
     public static final String AVATAR = "avatar";
-    DateTime dateTime = new DateTime();
+    public static DateTime dateTime = new DateTime();
     private String auth_token;
     private String TAG = this.getClass().getSimpleName();
     private Account mConnectedAccount;
     private AccountManager mAccountManager;
     private Button btNavigate;
-    private ListView home_lvDetail;
+    private static ListView home_lvDetail;
 
+    public static Handler handler = new Handler()
+    {
+
+        public void handleMessage(Message msg)
+        {
+            String aResponse = msg.getData().getString(HomeFeedSyncAdapter.MESSAGE_KEY);
+            if(aResponse.equals(HomeFeedSyncAdapter.DONE)){
+                setUpDataToHomeListView();
+            }
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,13 +74,22 @@ public class HomeFragment extends Fragment
         mAccountManager = AccountManager.get(getActivity());
         getAuthenTokenAndAccount();
 
-        performSyncData();
+        //performSyncData();
+        background.start();
         View view = inflater.inflate(R.layout.home_layout, null);
         setUpUI(view);
-        setUpDataToHomeListView();
         setUpListenerController();
         return view;
     }
+
+    Thread background = new Thread(new Runnable()
+    {
+        public void run()
+        {
+            performSyncData();
+        }
+    });
+
 
     private void performSyncData()
     {
@@ -115,17 +137,10 @@ public class HomeFragment extends Fragment
         home_lvDetail.setOnItemClickListener(onItemClickListener);
     }
 
-    private void setUpDataToHomeListView()
+    private static void setUpDataToHomeListView()
     {
-        Log.i(TAG, "Show data on view");
-        new AsyncTask<Void, Void, Cursor>()
-        {
-            @Override
-            protected Cursor doInBackground(Void... params)
-            {
-                // Create an array
                 arraylist = new ArrayList<HashMap<String, String>>();
-                Cursor cur = getActivity().getContentResolver().query(Contract.CONTENT_URI, null, null, null, null);
+                Cursor cur = SlidebarActivity.context.getContentResolver().query(Contract.CONTENT_URI, null, null, null, null);
                 HomeModel temp = new HomeModel();
                 if (cur != null)
                 {
@@ -145,18 +160,8 @@ public class HomeFragment extends Fragment
                     }
                     cur.close();
                 }
-                return cur;
-            }
-
-            @Override
-            protected void onPostExecute(Cursor cur)
-            {
-
-//                adapter = new HomeFeeds(getActivity(), cur);
-                adapter = new HomeFeeds(getActivity(), cur,arraylist);
+                adapter = new HomeFeeds(SlidebarActivity.context, cur, arraylist);
                 home_lvDetail.setAdapter(adapter);
-            }
-        }.execute();
     }
 
     private ListView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener()

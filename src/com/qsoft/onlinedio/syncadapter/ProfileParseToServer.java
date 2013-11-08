@@ -48,7 +48,7 @@ public class ProfileParseToServer
             if (responseString.equals("cannot access my apis"))
             {
                 // Todo refresh token
-                throw new Exception("Token is invalid");
+                Log.i(TAG,"Token is invalid");
             }
             if (response.getStatusLine().getStatusCode() != HttpURLConnection.HTTP_OK)
             {

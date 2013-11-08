@@ -61,7 +61,7 @@ public class DbHelper extends SQLiteOpenHelper
     // Database creation sql statement
     public static final String DATABASE_CREATE_PROFILE = "create table "
             + PROFILE_TABLE_NAME + "(" +
-            PROFILE_COL_ID + " integer primary key autoincrement, " +
+            PROFILE_COL_ID + " integer primary key, " +
             PROFILE_COL_FACEBOOK_ID + " integer, " +
             PROFILE_COL_USERNAME + " text, " +
             PROFILE_COL_PASSWORD + " text, " +
@@ -87,7 +87,7 @@ public class DbHelper extends SQLiteOpenHelper
     // Database creation sql statement
     public static final String DATABASE_CREATE = "create table "
             + HOMEFEED_TABLE_NAME + "(" +
-            HOMEFEED_COL_ID + " integer primary key autoincrement, " +
+            HOMEFEED_COL_ID + " integer primary key, " +
             HOMEFEED_COL_USER_ID + " integer, " +
             HOMEFEED_COL_TITLE + " text, " +
             HOMEFEED_COL_THUMBNAIL + " text, " +

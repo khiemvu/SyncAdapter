@@ -16,9 +16,9 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.adapter.Sidebar;
 import com.qsoft.onlinedio.fragment.HomeFragment;
-import com.qsoft.onlinedio.R;
 
 
 /**
@@ -33,7 +33,6 @@ public class SlidebarActivity extends FragmentActivity
     private Account mConnectedAccount;
 
     final String[] listOptionName = {"Home", "Favorite", "Following", "Audience", "Genres", "Setting", "Help Center", "Sign Out"};
-    final String[] item = {"HomeFragment", "HomeFragment", "HomeFragment", "HomeFragment", "HomeFragment", "HomeFragment", "HomeFragment"};
     private static final int HOME = 0;
     private static final int FAVORITE = 1;
     private static final int FOLLOWING = 2;
@@ -49,17 +48,15 @@ public class SlidebarActivity extends FragmentActivity
     private ImageView ivProfile;
     private HomeFragment homeFragment;
     private RelativeLayout rlLeftDrawer;
+    public static Context context;
 
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.slidebar);
+         context=this.getApplicationContext();
 
-        //get authen_token and account from first lauch
-        Intent intent = getIntent();
-        authen_token = intent.getStringExtra(FirstLaunchActivity.AUTHEN_TOKEN);
-        mConnectedAccount = intent.getParcelableExtra(FirstLaunchActivity.ACCOUNT_CONNECTED);
-        user_id = intent.getStringExtra(LoginActivity.USER_ID);
+        getAuthTokenAndAccount();
         setUpUI();
         setUpDataListOption(this);
         setUpListenerController();
@@ -98,6 +95,14 @@ public class SlidebarActivity extends FragmentActivity
         fragmentTransaction.replace(R.id.slidebar_homeFragment, homeFragment);
         fragmentTransaction.commit();
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    private void getAuthTokenAndAccount()
+    {
+        Intent intent = getIntent();
+        authen_token = intent.getStringExtra(FirstLaunchActivity.AUTHEN_TOKEN);
+        mConnectedAccount = intent.getParcelableExtra(FirstLaunchActivity.ACCOUNT_CONNECTED);
+        user_id = intent.getStringExtra(LoginActivity.USER_ID);
     }
 
     private void setUpUI()

@@ -27,10 +27,7 @@ import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.entity.ProfileModel;
 import com.qsoft.onlinedio.filecache.ImageLoader;
-import com.qsoft.onlinedio.fragment.HomeFragment;
 import com.qsoft.onlinedio.syncadapter.ProfileParseToServer;
-
-import java.util.List;
 
 /**
  * User: Dell 3360
@@ -50,15 +47,13 @@ public class ProfileActivity extends Activity
     String []countries;
     String []countries_code;
 
-    ImageView pr_imgAvatar, img;
+    ImageView pr_imgAvatar;
     Button btTakePicture, btChoosePicture, btCancel, btGenderSelectLeft, btGenderSelectRight, pr_btCancel,pr_btSave;
 
     EditText pr_edFullName, pr_edPhone, pr_edBirthday, pr_edCountry, pr_etDisplayName, pr_etDescription;
     ImageButton pr_ibDeleteFullName, pr_ibDeletePhone;
     RelativeLayout pr_rlBackGround;
     AlertDialog alertDialog, alertCountryDialog;
-    private ListView listCountry;
-    private List<HomeFragment> rowItems;
 
     static final int DATE_DIALOG_ID = 0;
     private static final int PICK_IMAGE = 1;
@@ -115,28 +110,30 @@ public class ProfileActivity extends Activity
     private void showDataOnView()
     {
         Log.i(TAG, "Get data for show on view");
-        new AsyncTask<String, Void, Void>() {
-
-
+        new AsyncTask<String, Void, Cursor>() {
             @Override
-            protected Void doInBackground(String... params) {
+            protected Cursor doInBackground(String... params) {
+                Cursor cur = getContentResolver().query(Contract.CONTENT_URI_PROFILE, null, null, null, null);
                 try
                 {
                     model = parseToServer.getShows(user_id,auth_token);
-                    getContentResolver().insert(Contract.CONTENT_URI_PROFILE,model.getContentValues());
+                    if(cur == null)
+                        getContentResolver().insert(Contract.CONTENT_URI_PROFILE,model.getContentValues());
+                    else
+                        getContentResolver().delete(Contract.CONTENT_URI_PROFILE,null,null);
+                        getContentResolver().insert(Contract.CONTENT_URI_PROFILE,model.getContentValues());
 
                 }
                 catch (Exception e)
                 {
                     e.printStackTrace();
                 }
-                return null;
+                return cur;
             }
 
             @Override
-            protected void onPostExecute(Void args ) {
+            protected void onPostExecute(Cursor cur ) {
                 ProfileModel temp = new ProfileModel();
-                Cursor cur = getContentResolver().query(Contract.CONTENT_URI_PROFILE, null, null, null, null);
                 if(cur != null)
                 {
                     while (cur.moveToNext())
@@ -156,12 +153,12 @@ public class ProfileActivity extends Activity
                             btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_right));
                         }
                         pr_edBirthday.setText(temp.getBirthday());
-                        int posittion = 0;
+                        int position = 0;
                         for(int i = 0; i < countries_code.length; i++)
                             if(temp.getCountry_id().equals(countries_code[i]))
-                                posittion = i;
+                                position = i;
 
-                        pr_edCountry.setText(countries[posittion].toString());
+                        pr_edCountry.setText(countries[position].toString());
                         pr_etDescription.setText(temp.getDescription());
                         imageLoader.DisplayImage(temp.getAvatar(),pr_imgAvatar);
                     }

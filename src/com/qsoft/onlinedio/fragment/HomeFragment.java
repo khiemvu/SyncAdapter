@@ -4,6 +4,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -56,6 +57,8 @@ public class HomeFragment extends Fragment
     private AccountManager mAccountManager;
     private Button btNavigate;
     private static ListView home_lvDetail;
+    private static ProgressDialog mProgressDialog;
+//    private PullToRefreshAttacher mPullToRefreshAttacher;
 
     public static Handler handler = new Handler()
     {
@@ -65,6 +68,7 @@ public class HomeFragment extends Fragment
             if (aResponse.equals(HomeFeedSyncAdapter.DONE))
             {
                 setUpDataToHomeListView();
+                mProgressDialog.dismiss();
             }
         }
     };
@@ -73,6 +77,7 @@ public class HomeFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+
         mAccountManager = AccountManager.get(getActivity());
         getAuthenTokenAndAccount();
 
@@ -94,9 +99,37 @@ public class HomeFragment extends Fragment
         {
             setUpDataToHomeListView();
         }
+//        mPullToRefreshAttacher.addRefreshableView(home_lvDetail, getActivity());
         setUpListenerController();
         return view;
     }
+
+//    @Override
+//    public void onRefreshStarted(View view) {
+//        /**
+//         * Simulate Refresh with 4 seconds sleep
+//         */
+//        new AsyncTask<Void, Void, Void>() {
+//
+//            @Override
+//            protected Void doInBackground(Void... params) {
+//                try {
+//                    Thread.sleep(Constants.SIMULATED_REFRESH_LENGTH);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Void result) {
+//                super.onPostExecute(result);
+//
+//                // Notify PullToRefreshAttacher that the refresh has finished
+//                mPullToRefreshAttacher.setRefreshComplete();
+//            }
+//        }.execute();
+//    }
 
     private boolean checkNetwork()
     {
@@ -111,10 +144,22 @@ public class HomeFragment extends Fragment
     }
 
 
-
     private void performSyncData()
     {
         Log.i(TAG, "Perform sync");
+        getActivity().runOnUiThread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                mProgressDialog = new ProgressDialog(getActivity());
+                // Set progressdialog message
+                mProgressDialog.setMessage("Loading...");
+                mProgressDialog.setIndeterminate(false);
+                // Show progressdialog
+                mProgressDialog.show();
+            }
+        });
         refreshAuthToken();
         String authority = Contract.AUTHORITY;
         Bundle bundle = new Bundle();
@@ -224,6 +269,7 @@ public class HomeFragment extends Fragment
 
     private void setUpUI(View view)
     {
+//        mPullToRefreshAttacher = PullToRefreshAttacher.get(getActivity());
         btNavigate = (Button) view.findViewById(R.id.btNavigate);
         home_lvDetail = (ListView) view.findViewById(R.id.home_lvDetail);
     }

@@ -26,7 +26,7 @@ public class FirstLaunchActivity extends AccountAuthenticatorActivity
     private Button launch_btLogin;
     private AccountManager mAccountManager;
     private Account mConnectedAccount;
-    public static boolean isFirst = false;
+
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -63,7 +63,6 @@ public class FirstLaunchActivity extends AccountAuthenticatorActivity
                             showMessage(((authtoken != null) ? "SUCCESS!\ntoken: " + authtoken : "FAIL"));
                             if (authtoken != null)
                             {
-                                isFirst = true;
                                 String accountName = bnd.getString(AccountManager.KEY_ACCOUNT_NAME);
                                 mConnectedAccount = new Account(accountName, AccountGeneral.ACCOUNT_TYPE);
                                 String user_id = mAccountManager.getUserData(mConnectedAccount,LoginActivity.USER_ID);

@@ -192,7 +192,7 @@ public class LoginActivity extends AccountAuthenticatorActivity
                     }
                     else
                     {
-                    checkLogin();
+                        checkLogin();
                     }
                     break;
                 case R.id.tvResetPass:
@@ -268,22 +268,31 @@ public class LoginActivity extends AccountAuthenticatorActivity
                 Bundle data = new Bundle();
                 try
                 {
-
-                    User user = sServerAuthenticate.userSignIn(email, pass, mAuthTokenType);
-                    if (user != null)
+                    if ((emailFormatValidator.validate(email)) == false)
                     {
-                        authtoken = user.getAccess_token();
+                        data.putString(KEY_ERROR_MESSAGE, Constant.EMAIL_INVALID.getValue());
                     }
-                    data.putString(AccountManager.KEY_ACCOUNT_NAME, email);
-                    data.putString(AccountManager.KEY_ACCOUNT_TYPE, accountType);
-                    data.putString(AccountManager.KEY_AUTHTOKEN, authtoken);
-                    data.putString(AccountManager.KEY_CALLER_UID,user.getUser_id());
-                    data.putString(PARAM_USER_PASS, pass);
+                    else {
+                        User user = sServerAuthenticate.userSignIn(email, pass, mAuthTokenType);
+                        if (user.getUser_id() != null)
+                        {
+                            authtoken = user.getAccess_token();
+                            data.putString(AccountManager.KEY_ACCOUNT_NAME, email);
+                            data.putString(AccountManager.KEY_ACCOUNT_TYPE, accountType);
+                            data.putString(AccountManager.KEY_AUTHTOKEN, authtoken);
+                            data.putString(AccountManager.KEY_CALLER_UID, user.getUser_id());
+                            data.putString(PARAM_USER_PASS, pass);
+                        }
+                        else
+                        {
+                            data.putString(KEY_ERROR_MESSAGE, Constant.EMAIL_OR_PASSWORD_NOT_CORRECT.getValue());
+                        }
+                    }
 
                 }
                 catch (Exception e)
                 {
-                    data.putString(KEY_ERROR_MESSAGE, e.getMessage());
+                    data.putString(KEY_ERROR_MESSAGE,e.getMessage());
                 }
 
                 final Intent res = new Intent();
@@ -364,7 +373,7 @@ public class LoginActivity extends AccountAuthenticatorActivity
             // (Not setting the auth token will cause another call to the server to authenticate the user)
             mAccountManager.addAccountExplicitly(account, accountPassword, null);
             mAccountManager.setAuthToken(account, authtokenType, authtoken);
-            mAccountManager.setUserData(account,USER_ID,user_id);
+            mAccountManager.setUserData(account, USER_ID, user_id);
         }
         else
         {
@@ -374,9 +383,8 @@ public class LoginActivity extends AccountAuthenticatorActivity
 
         Intent i = new Intent(this, SlidebarActivity.class);
         i.putExtra(FirstLaunchActivity.AUTHEN_TOKEN, authtoken);
-        i.putExtra(LoginActivity.USER_ID,user_id);
+        i.putExtra(LoginActivity.USER_ID, user_id);
         i.putExtra(FirstLaunchActivity.ACCOUNT_CONNECTED, account);
-
         startActivity(i);
         setResult(RESULT_OK, intent);
         finish();

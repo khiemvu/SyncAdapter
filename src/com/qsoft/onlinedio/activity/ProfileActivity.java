@@ -47,7 +47,7 @@ public class ProfileActivity extends Activity
     String []countries;
     String []countries_code;
 
-    ImageView pr_imgAvatar;
+    ImageView pr_imgAvatar, pr_ivBackground;
     Button btTakePicture, btChoosePicture, btCancel, btGenderSelectLeft, btGenderSelectRight, pr_btCancel,pr_btSave;
 
     EditText pr_edFullName, pr_edPhone, pr_edBirthday, pr_edCountry, pr_etDisplayName, pr_etDescription;
@@ -88,6 +88,7 @@ public class ProfileActivity extends Activity
     {
         imageLoader = new ImageLoader(this);
         pr_imgAvatar = (ImageView) findViewById(R.id.pr_imgAvatar);
+        pr_ivBackground = (ImageView) findViewById(R.id.pr_ivBackground);
         pr_etDisplayName = (EditText) findViewById(R.id.pr_edDisplayName);
         pr_edFullName = (EditText) findViewById(R.id.pr_edFullName);
         pr_etDescription = (EditText) findViewById(R.id.pr_etDescription);
@@ -160,6 +161,7 @@ public class ProfileActivity extends Activity
                         pr_edCountry.setText(countries[position].toString());
                         pr_etDescription.setText(temp.getDescription());
                         imageLoader.DisplayImage(temp.getAvatar(),pr_imgAvatar);
+                        imageLoader.DisplayImage(temp.getCover_image(),pr_ivBackground);
                     }
                 cur.close();
                 }
@@ -282,7 +284,6 @@ public class ProfileActivity extends Activity
         intent.putExtra(LoginActivity.USER_ID,user_id);
         intent.putExtra(FirstLaunchActivity.ACCOUNT_CONNECTED, mConnectedAccount);
         startActivity(intent);
-        finish();
     }
 
     private void onTextChange()

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
-              android:contentAuthority="com.qsoft.onlinedio.profile.provider"
-              android:accountType="com.qsoft.onlinedio"
-              android:userVisible="true"
-              android:supportsUploading="false"
-              android:allowParallelSyncs="false"
-              android:isAlwaysSyncable="true"
-        />

@@ -58,7 +58,6 @@ public class HomeFragment extends Fragment
     private Button btNavigate;
     private static ListView home_lvDetail;
     private static ProgressDialog mProgressDialog;
-//    private PullToRefreshAttacher mPullToRefreshAttacher;
 
     public static Handler handler = new Handler()
     {
@@ -99,37 +98,9 @@ public class HomeFragment extends Fragment
         {
             setUpDataToHomeListView();
         }
-//        mPullToRefreshAttacher.addRefreshableView(home_lvDetail, getActivity());
         setUpListenerController();
         return view;
     }
-
-//    @Override
-//    public void onRefreshStarted(View view) {
-//        /**
-//         * Simulate Refresh with 4 seconds sleep
-//         */
-//        new AsyncTask<Void, Void, Void>() {
-//
-//            @Override
-//            protected Void doInBackground(Void... params) {
-//                try {
-//                    Thread.sleep(Constants.SIMULATED_REFRESH_LENGTH);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//                return null;
-//            }
-//
-//            @Override
-//            protected void onPostExecute(Void result) {
-//                super.onPostExecute(result);
-//
-//                // Notify PullToRefreshAttacher that the refresh has finished
-//                mPullToRefreshAttacher.setRefreshComplete();
-//            }
-//        }.execute();
-//    }
 
     private boolean checkNetwork()
     {
@@ -269,7 +240,6 @@ public class HomeFragment extends Fragment
 
     private void setUpUI(View view)
     {
-//        mPullToRefreshAttacher = PullToRefreshAttacher.get(getActivity());
         btNavigate = (Button) view.findViewById(R.id.btNavigate);
         home_lvDetail = (ListView) view.findViewById(R.id.home_lvDetail);
     }

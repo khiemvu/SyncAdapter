@@ -137,6 +137,7 @@ public class SlidebarActivity extends FragmentActivity
             {
                 case HOME:
                     moveHomeFragment();
+                    finish();
                     break;
                 case SIGN_OUT:
                     mAccountManager.removeAccount(mConnectedAccount, null,null);
@@ -158,6 +159,7 @@ public class SlidebarActivity extends FragmentActivity
                 case R.id.sidebar_ivProfile:
                     showProfile();
                     setCloseListOption();
+                    finish();
                     break;
             }
         }

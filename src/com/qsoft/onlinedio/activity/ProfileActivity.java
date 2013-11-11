@@ -44,11 +44,11 @@ public class ProfileActivity extends Activity
     private Account mConnectedAccount;
     private AccountManager mAccountManager;
     ProfileParseToServer parseToServer = new ProfileParseToServer();
-    String []countries;
-    String []countries_code;
+    String[] countries;
+    String[] countries_code;
 
     ImageView pr_imgAvatar, pr_ivBackground;
-    Button btTakePicture, btChoosePicture, btCancel, btGenderSelectLeft, btGenderSelectRight, pr_btCancel,pr_btSave;
+    Button btTakePicture, btChoosePicture, btCancel, btGenderSelectLeft, btGenderSelectRight, pr_btCancel, pr_btSave;
 
     EditText pr_edFullName, pr_edPhone, pr_edBirthday, pr_edCountry, pr_etDisplayName, pr_etDescription;
     ImageButton pr_ibDeleteFullName, pr_ibDeletePhone;
@@ -111,30 +111,31 @@ public class ProfileActivity extends Activity
     private void showDataOnView()
     {
         Log.i(TAG, "Get data for show on view");
-        new AsyncTask<String, Void, Cursor>() {
+        new AsyncTask<String, Void, Void>()
+        {
             @Override
-            protected Cursor doInBackground(String... params) {
-                Cursor cur = getContentResolver().query(Contract.CONTENT_URI_PROFILE, null, null, null, null);
+            protected Void doInBackground(String... params)
+            {
+
                 try
                 {
-                    model = parseToServer.getShows(user_id,auth_token);
-                    if(cur == null)
-                        getContentResolver().insert(Contract.CONTENT_URI_PROFILE,model.getContentValues());
-                    else
-                        getContentResolver().delete(Contract.CONTENT_URI_PROFILE,null,null);
-                        getContentResolver().insert(Contract.CONTENT_URI_PROFILE,model.getContentValues());
+                    model = parseToServer.getShows(user_id, auth_token);
+                    getContentResolver().delete(Contract.CONTENT_URI_PROFILE, null, null);
+                    getContentResolver().insert(Contract.CONTENT_URI_PROFILE, model.getContentValues());
                 }
                 catch (Exception e)
                 {
                     e.printStackTrace();
                 }
-                return cur;
+                return null;
             }
 
             @Override
-            protected void onPostExecute(Cursor cur ) {
+            protected void onPostExecute(Void params)
+            {
+                Cursor cur = getContentResolver().query(Contract.CONTENT_URI_PROFILE, null, null, null, null);
                 ProfileModel temp = new ProfileModel();
-                if(cur != null)
+                if (cur != null)
                 {
                     while (cur.moveToNext())
                     {
@@ -142,28 +143,34 @@ public class ProfileActivity extends Activity
                         pr_etDisplayName.setText(temp.getDisplay_name());
                         pr_edFullName.setText(temp.getFull_name());
                         pr_edPhone.setText(temp.getPhone());
-                        if(temp.getGender() == 1){
+                        if (temp.getGender() == 1)
+                        {
                             isSelected = true;
                             btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_left));
                             btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_right));
                         }
-                        else{
+                        else
+                        {
                             isSelected = false;
                             btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_left));
                             btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_right));
                         }
                         pr_edBirthday.setText(temp.getBirthday());
                         int position = 0;
-                        for(int i = 0; i < countries_code.length; i++)
-                            if(temp.getCountry_id().equals(countries_code[i]))
+                        for (int i = 0; i < countries_code.length; i++)
+                        {
+                            if (temp.getCountry_id().equals(countries_code[i]))
+                            {
                                 position = i;
+                            }
+                        }
 
                         pr_edCountry.setText(countries[position].toString());
                         pr_etDescription.setText(temp.getDescription());
-                        imageLoader.DisplayImage(temp.getAvatar(),pr_imgAvatar);
-                        imageLoader.DisplayImage(temp.getCover_image(),pr_ivBackground);
+                        imageLoader.DisplayImage(temp.getAvatar(), pr_imgAvatar);
+                        imageLoader.DisplayImage(temp.getCover_image(), pr_ivBackground);
                     }
-                cur.close();
+                    cur.close();
                 }
             }
         }.execute();
@@ -239,23 +246,28 @@ public class ProfileActivity extends Activity
                     profileUpdate.setBirthday(pr_edBirthday.getText().toString());
                     String temp = pr_edCountry.getText().toString();
                     int country_id = 0;
-                    for(int i = 0; i < countries.length; i++){
-                        if(temp.equals(countries[i]))
+                    for (int i = 0; i < countries.length; i++)
+                    {
+                        if (temp.equals(countries[i]))
+                        {
                             country_id = i;
+                        }
                     }
                     profileUpdate.setCountry_id(countries_code[country_id]);
                     int gender;
-                    if (isSelected){
+                    if (isSelected)
+                    {
                         gender = 1;
                     }
-                    else {
+                    else
+                    {
                         gender = 0;
                     }
                     profileUpdate.setGender(gender);
 
                     try
                     {
-                        parseToServer.putShow(auth_token,user_id,profileUpdate);
+                        parseToServer.putShow(auth_token, user_id, profileUpdate);
                     }
                     catch (Exception e)
                     {
@@ -263,14 +275,14 @@ public class ProfileActivity extends Activity
                     }
                     try
                     {
-                        model = parseToServer.getShows(user_id,auth_token);
+                        model = parseToServer.getShows(user_id, auth_token);
                     }
                     catch (Exception e)
                     {
                         e.printStackTrace();
                     }
                     getContentResolver().update(Contract.CONTENT_URI_PROFILE, model.getContentValues(), null, null);
-                    Toast.makeText(getApplicationContext(),"Update successfull",1);
+                    Toast.makeText(getApplicationContext(), "Update successfull", 1);
                     callBackSlidebarActivity();
                     break;
             }
@@ -281,7 +293,7 @@ public class ProfileActivity extends Activity
     {
         Intent intent = new Intent(this, SlidebarActivity.class);
         intent.putExtra(FirstLaunchActivity.AUTHEN_TOKEN, auth_token);
-        intent.putExtra(LoginActivity.USER_ID,user_id);
+        intent.putExtra(LoginActivity.USER_ID, user_id);
         intent.putExtra(FirstLaunchActivity.ACCOUNT_CONNECTED, mConnectedAccount);
         startActivity(intent);
     }

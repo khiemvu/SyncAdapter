@@ -15,39 +15,65 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import com.googlecode.androidannotations.annotations.EFragment;
+import com.googlecode.androidannotations.annotations.ViewById;
 import com.qsoft.onlinedio.R;
 
 /**
  * User: khiemvx
  * Date: 10/16/13
  */
+@EFragment (R.layout.program_layout)
 public class ProgramFragment extends Fragment
 {
     private int mediaDuration;
     private int mediaPosition;
-
-    private RadioButton rbtThumnail;
-    private RadioButton rbtDetail;
-    private RadioButton rbtComment;
-    private Button btStar;
-    private Button btLike;
-    private Button btList;
-
-    private AudioManager audioManager = null;
-    private SeekBar sbVolume;
-    private SeekBar sbTime;
     private MediaPlayer mediaPlayer;
     private final Handler handler = new Handler();
-    private Button btPlayOrStop;
-    private TextView tvTimeCur;
-    private TextView tvTimePlay;
-    private Button btBack;
+    private AudioManager audioManager = null;
+
+    @ViewById(R.id.program_rbtThumnail)
+    protected RadioButton rbtThumnail;
+
+    @ViewById(R.id.program_rbtDetail)
+    protected RadioButton rbtDetail;
+
+    @ViewById(R.id.program_rbtComment)
+    protected RadioButton rbtComment;
+
+    @ViewById(R.id.program_sbVolume)
+    protected SeekBar sbVolume;
+
+    @ViewById(R.id.program_sbTime)
+    protected SeekBar sbTime;
+
+    @ViewById(R.id.program_btFavorite)
+    protected Button btStar;
+
+    @ViewById(R.id.program_btLike)
+    protected Button btLike;
+
+    @ViewById(R.id.program_btList)
+    protected Button btList;
+
+    @ViewById(R.id.program_btPlayOrStop)
+    protected Button btPlayOrStop;
+
+    @ViewById(R.id.program_tvTimeCur)
+    protected TextView tvTimeCur;
+
+    @ViewById(R.id.program_tvTimePlay)
+    protected TextView tvTimePlay;
+
+    @ViewById(R.id.program_btBack)
+    protected Button btBack;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         View viewer = (View) inflater.inflate(R.layout.program_layout, container, false);
+        initServicePlayMusic();
         initComponent(viewer);
         getActivity().setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
@@ -109,19 +135,19 @@ public class ProgramFragment extends Fragment
             {
                 case R.id.program_rbtThumnail:
                     FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                    ThumbnailFragment thumnailFragmentActivity = new ThumbnailFragment();
+                    ThumbnailFragment thumnailFragmentActivity = new ThumbnailFragment_();
                     fragmentTransaction.replace(R.id.program_fl_generic, thumnailFragmentActivity);
                     fragmentTransaction.commit();
                     break;
                 case R.id.program_rbtDetail:
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    DetailFragment detailFragmentActivity = new DetailFragment();
+                    DetailFragment detailFragmentActivity = new DetailFragment_();
                     transaction.replace(R.id.program_fl_generic, detailFragmentActivity);
                     transaction.commit();
                     break;
                 case R.id.program_rbtComment:
                     FragmentTransaction transactionComment = getFragmentManager().beginTransaction();
-                    Comment comment = new Comment();
+                    Comment comment = new Comment_();
                     transactionComment.replace(R.id.program_fl_generic, comment);
                     transactionComment.commit();
                     break;
@@ -215,19 +241,9 @@ public class ProgramFragment extends Fragment
 
     private void initComponent(View viewer)
     {
-        //Return the handle to a system-level service - 'AUDIO'.
-        audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         sbVolume = (SeekBar) viewer.findViewById(R.id.program_sbVolume);
-        sbVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
-        //Set the progress with current Media Volume
-        sbVolume.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
-
-        //init seekbar time
-        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.testsong_20_sec);
         sbTime = (SeekBar) viewer.findViewById(R.id.program_sbTime);
-
         btPlayOrStop = (Button) viewer.findViewById(R.id.program_btPlayOrStop);
-
         tvTimeCur = (TextView) viewer.findViewById(R.id.program_tvTimeCur);
         tvTimePlay = (TextView) viewer.findViewById(R.id.program_tvTimePlay);
         rbtDetail = (RadioButton) viewer.findViewById(R.id.program_rbtDetail);
@@ -237,6 +253,16 @@ public class ProgramFragment extends Fragment
         btList = (Button) viewer.findViewById(R.id.program_btList);
         rbtComment = (RadioButton) viewer.findViewById(R.id.program_rbtComment);
         btBack = (Button) viewer.findViewById(R.id.program_btBack);
+    }
+
+    private void initServicePlayMusic()
+    {
+        //Return the handle to a system-level service - 'AUDIO'.
+        audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+        sbVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+        //Set the progress with current Media Volume
+        sbVolume.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.testsong_20_sec);
     }
 
 }

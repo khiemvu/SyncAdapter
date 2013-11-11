@@ -9,10 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.qsoft.onlinedio.R;
-
 public class Sidebar extends ArrayAdapter<String>
 {
     private String[] slideBarOptions;
+
     private Context context;
     private TextView tvOption, tvSpec;
     private ImageView ivOption;

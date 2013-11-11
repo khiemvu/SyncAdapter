@@ -14,15 +14,13 @@ import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
+import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.entity.ProfileModel;
@@ -34,9 +32,10 @@ import com.qsoft.onlinedio.syncadapter.ProfileParseToServer;
  * Date: 10/17/13
  * Time: 8:39 AM
  */
+@EActivity(R.layout.profile_layout)
 public class ProfileActivity extends Activity
 {
-    ImageLoader imageLoader;
+    ImageLoader imageLoader = new ImageLoader(this);
     ProfileModel model = new ProfileModel();
     private String auth_token;
     private String user_id;
@@ -47,13 +46,62 @@ public class ProfileActivity extends Activity
     String[] countries;
     String[] countries_code;
 
-    ImageView pr_imgAvatar, pr_ivBackground;
-    Button btTakePicture, btChoosePicture, btCancel, btGenderSelectLeft, btGenderSelectRight, pr_btCancel, pr_btSave;
+    @ViewById(R.id.pr_imgAvatar)
+    ImageView pr_imgAvatar;
 
-    EditText pr_edFullName, pr_edPhone, pr_edBirthday, pr_edCountry, pr_etDisplayName, pr_etDescription;
-    ImageButton pr_ibDeleteFullName, pr_ibDeletePhone;
+    @ViewById(R.id.pr_ivBackground)
+    ImageView pr_ivBackground;
+
+    @ViewById(R.id.dg_btTakePicture)
+    Button btTakePicture;
+
+    @ViewById(R.id.dg_btChoosePicture)
+    Button btChoosePicture;
+
+    @ViewById(R.id.pr_btCancel)
+    Button btCancel;
+
+    @ViewById(R.id.pr_btnSelectLeft_check)
+    Button btGenderSelectLeft;
+
+    @ViewById(R.id.pr_btnSelectRight_check)
+    Button btGenderSelectRight;
+
+    @ViewById(R.id.pr_btCancel)
+    Button pr_btCancel;
+
+    @ViewById(R.id.pr_btSave)
+    Button pr_btSave;
+
+    @ViewById(R.id.pr_edFullName)
+    EditText pr_edFullName;
+
+    @ViewById(R.id.pr_edPhone)
+    EditText pr_edPhone;
+
+    @ViewById(R.id.pr_edBirthday)
+    EditText pr_edBirthday;
+
+    @ViewById(R.id.pr_edCountry)
+    EditText pr_edCountry;
+
+    @ViewById(R.id.pr_edDisplayName)
+    EditText pr_etDisplayName;
+
+    @ViewById(R.id.pr_etDescription)
+    EditText pr_etDescription;
+
+    @ViewById(R.id.pr_ibDeleteFullName)
+    ImageButton pr_ibDeleteFullName;
+
+    @ViewById(R.id.pr_ibDeletePhone)
+    ImageButton pr_ibDeletePhone;
+
+    @ViewById(R.id.pr_rlBackGround)
     RelativeLayout pr_rlBackGround;
-    AlertDialog alertDialog, alertCountryDialog;
+
+    AlertDialog alertDialog;
+    AlertDialog alertCountryDialog;
 
     static final int DATE_DIALOG_ID = 0;
     private static final int PICK_IMAGE = 1;
@@ -64,288 +112,243 @@ public class ProfileActivity extends Activity
     String code;
     private boolean isSelected;
 
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_layout);
-
-        getComponentOnView();
+    @AfterViews
+    protected void afterViews(){
+        mAccountManager = AccountManager.get(this);
+        prepareData();
         getTokenAndAccount();
-        showDataOnView();
-        onclickListener();
+        putDataDB();
+    }
+
+    private void prepareData()
+    {
+        countries = getResources().getStringArray(
+                R.array.country_array);
+        countries_code = getResources().getStringArray(R.array.country_code);
     }
 
     private void getTokenAndAccount()
     {
-        //get authen_token and account from first lauch
         Intent intent = getIntent();
         auth_token = intent.getStringExtra(FirstLaunchActivity.AUTHEN_TOKEN);
         mConnectedAccount = intent.getParcelableExtra(FirstLaunchActivity.ACCOUNT_CONNECTED);
         user_id = intent.getStringExtra(LoginActivity.USER_ID);
     }
 
-    private void getComponentOnView()
-    {
-        imageLoader = new ImageLoader(this);
-        pr_imgAvatar = (ImageView) findViewById(R.id.pr_imgAvatar);
-        pr_ivBackground = (ImageView) findViewById(R.id.pr_ivBackground);
-        pr_etDisplayName = (EditText) findViewById(R.id.pr_edDisplayName);
-        pr_edFullName = (EditText) findViewById(R.id.pr_edFullName);
-        pr_etDescription = (EditText) findViewById(R.id.pr_etDescription);
-        pr_edPhone = (EditText) findViewById(R.id.pr_edPhone);
-        pr_ibDeleteFullName = (ImageButton) findViewById(R.id.pr_ibDeleteFullName);
-        pr_ibDeletePhone = (ImageButton) findViewById(R.id.pr_ibDeletePhone);
-        pr_edBirthday = (EditText) findViewById(R.id.pr_edBirthday);
-        pr_edCountry = (EditText) findViewById(R.id.pr_edCountry);
-        btGenderSelectLeft = (Button) findViewById(R.id.pr_btnSelectLeft_check);
-        btGenderSelectRight = (Button) findViewById(R.id.pr_btnSelectRight_check);
-        pr_rlBackGround = (RelativeLayout) findViewById(R.id.pr_rlBackGround);
-        pr_btCancel = (Button) findViewById(R.id.pr_btCancel);
-        pr_btSave = (Button) findViewById(R.id.pr_btSave);
-        countries = getResources().getStringArray(
-                R.array.country_array);
-        countries_code = getResources().getStringArray(R.array.country_code);
-        mAccountManager = AccountManager.get(this);
-    }
-
-    private void showDataOnView()
+    @Background
+    protected void putDataDB()
     {
         Log.i(TAG, "Get data for show on view");
-        new AsyncTask<String, Void, Void>()
+        try
         {
-            @Override
-            protected Void doInBackground(String... params)
+            model = parseToServer.getShows(user_id, auth_token);
+            getContentResolver().delete(Contract.CONTENT_URI_PROFILE, null, null);
+            getContentResolver().insert(Contract.CONTENT_URI_PROFILE, model.getContentValues());
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        showDataView();
+    }
+    @UiThread
+    protected void showDataView()
+    {
+        Cursor cur = getContentResolver().query(Contract.CONTENT_URI_PROFILE, null, null, null, null);
+        ProfileModel temp = new ProfileModel();
+        if (cur != null)
+        {
+            while (cur.moveToNext())
             {
+                temp = ProfileModel.fromCursor(cur);
+                pr_etDisplayName.setText(temp.getDisplay_name());
+                pr_edFullName.setText(temp.getFull_name());
+                pr_edPhone.setText(temp.getPhone());
+                if (temp.getGender() == 1)
+                {
+                    isSelected = true;
+                    btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_left));
+                    btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_right));
+                }
+                else
+                {
+                    isSelected = false;
+                    btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_left));
+                    btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_right));
+                }
+                pr_edBirthday.setText(temp.getBirthday());
+                int position = 0;
+                for (int i = 0; i < countries_code.length; i++)
+                {
+                    if (temp.getCountry_id().equals(countries_code[i]))
+                    {
+                        position = i;
+                    }
+                }
+
+                pr_edCountry.setText(countries[position].toString());
+                pr_etDescription.setText(temp.getDescription());
+                imageLoader.DisplayImage(temp.getAvatar(), pr_imgAvatar);
+                imageLoader.DisplayImage(temp.getCover_image(), pr_ivBackground);
+            }
+            cur.close();
+        }
+    }
+
+    @Click ({R.id.pr_imgAvatar,R.id.pr_ibDeleteFullName,R.id.pr_ibDeletePhone,R.id.pr_edBirthday,
+            R.id.pr_edCountry,R.id.pr_btnSelectLeft_check,R.id.pr_btnSelectRight_check,
+            R.id.pr_rlBackGround,R.id.pr_btCancel,R.id.pr_btSave, R.id.dg_btChoosePicture, R.id.dg_btTakePicture})
+    protected void onClickListener(View view)
+    {
+        switch (view.getId()){
+            case R.id.pr_imgAvatar:
+                code = "cover_image";
+                showDialogSelectImage();
+                break;
+            case R.id.pr_rlBackGround:
+                code = "background_image";
+                showDialogSelectImage();
+                break;
+            case R.id.pr_ibDeleteFullName:
+                pr_edFullName.setText("");
+                break;
+            case R.id.pr_ibDeletePhone:
+                pr_edPhone.setText("");
+                break;
+            case R.id.pr_edBirthday:
+                showDialog(DATE_DIALOG_ID);
+                break;
+            case R.id.pr_edCountry:
+                showDialogCountry();
+                break;
+            case R.id.pr_btnSelectLeft_check:
+                btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_left));
+                btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_right));
+                break;
+            case R.id.pr_btnSelectRight_check:
+                btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_left));
+                btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_right));
+                break;
+            case R.id.pr_btCancel:
+                callBackSlidebarActivity();
+                break;
+            case R.id.pr_btSave:
+                ProfileModel profileUpdate = getProfileModel();
 
                 try
                 {
-                    model = parseToServer.getShows(user_id, auth_token);
-                    getContentResolver().delete(Contract.CONTENT_URI_PROFILE, null, null);
-                    getContentResolver().insert(Contract.CONTENT_URI_PROFILE, model.getContentValues());
+                    parseToServer.putShow(auth_token, user_id, profileUpdate);
                 }
                 catch (Exception e)
                 {
                     e.printStackTrace();
                 }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void params)
-            {
-                Cursor cur = getContentResolver().query(Contract.CONTENT_URI_PROFILE, null, null, null, null);
-                ProfileModel temp = new ProfileModel();
-                if (cur != null)
+                try
                 {
-                    while (cur.moveToNext())
-                    {
-                        temp = ProfileModel.fromCursor(cur);
-                        pr_etDisplayName.setText(temp.getDisplay_name());
-                        pr_edFullName.setText(temp.getFull_name());
-                        pr_edPhone.setText(temp.getPhone());
-                        if (temp.getGender() == 1)
-                        {
-                            isSelected = true;
-                            btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_left));
-                            btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_right));
-                        }
-                        else
-                        {
-                            isSelected = false;
-                            btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_left));
-                            btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_right));
-                        }
-                        pr_edBirthday.setText(temp.getBirthday());
-                        int position = 0;
-                        for (int i = 0; i < countries_code.length; i++)
-                        {
-                            if (temp.getCountry_id().equals(countries_code[i]))
-                            {
-                                position = i;
-                            }
-                        }
-
-                        pr_edCountry.setText(countries[position].toString());
-                        pr_etDescription.setText(temp.getDescription());
-                        imageLoader.DisplayImage(temp.getAvatar(), pr_imgAvatar);
-                        imageLoader.DisplayImage(temp.getCover_image(), pr_ivBackground);
-                    }
-                    cur.close();
+                    model = parseToServer.getShows(user_id, auth_token);
                 }
-            }
-        }.execute();
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+                getContentResolver().update(Contract.CONTENT_URI_PROFILE, model.getContentValues(), null, null);
+                Toast.makeText(getApplicationContext(), "Update successfull", 1);
+                callBackSlidebarActivity();
+                break;
+        }
     }
 
-    private void onclickListener()
+    private ProfileModel getProfileModel()
     {
-        pr_imgAvatar.setOnClickListener(onclickListener);
-        pr_edFullName.setOnClickListener(onclickListener);
-        pr_edPhone.setOnClickListener(onclickListener);
-        pr_edBirthday.setOnClickListener(onclickListener);
-        pr_edCountry.setOnClickListener(onclickListener);
-        btGenderSelectLeft.setOnClickListener(onclickListener);
-        btGenderSelectRight.setOnClickListener(onclickListener);
-        pr_rlBackGround.setOnClickListener(onclickListener);
-        pr_btCancel.setOnClickListener(onclickListener);
-        pr_btSave.setOnClickListener(onclickListener);
-    }
-
-    private final View.OnClickListener onclickListener = new View.OnClickListener()
-    {
-        @Override
-        public void onClick(View view)
+        ProfileModel profileUpdate = new ProfileModel();
+        profileUpdate.setId(Integer.parseInt(user_id));
+        profileUpdate.setFull_name(pr_edFullName.getText().toString());
+        profileUpdate.setDisplay_name(pr_etDisplayName.getText().toString());
+        profileUpdate.setDescription(pr_etDescription.getText().toString());
+        profileUpdate.setPhone(pr_edPhone.getText().toString());
+        profileUpdate.setBirthday(pr_edBirthday.getText().toString());
+        String temp = pr_edCountry.getText().toString();
+        int country_id = 0;
+        for (int i = 0; i < countries.length; i++)
         {
-            switch (view.getId())
+            if (temp.equals(countries[i]))
             {
-                case R.id.pr_imgAvatar:
-                    code = "cover_image";
-                    showDialogSelectImage();
-                    break;
-                case R.id.pr_rlBackGround:
-                    code = "background_image";
-                    showDialogSelectImage();
-                    break;
-                case R.id.pr_edFullName:
-                    onTextChange();
-                    break;
-                case R.id.pr_ibDeleteFullName:
-                    pr_edFullName.setText("");
-                    pr_ibDeleteFullName.setVisibility(View.INVISIBLE);
-                    break;
-                case R.id.pr_edPhone:
-                    onTextChange();
-                    break;
-                case R.id.pr_ibDeletePhone:
-                    pr_edPhone.setText("");
-                    pr_ibDeletePhone.setVisibility(View.INVISIBLE);
-                    break;
-                case R.id.pr_edBirthday:
-                    showDialog(DATE_DIALOG_ID);
-                    break;
-                case R.id.pr_edCountry:
-                    showDialogCountry();
-                    break;
-                case R.id.pr_btnSelectLeft_check:
-                    btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_left));
-                    btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_right));
-                    break;
-                case R.id.pr_btnSelectRight_check:
-                    btGenderSelectLeft.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_unselect_left));
-                    btGenderSelectRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.pr_btn_select_right));
-                    break;
-                case R.id.pr_btCancel:
-                    callBackSlidebarActivity();
-                    break;
-                case R.id.pr_btSave:
-                    ProfileModel profileUpdate = new ProfileModel();
-                    profileUpdate.setId(Integer.parseInt(user_id));
-                    profileUpdate.setFull_name(pr_edFullName.getText().toString());
-                    profileUpdate.setDisplay_name(pr_etDisplayName.getText().toString());
-                    profileUpdate.setDescription(pr_etDescription.getText().toString());
-                    profileUpdate.setPhone(pr_edPhone.getText().toString());
-                    profileUpdate.setBirthday(pr_edBirthday.getText().toString());
-                    String temp = pr_edCountry.getText().toString();
-                    int country_id = 0;
-                    for (int i = 0; i < countries.length; i++)
-                    {
-                        if (temp.equals(countries[i]))
-                        {
-                            country_id = i;
-                        }
-                    }
-                    profileUpdate.setCountry_id(countries_code[country_id]);
-                    int gender;
-                    if (isSelected)
-                    {
-                        gender = 1;
-                    }
-                    else
-                    {
-                        gender = 0;
-                    }
-                    profileUpdate.setGender(gender);
-
-                    try
-                    {
-                        parseToServer.putShow(auth_token, user_id, profileUpdate);
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
-                    }
-                    try
-                    {
-                        model = parseToServer.getShows(user_id, auth_token);
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
-                    }
-                    getContentResolver().update(Contract.CONTENT_URI_PROFILE, model.getContentValues(), null, null);
-                    Toast.makeText(getApplicationContext(), "Update successfull", 1);
-                    callBackSlidebarActivity();
-                    break;
+                country_id = i;
             }
         }
-    };
+        profileUpdate.setCountry_id(countries_code[country_id]);
+        int gender;
+        if (isSelected)
+        {
+            gender = 1;
+        }
+        else
+        {
+            gender = 0;
+        }
+        profileUpdate.setGender(gender);
+        return profileUpdate;
+    }
 
     private void callBackSlidebarActivity()
     {
-        Intent intent = new Intent(this, SlidebarActivity.class);
+        Intent intent = new Intent(this, SlidebarActivity_.class);
         intent.putExtra(FirstLaunchActivity.AUTHEN_TOKEN, auth_token);
         intent.putExtra(LoginActivity.USER_ID, user_id);
         intent.putExtra(FirstLaunchActivity.ACCOUNT_CONNECTED, mConnectedAccount);
         startActivity(intent);
     }
 
-    private void onTextChange()
+    @TextChange({R.id.pr_edFullName, R.id.pr_edPhone})
+    protected void onTextChangesOnSomeTextViews(CharSequence s, int start, int before,
+                                                int count)
     {
-        //textChange edit text FullName
-        pr_edFullName.addTextChangedListener(new TextWatcher()
+        if (!pr_edFullName.getText().toString().isEmpty())
         {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3)
-            {
-            }
+            pr_ibDeleteFullName.setVisibility(View.VISIBLE);
+            pr_ibDeletePhone.setVisibility(View.INVISIBLE);
+        }
+        if (!pr_edPhone.getText().toString().isEmpty())
+        {
+            pr_ibDeleteFullName.setVisibility(View.VISIBLE);
+            pr_ibDeletePhone.setVisibility(View.INVISIBLE);
+        }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3)
+    }
+    @BeforeTextChange({R.id.pr_edFullName, R.id.pr_edPhone})
+    protected void beforeTextChangedOnSomeTextViews()
+    {
+    }
+
+    @AfterTextChange({R.id.pr_edFullName, R.id.pr_edPhone})
+    protected void afterTextChangedOnSomeTextViews(Editable s)
+    {
+        pr_edFullName.setOnFocusChangeListener(new View.OnFocusChangeListener()
+        {
+            public void onFocusChange(View v, boolean hasFocus)
             {
-                if (!pr_edFullName.getText().equals(" "))
+                if (hasFocus && !pr_edFullName.getText().toString().isEmpty())
                 {
                     pr_ibDeleteFullName.setVisibility(View.VISIBLE);
-                    pr_ibDeleteFullName.setOnClickListener(onclickListener);
                 }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable)
-            {
-
+                else
+                {
+                    pr_ibDeleteFullName.setVisibility(View.INVISIBLE);
+                }
             }
         });
-
-        //textChange edit text Phone
-        pr_edPhone.addTextChangedListener(new TextWatcher()
+        pr_edPhone.setOnFocusChangeListener(new View.OnFocusChangeListener()
         {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3)
+            public void onFocusChange(View v, boolean hasFocus)
             {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3)
-            {
-                if (!pr_edPhone.getText().equals(" "))
+                if (hasFocus && !pr_edPhone.getText().toString().isEmpty())
                 {
                     pr_ibDeletePhone.setVisibility(View.VISIBLE);
-                    pr_ibDeletePhone.setOnClickListener(onclickListener);
                 }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable)
-            {
+                else
+                {
+                    pr_ibDeletePhone.setVisibility(View.INVISIBLE);
+                }
             }
         });
     }
@@ -435,10 +438,7 @@ public class ProfileActivity extends Activity
             public void onClick(View view)
             {
 
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+                chooseAPicture();
             }
         });
         btCancel.setOnClickListener(new View.OnClickListener()
@@ -449,6 +449,14 @@ public class ProfileActivity extends Activity
                 alertDialog.cancel();
             }
         });
+    }
+
+    private void chooseAPicture()
+    {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
     }
 
     public void takePhoto(View v)

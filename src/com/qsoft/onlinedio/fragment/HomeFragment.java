@@ -13,12 +13,9 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.activity.FirstLaunchActivity;
 import com.qsoft.onlinedio.activity.SlidebarActivity;
@@ -39,7 +36,7 @@ import java.util.HashMap;
  * User: khiemvx
  * Date: 10/14/13
  */
-
+@EFragment (R.layout.home_layout)
 public class HomeFragment extends Fragment
 {
     private static HomeFeeds adapter;
@@ -55,9 +52,14 @@ public class HomeFragment extends Fragment
     private String TAG = this.getClass().getSimpleName();
     private Account mConnectedAccount;
     private AccountManager mAccountManager;
-    private Button btNavigate;
-    private static ListView home_lvDetail;
     private static ProgressDialog mProgressDialog;
+
+    @ViewById(R.id.btNavigate)
+    protected Button btNavigate;
+
+    @ViewById(R.id.home_lvDetail)
+    protected static ListView home_lvDetail;
+
 
     public static Handler handler = new Handler()
     {
@@ -72,16 +74,11 @@ public class HomeFragment extends Fragment
         }
     };
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
+    @AfterViews
+    protected void afterViews()
     {
-
         mAccountManager = AccountManager.get(getActivity());
         getAuthenTokenAndAccount();
-
-        View view = inflater.inflate(R.layout.home_layout, null);
-        setUpUI(view);
 
         Thread background = new Thread(new Runnable()
         {
@@ -98,8 +95,6 @@ public class HomeFragment extends Fragment
         {
             setUpDataToHomeListView();
         }
-        setUpListenerController();
-        return view;
     }
 
     private boolean checkNetwork()
@@ -132,6 +127,11 @@ public class HomeFragment extends Fragment
             }
         });
         refreshAuthToken();
+        requestSyncData();
+    }
+
+    private void requestSyncData()
+    {
         String authority = Contract.AUTHORITY;
         Bundle bundle = new Bundle();
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
@@ -169,11 +169,14 @@ public class HomeFragment extends Fragment
         auth_token = bundle.getString(FirstLaunchActivity.AUTHEN_TOKEN);
         mConnectedAccount = bundle.getParcelable(FirstLaunchActivity.ACCOUNT_CONNECTED);
     }
-
-    private void setUpListenerController()
+    @Click(R.id.btNavigate)
+    protected void btNavigateClick()
     {
-        btNavigate.setOnClickListener(onClickListener);
-        home_lvDetail.setOnItemClickListener(onItemClickListener);
+        showMenu();
+    }
+    @ItemClick(R.id.home_lvDetail)
+    protected void itemClickListener(){
+        doShowProgram();
     }
 
     private static void setUpDataToHomeListView()
@@ -203,28 +206,6 @@ public class HomeFragment extends Fragment
         home_lvDetail.setAdapter(adapter);
     }
 
-    private ListView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener()
-    {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-        {
-            doShowProgram();
-        }
-    };
-    private View.OnClickListener onClickListener = new View.OnClickListener()
-    {
-        @Override
-        public void onClick(View view)
-        {
-            switch (view.getId())
-            {
-                case R.id.btNavigate:
-                    showMenu();
-                    break;
-            }
-        }
-    };
-
     private void showMenu()
     {
         ((SlidebarActivity) getActivity()).setOpenListOption();
@@ -236,12 +217,6 @@ public class HomeFragment extends Fragment
         ft.replace(R.id.slidebar_homeFragment, new ProgramFragment(), "ProgramFragment");
         ft.addToBackStack("ProgramFragment");
         ft.commit();
-    }
-
-    private void setUpUI(View view)
-    {
-        btNavigate = (Button) view.findViewById(R.id.btNavigate);
-        home_lvDetail = (ListView) view.findViewById(R.id.home_lvDetail);
     }
 }
 

@@ -1,4 +1,4 @@
-package com.qsoft.onlinedio.model;
+package com.qsoft.onlinedio.database.entity;
 
 /**
  * User: khiemvx

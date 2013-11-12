@@ -7,7 +7,7 @@
 
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher"
                  android:theme="@android:style/Theme.NoTitleBar">
-        <activity android:name=".activity.FirstLaunchActivity_"
+        <activity android:name=".ui.activity.FirstLaunchActivity_"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
@@ -15,14 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LoginActivity_"
+        <activity android:name=".ui.activity.LoginActivity_"
                   android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".filecache.HomeItemView"/>
-        <activity android:name=".activity.ProfileActivity_"
+        <activity android:name=".ui.activity.ProfileActivity_"
                   android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".fragment.AddComment_"
                   android:theme="@android:style/Theme.NoTitleBar"/>
-        <activity android:name=".activity.SlidebarActivity_"
+        <activity android:name=".ui.activity.SlidebarActivity_"
                   android:theme="@android:style/Theme.NoTitleBar"/>
         <provider android:authorities="com.qsoft.onlinedio.homefeed.provider"
                   android:name=".database.ContentProvider"

@@ -208,6 +208,7 @@
                     android:layout_marginLeft="130dp"
                     android:background="@null"
                     android:layout_alignBottom="@id/lblBirthday"
+                    android:editable="false"
                     android:hint="Your birthday" android:singleLine="true"/>
             <View
                     android:id="@+id/line3"
@@ -265,6 +266,7 @@
                     android:textStyle="bold"
                     android:layout_below="@id/line4"
                     android:layout_marginTop="2dp"
+                    android:editable="false"
                     android:textColor="@android:color/black"/>
             <EditText
                     android:layout_width="wrap_content"
@@ -275,6 +277,7 @@
                     android:layout_below="@id/line4"
                     android:layout_toRightOf="@id/lblCountry"
                     android:layout_marginLeft="45dp"
+                    android:editable="false"
                     android:layout_marginTop="2dp" android:singleLine="true"/>
             <ImageView
                     android:id="@+id/pr_ivArrow"

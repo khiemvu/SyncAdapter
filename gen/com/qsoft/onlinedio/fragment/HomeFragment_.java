@@ -5,6 +5,8 @@
 
 package com.qsoft.onlinedio.fragment;
 
+import android.accounts.AccountManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +25,7 @@ public final class HomeFragment_
     private View contentView_;
 
     private void init_(Bundle savedInstanceState) {
+        mAccountManager = ((AccountManager) getActivity().getSystemService(Context.ACCOUNT_SERVICE));
     }
 
     @Override

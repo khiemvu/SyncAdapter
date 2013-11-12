@@ -17,13 +17,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.onlinedio.R;
-import com.qsoft.onlinedio.activity.FirstLaunchActivity;
-import com.qsoft.onlinedio.activity.SlidebarActivity;
 import com.qsoft.onlinedio.adapter.HomeFeeds;
 import com.qsoft.onlinedio.authenticate.AccountGeneral;
 import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.entity.HomeModel;
 import com.qsoft.onlinedio.syncadapter.HomeFeedSyncAdapter;
+import com.qsoft.onlinedio.ui.activity.SlidebarActivity;
 import com.qsoft.onlinedio.util.DateTime;
 import com.qsoft.onlinedio.validate.Constant;
 import com.qsoft.onlinedio.validate.NetworkUtil;
@@ -51,7 +50,8 @@ public class HomeFragment extends Fragment
     private String auth_token;
     private String TAG = this.getClass().getSimpleName();
     private Account mConnectedAccount;
-    private AccountManager mAccountManager;
+    @SystemService
+    protected AccountManager mAccountManager;
     private static ProgressDialog mProgressDialog;
 
     @ViewById(R.id.btNavigate)
@@ -77,7 +77,6 @@ public class HomeFragment extends Fragment
     @AfterViews
     protected void afterViews()
     {
-        mAccountManager = AccountManager.get(getActivity());
         getAuthenTokenAndAccount();
 
         Thread background = new Thread(new Runnable()
@@ -166,8 +165,8 @@ public class HomeFragment extends Fragment
     {
         Log.i(TAG, "Get auth token");
         Bundle bundle = this.getArguments();
-        auth_token = bundle.getString(FirstLaunchActivity.AUTHEN_TOKEN);
-        mConnectedAccount = bundle.getParcelable(FirstLaunchActivity.ACCOUNT_CONNECTED);
+        auth_token = bundle.getString(Constant.AUTHEN_TOKEN.getValue());
+        mConnectedAccount = bundle.getParcelable(Constant.ACCOUNT_CONNECTED.getValue());
     }
     @Click(R.id.btNavigate)
     protected void btNavigateClick()
@@ -214,7 +213,7 @@ public class HomeFragment extends Fragment
     private void doShowProgram()
     {
         final FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.slidebar_homeFragment, new ProgramFragment(), "ProgramFragment");
+        ft.replace(R.id.slidebar_homeFragment, new ProgramFragment_(), "ProgramFragment");
         ft.addToBackStack("ProgramFragment");
         ft.commit();
     }

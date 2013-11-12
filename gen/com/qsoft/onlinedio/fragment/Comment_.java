@@ -8,11 +8,11 @@ package com.qsoft.onlinedio.fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.qsoft.onlinedio.R.layout;
+import com.qsoft.onlinedio.ui.controller.CommentController_;
 
 public final class Comment_
     extends Comment
@@ -21,6 +21,7 @@ public final class Comment_
     private View contentView_;
 
     private void init_(Bundle savedInstanceState) {
+        commentController = CommentController_.getInstance_(getActivity());
     }
 
     @Override
@@ -30,23 +31,9 @@ public final class Comment_
     }
 
     private void afterSetContentView_() {
-        tvComment = ((TextView) findViewById(com.qsoft.onlinedio.R.id.comment_tvComment));
         listView = ((ListView) findViewById(com.qsoft.onlinedio.R.id.comment_lvCommentList));
-        {
-            View view = findViewById(com.qsoft.onlinedio.R.id.comment_tvComment);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        Comment_.this.tvCommentClick();
-                    }
-
-                }
-                );
-            }
-        }
+        tvComment = ((TextView) findViewById(com.qsoft.onlinedio.R.id.comment_tvComment));
+        ((CommentController_) commentController).afterSetContentView_();
         afterViews();
     }
 

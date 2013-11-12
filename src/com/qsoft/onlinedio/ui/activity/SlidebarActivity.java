@@ -1,4 +1,4 @@
-package com.qsoft.onlinedio.activity;
+package com.qsoft.onlinedio.ui.activity;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -20,7 +20,7 @@ import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.adapter.Sidebar;
 import com.qsoft.onlinedio.fragment.HomeFragment_;
-
+import com.qsoft.onlinedio.validate.Constant;
 
 /**
  * User: Dell 3360
@@ -58,20 +58,18 @@ public class SlidebarActivity extends FragmentActivity
 
     private HomeFragment_ homeFragment;
     private ActionBarDrawerToggle mDrawerToggle;
+
     public static Context context;
-    private AccountManager mAccountManager;
+    @SystemService
+    protected AccountManager mAccountManager;
 
     @AfterViews
     protected void afterViews(){
         context = this.getApplicationContext();
-
         getAuthTokenAndAccount();
-
-        mAccountManager = AccountManager.get(this);
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
         setUpDataListOption(this);
-//        setUpListenerController();
 
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host activity */
@@ -106,8 +104,8 @@ public class SlidebarActivity extends FragmentActivity
     {
         homeFragment = new HomeFragment_();
         Bundle bundle = new Bundle();
-        bundle.putString(FirstLaunchActivity.AUTHEN_TOKEN, authen_token);
-        bundle.putParcelable(FirstLaunchActivity.ACCOUNT_CONNECTED, mConnectedAccount);
+        bundle.putString(Constant.AUTHEN_TOKEN.getValue(), authen_token);
+        bundle.putParcelable(Constant.ACCOUNT_CONNECTED.getValue(), mConnectedAccount);
         homeFragment.setArguments(bundle);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.slidebar_homeFragment, homeFragment);
@@ -117,9 +115,9 @@ public class SlidebarActivity extends FragmentActivity
     private void getAuthTokenAndAccount()
     {
         Intent intent = getIntent();
-        authen_token = intent.getStringExtra(FirstLaunchActivity.AUTHEN_TOKEN);
-        mConnectedAccount = intent.getParcelableExtra(FirstLaunchActivity.ACCOUNT_CONNECTED);
-        user_id = intent.getStringExtra(LoginActivity.USER_ID);
+        authen_token = intent.getStringExtra(Constant.AUTHEN_TOKEN.getValue());
+        mConnectedAccount = intent.getParcelableExtra(Constant.ACCOUNT_CONNECTED.getValue());
+        user_id = intent.getStringExtra(Constant.USER_ID.getValue());
     }
 
     @ItemClick(R.id.slidebar_listOption)
@@ -150,9 +148,9 @@ public class SlidebarActivity extends FragmentActivity
     private void showProfile()
     {
         Intent intent = new Intent(this, ProfileActivity_.class);
-        intent.putExtra(FirstLaunchActivity.AUTHEN_TOKEN, authen_token);
-        intent.putExtra(LoginActivity.USER_ID, user_id);
-        intent.putExtra(FirstLaunchActivity.ACCOUNT_CONNECTED, mConnectedAccount);
+        intent.putExtra(Constant.AUTHEN_TOKEN.getValue(), authen_token);
+        intent.putExtra(Constant.USER_ID.getValue(), user_id);
+        intent.putExtra(Constant.ACCOUNT_CONNECTED.getValue(), mConnectedAccount);
         startActivity(intent);
     }
 

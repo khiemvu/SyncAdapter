@@ -36,14 +36,6 @@ public class HomeFeeds extends CursorAdapter
     ImageLoader imageLoader;
     HashMap<String, String> resultp = new HashMap<String, String>();
 
-//    public HomeFeeds(Context context,
-//                     ArrayList<HashMap<String, String>> arraylist)
-//    {
-//        this.context = context;
-//        data = arraylist;
-//        imageLoader = new ImageLoader(context);
-//    }
-
     public HomeFeeds(Context context, Cursor c, ArrayList<HashMap<String, String>> arrayList)
     {
         super(context, c);

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.qsoft.onlinedio.model.CommentModel;
+import com.qsoft.onlinedio.database.entity.CommentModel;
 import com.qsoft.onlinedio.R;
 
 import java.util.List;

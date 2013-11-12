@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import com.qsoft.onlinedio.activity.LoginActivity;
-import com.qsoft.onlinedio.activity.LoginActivity_;
+import com.qsoft.onlinedio.ui.activity.LoginActivity_;
+import com.qsoft.onlinedio.validate.Constant;
 
 import static android.accounts.AccountManager.KEY_BOOLEAN_RESULT;
 import static com.qsoft.onlinedio.authenticate.AccountGeneral.*;
@@ -36,9 +36,9 @@ public class Authenticator extends AbstractAccountAuthenticator
         Log.d("udinic", TAG + "> addAccount");
 
         final Intent intent = new Intent(mContext, LoginActivity_.class);
-        intent.putExtra(LoginActivity.ARG_ACCOUNT_TYPE, accountType);
-        intent.putExtra(LoginActivity.ARG_AUTH_TYPE, authTokenType);
-        intent.putExtra(LoginActivity.ARG_IS_ADDING_NEW_ACCOUNT, true);
+        intent.putExtra(Constant.ARG_ACCOUNT_TYPE.getValue(), accountType);
+        intent.putExtra(Constant.ARG_AUTH_TYPE.getValue(), authTokenType);
+        intent.putExtra(Constant.ARG_IS_ADDING_NEW_ACCOUNT.getValue(), true);
         intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
 
         final Bundle bundle = new Bundle();
@@ -106,9 +106,9 @@ public class Authenticator extends AbstractAccountAuthenticator
         // an intent to display our AuthenticatorActivity.
         final Intent intent = new Intent(mContext, LoginActivity_.class);
         intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
-        intent.putExtra(LoginActivity.ARG_ACCOUNT_TYPE, account.type);
-        intent.putExtra(LoginActivity.ARG_AUTH_TYPE, authTokenType);
-        intent.putExtra(LoginActivity.ARG_ACCOUNT_NAME, account.name);
+        intent.putExtra(Constant.ARG_ACCOUNT_TYPE.getValue(), account.type);
+        intent.putExtra(Constant.ARG_AUTH_TYPE.getValue(), authTokenType);
+        intent.putExtra(Constant.ARG_ACCOUNT_NAME.getValue(), account.name);
         final Bundle bundle = new Bundle();
         bundle.putParcelable(AccountManager.KEY_INTENT, intent);
         return bundle;

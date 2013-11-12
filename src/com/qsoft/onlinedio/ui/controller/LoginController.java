@@ -1,10 +1,8 @@
-package com.qsoft.onlinedio.activity;
+package com.qsoft.onlinedio.ui.controller;
 
 import android.accounts.Account;
-import android.accounts.AccountAuthenticatorActivity;
 import android.accounts.AccountManager;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,77 +10,42 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.*;
+import android.widget.Toast;
 import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.authenticate.AccountGeneral;
 import com.qsoft.onlinedio.authenticate.User;
+import com.qsoft.onlinedio.ui.activity.FirstLaunchActivity;
+import com.qsoft.onlinedio.ui.activity.LoginActivity;
+import com.qsoft.onlinedio.ui.activity.SlidebarActivity_;
 import com.qsoft.onlinedio.validate.Constant;
 import com.qsoft.onlinedio.validate.EmailFormatValidator;
 import com.qsoft.onlinedio.validate.NetworkUtil;
 
 import static com.qsoft.onlinedio.authenticate.AccountGeneral.sServerAuthenticate;
 
-@EActivity(R.layout.login_layout)
-public class LoginActivity extends AccountAuthenticatorActivity
+/**
+ * User: khiemvx
+ * Date: 11/12/13
+ */
+@EBean
+public class LoginController
 {
-    public final static String USER_ID = "user_id";
-    public final static String ARG_ACCOUNT_TYPE = "ACCOUNT_TYPE";
-    public final static String ARG_AUTH_TYPE = "AUTH_TYPE";
-    public final static String ARG_ACCOUNT_NAME = "ACCOUNT_NAME";
-    public final static String ARG_IS_ADDING_NEW_ACCOUNT = "IS_ADDING_ACCOUNT";
-    public final static String PARAM_USER_PASS = "USER_PASS";
-    public static final String KEY_ERROR_MESSAGE = "ERR_MSG";
-
+    private final String TAG = this.getClass().getSimpleName();
     EmailFormatValidator emailFormatValidator = new EmailFormatValidator();
-
-    @ViewById(R.id.login_btLogin)
-    protected Button btLogin;
-
-    @ViewById(R.id.login_btBack)
-    protected Button btBack;
-
-    @ViewById(R.id.tvResetPass)
-    protected TextView tvResetPas;
-
-    @ViewById(R.id.etEmail)
-    protected EditText etEmail;
-
-    @ViewById(R.id.etPass)
-    protected EditText etPass;
-
-    @ViewById(R.id.ibtDelEmail)
-    protected ImageButton ibtDelEmail;
-
-    @ViewById(R.id.ibtDelPass)
-    protected ImageButton ibtDelPass;
-
     private String email;
     private String pass;
 
-    private AccountManager mAccountManager;
-    private String mAuthTokenType;
+    @RootContext
+    LoginActivity context;
 
-    private Context context = LoginActivity.this;
-    private final String TAG = this.getClass().getSimpleName();
+    @SystemService
+    AccountManager mAccountManager;
 
-    @AfterViews
-    protected void afterView()
+    public void prepareData()
     {
-        prepareData();
-        mAccountManager = AccountManager.get(getBaseContext());
-        mAuthTokenType = getIntent().getStringExtra(ARG_AUTH_TYPE);
-        if (mAuthTokenType == null)
-        {
-            mAuthTokenType = AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS;
-        }
-        getEmailAndPassword();
-    }
-
-    private void prepareData()
-    {
-        etEmail.setText("qsoft@gmail.com");
-        etPass.setText("123456");
+        context.getEtEmail().setText("qsoft@gmail.com");
+        context.getEtPass().setText("123456");
     }
 
     @Click({R.id.login_btBack, R.id.login_btLogin, R.id.tvResetPass, R.id.ibtDelEmail, R.id.ibtDelPass})
@@ -91,8 +54,8 @@ public class LoginActivity extends AccountAuthenticatorActivity
         switch (view.getId())
         {
             case R.id.login_btBack:
-                Intent intentBack = new Intent(LoginActivity.this, FirstLaunchActivity.class);
-                startActivity(intentBack);
+                Intent intentBack = new Intent(context, FirstLaunchActivity.class);
+                context.startActivity(intentBack);
                 break;
             case R.id.login_btLogin:
                 if (!checkNetwork())
@@ -109,87 +72,80 @@ public class LoginActivity extends AccountAuthenticatorActivity
                 resetPassWord();
                 break;
             case R.id.ibtDelEmail:
-                etEmail.setText("");
+                context.getEtEmail().setText("");
                 break;
             case R.id.ibtDelPass:
-                etPass.setText("");
+                context.getEtPass().setText("");
                 break;
         }
-    }
-
-    ;
+    };
 
     @TextChange({R.id.etEmail, R.id.etPass})
     protected void onTextChangesOnSomeTextViews(CharSequence s, int start, int before,
                                                 int count)
     {
-        if (!etEmail.getText().toString().isEmpty())
+        if (!context.getEtEmail().getText().toString().isEmpty())
         {
-            ibtDelEmail.setVisibility(View.VISIBLE);
-            ibtDelPass.setVisibility(View.INVISIBLE);
+            context.getIbtDelEmail().setVisibility(View.VISIBLE);
+            context.getIbtDelPass().setVisibility(View.INVISIBLE);
         }
-        if (!etPass.getText().toString().isEmpty())
+        if (!context.getEtPass().getText().toString().isEmpty())
         {
-            ibtDelPass.setVisibility(View.VISIBLE);
-            ibtDelEmail.setVisibility(View.INVISIBLE);
+            context.getIbtDelPass().setVisibility(View.VISIBLE);
+            context.getIbtDelEmail().setVisibility(View.INVISIBLE);
         }
 
-        if (!etEmail.getText().toString().isEmpty() && !etPass.getText().toString().isEmpty())
+        if (!context.getEtEmail().getText().toString().isEmpty() && !context.getEtPass().getText().toString().isEmpty())
         {
-            btLogin.setBackgroundDrawable(getResources().getDrawable(R.drawable.login_bt_active));
+            context.getBtLogin().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.login_bt_active));
         }
         else
         {
-            btLogin.setBackgroundDrawable(getResources().getDrawable(R.drawable.login_bt_normal));
+            context.getBtLogin().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.login_bt_normal));
         }
-    }
-
-    @BeforeTextChange({R.id.etEmail, R.id.etPass})
-    protected void beforeTextChangedOnSomeTextViews()
-    {
     }
 
     @AfterTextChange({R.id.etEmail, R.id.etPass})
     protected void afterTextChangedOnSomeTextViews(Editable s)
     {
-        etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener()
+        context.getEtEmail().setOnFocusChangeListener(new View.OnFocusChangeListener()
         {
             public void onFocusChange(View v, boolean hasFocus)
             {
-                if (hasFocus && !etEmail.getText().toString().isEmpty())
+                if (hasFocus && !context.getEtEmail().getText().toString().isEmpty())
                 {
-                    ibtDelEmail.setVisibility(View.VISIBLE);
+                    context.getIbtDelEmail().setVisibility(View.VISIBLE);
                 }
                 else
                 {
-                    ibtDelEmail.setVisibility(View.INVISIBLE);
+                    context.getIbtDelEmail().setVisibility(View.INVISIBLE);
                 }
             }
         });
-        etPass.setOnFocusChangeListener(new View.OnFocusChangeListener()
+        context.getEtPass().setOnFocusChangeListener(new View.OnFocusChangeListener()
         {
             public void onFocusChange(View v, boolean hasFocus)
             {
-                if (hasFocus && !etPass.getText().toString().isEmpty())
+                if (hasFocus && !context.getEtPass().getText().toString().isEmpty())
                 {
-                    ibtDelPass.setVisibility(View.VISIBLE);
+                    context.getIbtDelPass().setVisibility(View.VISIBLE);
                 }
                 else
                 {
-                    ibtDelPass.setVisibility(View.INVISIBLE);
+                    context.getIbtDelPass().setVisibility(View.INVISIBLE);
                 }
             }
         });
     }
 
-    private void getEmailAndPassword()
+    public void getEmailAndPassword()
     {
-        email = etEmail.getText().toString();
-        pass = etPass.getText().toString();
+        email = context.getEtEmail().getText().toString();
+        pass = context.getEtPass().getText().toString();
         if (!email.equals(" ") && !pass.equals(" "))
         {
-            btLogin.setEnabled(true);
-            btLogin.setClickable(true);
+            context.getBtLogin().setEnabled(true);
+            context.getBtLogin().setClickable(true);
         }
     }
 
@@ -207,7 +163,7 @@ public class LoginActivity extends AccountAuthenticatorActivity
     @UiThread
     protected void showMessageError()
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(Constant.TITLE_MESSAGE.getValue());
         builder.setMessage(Constant.MESSAGE_CONNECTION_INTERNET.getValue());
         builder.setNegativeButton(R.string.OK, new OkOnClickListener());
@@ -217,9 +173,9 @@ public class LoginActivity extends AccountAuthenticatorActivity
     @UiThread
     protected void resetPassWord()
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Forgot Password");
-        LayoutInflater inflater = LoginActivity.this.getLayoutInflater();
+        LayoutInflater inflater = context.getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.login_reset_password_layout, null))
                 .setPositiveButton(R.string.reset, new DialogInterface.OnClickListener()
                 {
@@ -252,11 +208,11 @@ public class LoginActivity extends AccountAuthenticatorActivity
         {
             if ((emailFormatValidator.validate(email)) == false)
             {
-                data.putString(KEY_ERROR_MESSAGE, Constant.EMAIL_INVALID.getValue());
+                data.putString(Constant.KEY_ERROR_MESSAGE.getValue(), Constant.EMAIL_INVALID.getValue());
             }
             else
             {
-                User user = sServerAuthenticate.userSignIn(email, pass, mAuthTokenType);
+                User user = sServerAuthenticate.userSignIn(email, pass, context.getmAuthTokenType());
                 if (user.getUser_id() != null)
                 {
                     authtoken = user.getAccess_token();
@@ -264,20 +220,18 @@ public class LoginActivity extends AccountAuthenticatorActivity
                     data.putString(AccountManager.KEY_ACCOUNT_TYPE, accountType);
                     data.putString(AccountManager.KEY_AUTHTOKEN, authtoken);
                     data.putString(AccountManager.KEY_CALLER_UID, user.getUser_id());
-                    data.putString(PARAM_USER_PASS, pass);
+                    data.putString(Constant.PARAM_USER_PASS.getValue(), pass);
                 }
                 else
                 {
-                    data.putString(KEY_ERROR_MESSAGE, Constant.EMAIL_OR_PASSWORD_NOT_CORRECT.getValue());
+                    data.putString(Constant.KEY_ERROR_MESSAGE.getValue(), Constant.EMAIL_OR_PASSWORD_NOT_CORRECT.getValue());
                 }
             }
-
         }
         catch (Exception e)
         {
-            data.putString(KEY_ERROR_MESSAGE, e.getMessage());
+            data.putString(Constant.KEY_ERROR_MESSAGE.getValue(), e.getMessage());
         }
-
         final Intent res = new Intent();
         res.putExtras(data);
         resultLogin(res);
@@ -286,9 +240,9 @@ public class LoginActivity extends AccountAuthenticatorActivity
     @UiThread
     protected void resultLogin(Intent intent)
     {
-        if (intent.hasExtra(KEY_ERROR_MESSAGE))
+        if (intent.hasExtra(Constant.KEY_ERROR_MESSAGE.getValue()))
         {
-            Toast.makeText(getBaseContext(), intent.getStringExtra(KEY_ERROR_MESSAGE), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context.getBaseContext(), intent.getStringExtra(Constant.KEY_ERROR_MESSAGE.getValue()), Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -298,9 +252,9 @@ public class LoginActivity extends AccountAuthenticatorActivity
 
     private void checkLogin()
     {
-        email = etEmail.getText().toString();
-        pass = etPass.getText().toString();
-        final String accountType = getIntent().getStringExtra(ARG_ACCOUNT_TYPE);
+        email = context.getEtEmail().getText().toString();
+        pass = context.getEtPass().getText().toString();
+        final String accountType = context.getIntent().getStringExtra(Constant.ARG_ACCOUNT_TYPE.getValue());
         getInfoUser(email, pass, accountType);
     }
 
@@ -309,8 +263,8 @@ public class LoginActivity extends AccountAuthenticatorActivity
     {
         public void onClick(DialogInterface dialog, int which)
         {
-            etEmail.setText(Constant.EMAIL.getValue());
-            etPass.setText(Constant.PASSWORD.getValue());
+            context.getEtEmail().setText(Constant.EMAIL.getValue());
+            context.getEtPass().setText(Constant.PASSWORD.getValue());
         }
     }
 
@@ -319,12 +273,12 @@ public class LoginActivity extends AccountAuthenticatorActivity
         Log.d("onlinedio", TAG + "> finishLogin");
 
         String accountName = intent.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
-        String accountPassword = intent.getStringExtra(PARAM_USER_PASS);
+        String accountPassword = intent.getStringExtra(Constant.PARAM_USER_PASS.getValue());
         String user_id = intent.getStringExtra(AccountManager.KEY_CALLER_UID);
         final Account account = new Account(accountName, AccountGeneral.ACCOUNT_TYPE);
         String authtoken = null;
 
-        if (getIntent().getBooleanExtra(ARG_IS_ADDING_NEW_ACCOUNT, false) || mAccountManager.getAccountsByType(AccountGeneral.ACCOUNT_TYPE).length == 0)
+        if (context.getIntent().getBooleanExtra(Constant.ARG_IS_ADDING_NEW_ACCOUNT.getValue(), false) || mAccountManager.getAccountsByType(AccountGeneral.ACCOUNT_TYPE).length == 0)
         {
             Log.d("onlinedio", TAG + "> finishLogin > addAccountExplicitly");
             authtoken = createAccountOnDevice(intent, accountPassword, user_id, account);
@@ -336,30 +290,30 @@ public class LoginActivity extends AccountAuthenticatorActivity
         }
 
         callSlideBarActivity(user_id, account, authtoken);
-        setResult(RESULT_OK, intent);
-        finish();
+        context.setResult(context.RESULT_OK, intent);
+        context.finish();
     }
 
     private String createAccountOnDevice(Intent intent, String accountPassword, String user_id, Account account)
     {
         String authtoken;
         authtoken = intent.getStringExtra(AccountManager.KEY_AUTHTOKEN);
-        String authtokenType = mAuthTokenType;
+        String authtokenType = context.getmAuthTokenType();
 
         // Creating the account on the device and setting the auth token we got
         // (Not setting the auth token will cause another call to the server to authenticate the user)
         mAccountManager.addAccountExplicitly(account, accountPassword, null);
         mAccountManager.setAuthToken(account, authtokenType, authtoken);
-        mAccountManager.setUserData(account, USER_ID, user_id);
+        mAccountManager.setUserData(account, Constant.USER_ID.getValue(), user_id);
         return authtoken;
     }
 
     private void callSlideBarActivity(String user_id, Account account, String authtoken)
     {
-        Intent i = new Intent(this, SlidebarActivity_.class);
-        i.putExtra(FirstLaunchActivity.AUTHEN_TOKEN, authtoken);
-        i.putExtra(LoginActivity.USER_ID, user_id);
-        i.putExtra(FirstLaunchActivity.ACCOUNT_CONNECTED, account);
-        startActivity(i);
+        Intent i = new Intent(context, SlidebarActivity_.class);
+        i.putExtra(Constant.AUTHEN_TOKEN.getValue(), authtoken);
+        i.putExtra(Constant.USER_ID.getValue(), user_id);
+        i.putExtra(Constant.ACCOUNT_CONNECTED.getValue(), account);
+        context.startActivity(i);
     }
 }

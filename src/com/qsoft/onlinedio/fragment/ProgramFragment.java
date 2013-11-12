@@ -3,21 +3,18 @@ package com.qsoft.onlinedio.fragment;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import com.googlecode.androidannotations.annotations.EFragment;
-import com.googlecode.androidannotations.annotations.ViewById;
+import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.onlinedio.R;
+import com.qsoft.onlinedio.util.DateTime;
 
 /**
  * User: khiemvx
@@ -68,41 +65,13 @@ public class ProgramFragment extends Fragment
     @ViewById(R.id.program_btBack)
     protected Button btBack;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        View viewer = (View) inflater.inflate(R.layout.program_layout, container, false);
+    @AfterViews()
+    protected void afterViews(){
         initServicePlayMusic();
-        initComponent(viewer);
         getActivity().setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
         getTimeOfRecordAndShow();
 
-        rbtThumnail.setOnClickListener(onclickListener);
-        rbtDetail.setOnClickListener(onclickListener);
-        rbtComment.setOnClickListener(onclickListener);
-        btPlayOrStop.setOnClickListener(onclickListener);
-        btBack.setOnClickListener(onclickListener);
-
-        sbVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
-        {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
-            {
-                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar)
-            {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar)
-            {
-            }
-        });
         sbTime.setOnTouchListener(new View.OnTouchListener()
         {
             @Override
@@ -112,8 +81,10 @@ public class ProgramFragment extends Fragment
                 return false;
             }
         });
-
-        return viewer;
+    }
+    @SeekBarProgressChange(R.id.program_sbVolume)
+    protected void onProgressChangeOnSeekBar (SeekBar seekBar, int progress, boolean fromUser){
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
     }
 
     // This is event handler thumb moving event
@@ -126,61 +97,55 @@ public class ProgramFragment extends Fragment
         }
     }
 
-    private final View.OnClickListener onclickListener = new View.OnClickListener()
+    @Click({R.id.program_rbtThumnail,R.id.program_rbtDetail, R.id.program_rbtComment,
+            R.id.program_btPlayOrStop, R.id.program_btBack})
+    protected void someButtonClick(View view)
     {
-        @Override
-        public void onClick(View view)
+        switch (view.getId())
         {
-            switch (view.getId())
-            {
-                case R.id.program_rbtThumnail:
-                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                    ThumbnailFragment thumnailFragmentActivity = new ThumbnailFragment_();
-                    fragmentTransaction.replace(R.id.program_fl_generic, thumnailFragmentActivity);
-                    fragmentTransaction.commit();
-                    break;
-                case R.id.program_rbtDetail:
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    DetailFragment detailFragmentActivity = new DetailFragment_();
-                    transaction.replace(R.id.program_fl_generic, detailFragmentActivity);
-                    transaction.commit();
-                    break;
-                case R.id.program_rbtComment:
-                    FragmentTransaction transactionComment = getFragmentManager().beginTransaction();
-                    Comment comment = new Comment_();
-                    transactionComment.replace(R.id.program_fl_generic, comment);
-                    transactionComment.commit();
-                    break;
-                case R.id.program_btPlayOrStop:
-                    if (!mediaPlayer.isPlaying())
+            case R.id.program_rbtThumnail:
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                ThumbnailFragment thumnailFragmentActivity = new ThumbnailFragment_();
+                fragmentTransaction.replace(R.id.program_fl_generic, thumnailFragmentActivity);
+                fragmentTransaction.commit();
+                break;
+            case R.id.program_rbtDetail:
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                DetailFragment detailFragmentActivity = new DetailFragment_();
+                transaction.replace(R.id.program_fl_generic, detailFragmentActivity);
+                transaction.commit();
+                break;
+            case R.id.program_rbtComment:
+                FragmentTransaction transactionComment = getFragmentManager().beginTransaction();
+                Comment comment = new Comment_();
+                transactionComment.replace(R.id.program_fl_generic, comment);
+                transactionComment.commit();
+                break;
+            case R.id.program_btPlayOrStop:
+                if (!mediaPlayer.isPlaying())
+                {
+                    btPlayOrStop.setBackgroundDrawable(getResources().getDrawable(R.drawable.content_bt_play));
+                    try
                     {
-                        btPlayOrStop.setBackgroundDrawable(getResources().getDrawable(R.drawable.content_bt_play));
-                        try
-                        {
-                            mediaPlayer.start();
-                            startPlayProgressUpdater();
-                        }
-                        catch (IllegalStateException e)
-                        {
-                            mediaPlayer.pause();
-                        }
+                        mediaPlayer.start();
+                        startPlayProgressUpdater();
                     }
-                    else
+                    catch (IllegalStateException e)
                     {
                         mediaPlayer.pause();
-                        btPlayOrStop.setBackgroundDrawable(getResources().getDrawable(R.drawable.content_bt_pause));
                     }
-                    break;
-                case R.id.program_btBack:
-//                    if (mediaPlayer.isPlaying()){
-//                        mediaPlayer.pause();
-//                    }
-                    getFragmentManager().popBackStack();
-                    break;
-            }
+                }
+                else
+                {
+                    mediaPlayer.pause();
+                    btPlayOrStop.setBackgroundDrawable(getResources().getDrawable(R.drawable.content_bt_pause));
+                }
+                break;
+            case R.id.program_btBack:
+                getFragmentManager().popBackStack();
+                break;
         }
-    };
-
+    }
     public void startPlayProgressUpdater()
     {
         getTimeOfRecordAndShow();
@@ -217,42 +182,8 @@ public class ProgramFragment extends Fragment
         mediaDuration = mediaPlayer.getDuration();
         mediaPosition = mediaPlayer.getCurrentPosition();
 
-        tvTimeCur.setText(getTimeString(mediaPosition));
-        tvTimePlay.setText(getTimeString(mediaDuration));
-    }
-
-    private String getTimeString(long millis)
-    {
-        StringBuffer buf = new StringBuffer();
-
-        //int hours = (int) (millis / (1000 * 60 * 60));
-        int minutes = (int) ((millis % (1000 * 60 * 60)) / (1000 * 60));
-        int seconds = (int) (((millis % (1000 * 60 * 60)) % (1000 * 60)) / 1000);
-
-        buf
-                //.append(String.format("%02d", hours))
-                //.append(":")
-                .append(String.format("%01d", minutes))
-                .append(":")
-                .append(String.format("%02d", seconds));
-
-        return buf.toString();
-    }
-
-    private void initComponent(View viewer)
-    {
-        sbVolume = (SeekBar) viewer.findViewById(R.id.program_sbVolume);
-        sbTime = (SeekBar) viewer.findViewById(R.id.program_sbTime);
-        btPlayOrStop = (Button) viewer.findViewById(R.id.program_btPlayOrStop);
-        tvTimeCur = (TextView) viewer.findViewById(R.id.program_tvTimeCur);
-        tvTimePlay = (TextView) viewer.findViewById(R.id.program_tvTimePlay);
-        rbtDetail = (RadioButton) viewer.findViewById(R.id.program_rbtDetail);
-        rbtThumnail = (RadioButton) viewer.findViewById(R.id.program_rbtThumnail);
-        btStar = (Button) viewer.findViewById(R.id.program_btFavorite);
-        btLike = (Button) viewer.findViewById(R.id.program_btLike);
-        btList = (Button) viewer.findViewById(R.id.program_btList);
-        rbtComment = (RadioButton) viewer.findViewById(R.id.program_rbtComment);
-        btBack = (Button) viewer.findViewById(R.id.program_btBack);
+        tvTimeCur.setText(DateTime.getTimeString(mediaPosition));
+        tvTimePlay.setText(DateTime.getTimeString(mediaDuration));
     }
 
     private void initServicePlayMusic()

@@ -1,44 +1,39 @@
-package com.qsoft.onlinedio.activity;
+package com.qsoft.onlinedio.ui.controller;
 
-import android.accounts.*;
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.Toast;
 import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.authenticate.AccountGeneral;
+import com.qsoft.onlinedio.ui.activity.SlidebarActivity_;
+import com.qsoft.onlinedio.validate.Constant;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Dell 3360
- * Date: 10/14/13
- * Time: 10:01 AM
- * To change this template use File | Settings | File Templates.
+ * User: khiemvx
+ * Date: 11/12/13
  */
-@EActivity(R.layout.first_launch_layout)
-public class FirstLaunchActivity extends AccountAuthenticatorActivity
+@EBean
+public class FirstLaunchController
 {
     private String TAG = this.getClass().getSimpleName();
-    public final static String AUTHEN_TOKEN = "authen_token";
-    public final static String ACCOUNT_CONNECTED = "account_connected";
 
-    @ViewById(R.id.launch_btLogin)
-    protected Button launch_btLogin;
-
-    private AccountManager mAccountManager;
     private Account mConnectedAccount;
 
+    @SystemService
+    AccountManager mAccountManager;
 
-    @AfterViews
-    protected void afterViews()
-    {
-        mAccountManager = AccountManager.get(this);
-    }
+    @RootContext
+    Activity context;
 
-    @Click (R.id.launch_btLogin)
+    @Click(R.id.launch_btLogin)
     protected void btLoginClicked()
     {
         getTokenForAccountCreateIfNeeded(AccountGeneral.ACCOUNT_TYPE, AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS);
@@ -47,7 +42,7 @@ public class FirstLaunchActivity extends AccountAuthenticatorActivity
     private void getTokenForAccountCreateIfNeeded(String accountType, String authTokenType)
     {
         Log.i(TAG, "Get token if it existed");
-        final AccountManagerFuture<Bundle> future = mAccountManager.getAuthTokenByFeatures(accountType, authTokenType, null, this, null, null,
+        final AccountManagerFuture<Bundle> future = mAccountManager.getAuthTokenByFeatures(accountType, authTokenType, null, context, null, null,
                 new AccountManagerCallback<Bundle>()
                 {
                     @Override
@@ -63,12 +58,12 @@ public class FirstLaunchActivity extends AccountAuthenticatorActivity
                             {
                                 String accountName = bnd.getString(AccountManager.KEY_ACCOUNT_NAME);
                                 mConnectedAccount = new Account(accountName, AccountGeneral.ACCOUNT_TYPE);
-                                String user_id = mAccountManager.getUserData(mConnectedAccount, LoginActivity.USER_ID);
-                                Intent intent = new Intent(FirstLaunchActivity.this, SlidebarActivity_.class);
-                                intent.putExtra(AUTHEN_TOKEN, authtoken);
-                                intent.putExtra(LoginActivity.USER_ID, user_id);
-                                intent.putExtra(ACCOUNT_CONNECTED, mConnectedAccount);
-                                startActivity(intent);
+                                String user_id = mAccountManager.getUserData(mConnectedAccount, Constant.USER_ID.getValue());
+                                Intent intent = new Intent(context, SlidebarActivity_.class);
+                                intent.putExtra(Constant.AUTHEN_TOKEN.getValue(), authtoken);
+                                intent.putExtra(Constant.USER_ID.getValue(), user_id);
+                                intent.putExtra(Constant.ACCOUNT_CONNECTED.getValue(), mConnectedAccount);
+                                context.startActivity(intent);
                             }
 
                         }
@@ -89,6 +84,6 @@ public class FirstLaunchActivity extends AccountAuthenticatorActivity
         {
             return;
         }
-        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context.getBaseContext(), msg, Toast.LENGTH_SHORT).show();
     }
 }

@@ -23,14 +23,4 @@ public class FirstLaunchActivity extends AccountAuthenticatorActivity
 
     @Bean
     FirstLaunchController firstLaunchController;
-
-    public Button getLaunch_btLogin()
-    {
-        return launch_btLogin;
-    }
-
-    public void setLaunch_btLogin(Button launch_btLogin)
-    {
-        this.launch_btLogin = launch_btLogin;
-    }
 }

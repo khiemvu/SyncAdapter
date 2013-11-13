@@ -1,4 +1,4 @@
-package com.qsoft.onlinedio.fragment;
+package com.qsoft.onlinedio.ui.fragment;
 
 import android.support.v4.app.Fragment;
 import android.widget.ListView;

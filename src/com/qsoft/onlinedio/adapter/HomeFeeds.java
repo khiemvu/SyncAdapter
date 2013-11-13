@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.database.DbHelper;
 import com.qsoft.onlinedio.filecache.ImageLoader;
-import com.qsoft.onlinedio.fragment.HomeFragment;
+import com.qsoft.onlinedio.ui.fragment.HomeFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;

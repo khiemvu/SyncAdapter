@@ -8,8 +8,8 @@ import com.googlecode.androidannotations.annotations.RootContext;
 import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.adapter.CommentList;
 import com.qsoft.onlinedio.database.entity.CommentModel;
-import com.qsoft.onlinedio.fragment.AddComment_;
-import com.qsoft.onlinedio.fragment.Comment;
+import com.qsoft.onlinedio.ui.fragment.AddComment_;
+import com.qsoft.onlinedio.ui.fragment.Comment;
 
 import java.util.ArrayList;
 import java.util.List;

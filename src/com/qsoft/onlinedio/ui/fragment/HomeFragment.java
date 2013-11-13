@@ -1,4 +1,4 @@
-package com.qsoft.onlinedio.fragment;
+package com.qsoft.onlinedio.ui.fragment;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -108,8 +108,8 @@ public class HomeFragment extends Fragment
         return result;
     }
 
-
-    private void performSyncData()
+    @Background
+    protected void performSyncData()
     {
         Log.i(TAG, "Perform sync");
         getActivity().runOnUiThread(new Runnable()
@@ -218,4 +218,3 @@ public class HomeFragment extends Fragment
         ft.commit();
     }
 }
-

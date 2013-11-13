@@ -1,4 +1,4 @@
-package com.qsoft.onlinedio.fragment;
+package com.qsoft.onlinedio.ui.fragment;
 
 import android.content.Context;
 import android.media.AudioManager;

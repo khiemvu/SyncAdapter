@@ -2,8 +2,7 @@ package com.qsoft.onlinedio.syncadapter;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.accounts.AuthenticatorException;
-import android.accounts.OperationCanceledException;
+import android.app.Activity;
 import android.content.*;
 import android.database.Cursor;
 import android.net.Uri;
@@ -11,14 +10,17 @@ import android.os.Bundle;
 import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
+import com.googlecode.androidannotations.annotations.EBean;
+import com.googlecode.androidannotations.annotations.RootContext;
+import com.googlecode.androidannotations.annotations.rest.RestService;
 import com.qsoft.onlinedio.authenticate.AccountGeneral;
 import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.DbHelper;
 import com.qsoft.onlinedio.database.entity.HomeModel;
-import com.qsoft.onlinedio.fragment.HomeFragment;
-import org.apache.http.client.ClientProtocolException;
+import com.qsoft.onlinedio.restfullservice.HomeFeedContainer;
+import com.qsoft.onlinedio.restfullservice.RestClient;
+import com.qsoft.onlinedio.ui.fragment.HomeFragment;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,8 +28,15 @@ import java.util.HashMap;
  * User: khiemvx
  * Date: 10/31/13
  */
+@EBean
 public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
 {
+    @RestService
+    RestClient restClient;
+
+    @RootContext
+    Activity context;
+
     private static final String TAG = "HomeFeedSyncAdapter";
     public static final String DONE = "Done";
 
@@ -35,13 +44,19 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
     private final ContentResolver mContentResolver;
     public static final String MESSAGE_KEY = "key";
 
-    public HomeFeedSyncAdapter(Context context, boolean autoInitialize)
+//    public HomeFeedSyncAdapter(Context context, boolean autoInitialize)
+//    {
+//        super(context, autoInitialize);
+//        mContentResolver = context.getContentResolver();
+//        mAccountManager = AccountManager.get(context);
+//    }
+
+    public HomeFeedSyncAdapter(Context context)
     {
-        super(context, autoInitialize);
+        super(context, true,true);
         mContentResolver = context.getContentResolver();
         mAccountManager = AccountManager.get(context);
     }
-
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority,
                               ContentProviderClient provider, SyncResult syncResult)
@@ -56,7 +71,9 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
 
             Log.i(TAG, "Get data from server");
             HomeFeedParseToServer parseComService = new HomeFeedParseToServer();
-            ArrayList<HomeModel> remoteData = parseComService.getShows(authToken);
+//            ArrayList<HomeModel> remoteData = parseComService.getShows(authToken);
+            HomeFeedContainer homeFeedContainer= restClient.getHomeFeeds(authToken);
+            ArrayList<HomeModel> remoteData = homeFeedContainer.getData();
 
             ArrayList<ContentProviderOperation> batch = new ArrayList<ContentProviderOperation>();
             HashMap<Long, HomeModel> map = new HashMap<Long, HomeModel>();
@@ -91,7 +108,7 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
                                 .withValue(DbHelper.HOMEFEED_COL_USER_ID, checkUpdate.getUser_id())
                                 .withValue(DbHelper.HOMEFEED_COL_TITLE, checkUpdate.getTitle())
                                 .withValue(DbHelper.HOMEFEED_COL_THUMBNAIL, checkUpdate.getThumbnail())
-                                .withValue(DbHelper.HOMEFEED_COL_DESCRIPTION, checkUpdate.getDesccription())
+                                .withValue(DbHelper.HOMEFEED_COL_DESCRIPTION, checkUpdate.getDescription())
                                 .withValue(DbHelper.HOMEFEED_COL_SOUND_PATH, checkUpdate.getSound_path())
                                 .withValue(DbHelper.HOMEFEED_COL_DURATION, checkUpdate.getDuration())
                                 .withValue(DbHelper.HOMEFEED_COL_PLAYED, checkUpdate.isPlayed())
@@ -128,7 +145,7 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
                         .withValue(DbHelper.HOMEFEED_COL_USER_ID, homeModel.getUser_id())
                         .withValue(DbHelper.HOMEFEED_COL_TITLE, homeModel.getTitle())
                         .withValue(DbHelper.HOMEFEED_COL_THUMBNAIL, homeModel.getThumbnail())
-                        .withValue(DbHelper.HOMEFEED_COL_DESCRIPTION, homeModel.getDesccription())
+                        .withValue(DbHelper.HOMEFEED_COL_DESCRIPTION, homeModel.getDescription())
                         .withValue(DbHelper.HOMEFEED_COL_SOUND_PATH, homeModel.getSound_path())
                         .withValue(DbHelper.HOMEFEED_COL_DURATION, homeModel.getDuration())
                         .withValue(DbHelper.HOMEFEED_COL_PLAYED, homeModel.isPlayed())
@@ -155,14 +172,14 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
             HomeFragment.handler.sendMessage(msgObj);
         }
 
-        catch (ClientProtocolException e)
-        {
-            e.printStackTrace();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+//        catch (ClientProtocolException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        catch (IOException e)
+//        {
+//            e.printStackTrace();
+//        }
         catch (RemoteException e)
         {
             e.printStackTrace();
@@ -171,14 +188,14 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
         {
             e.printStackTrace();
         }
-        catch (OperationCanceledException e)
-        {
-            e.printStackTrace();
-        }
-        catch (AuthenticatorException e)
-        {
-            e.printStackTrace();
-        }
+//        catch (OperationCanceledException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        catch (AuthenticatorException e)
+//        {
+//            e.printStackTrace();
+//        }
         catch (Exception e)
         {
             e.printStackTrace();

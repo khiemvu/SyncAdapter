@@ -400,7 +400,7 @@ public class ProfileController
 
     public void takePhoto(View v)
     {
-        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         context.startActivityForResult(cameraIntent, CAMERA_REQUEST);
 
     }

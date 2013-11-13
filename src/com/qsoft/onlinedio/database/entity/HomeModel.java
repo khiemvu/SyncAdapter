@@ -3,6 +3,8 @@ package com.qsoft.onlinedio.database.entity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.qsoft.onlinedio.database.DbHelper;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.io.Serializable;
 
@@ -10,23 +12,40 @@ import java.io.Serializable;
  * User: khiemvx
  * Date: 10/31/13
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class HomeModel implements Serializable
 {
+    @JsonProperty("id")
     private Long id;
+    @JsonProperty("user_id")
     private Long user_id;
+    @JsonProperty("title")
     private String title;
+    @JsonProperty("thumbnail")
     private String thumbnail;
-    private String desccription;
+    @JsonProperty("description")
+    private String description;
+    @JsonProperty("sound_path")
     private String sound_path;
+    @JsonProperty("duration")
     private int duration;
+    @JsonProperty("played")
     private boolean played;
+    @JsonProperty("created_at")
     private String created_at;
+    @JsonProperty("updated_at")
     private String updated_at;
+    @JsonProperty("viewed")
     private int viewed;
+    @JsonProperty("username")
     private String username;
+    @JsonProperty("likes")
     private int likes;
+    @JsonProperty("comments")
     private int comments;
+    @JsonProperty("display_name")
     private String display_name;
+    @JsonProperty("avatar")
     private String avatar;
 
     public Long getId()
@@ -69,14 +88,14 @@ public class HomeModel implements Serializable
         this.thumbnail = thumbnail;
     }
 
-    public String getDesccription()
+    public String getDescription()
     {
-        return desccription;
+        return description;
     }
 
-    public void setDesccription(String desccription)
+    public void setDescription(String description)
     {
-        this.desccription = desccription;
+        this.description = description;
     }
 
     public String getSound_path()
@@ -198,7 +217,7 @@ public class HomeModel implements Serializable
         this.user_id = user_id;
         this.title = title;
         this.thumbnail = thumbnail;
-        this.desccription = desccription;
+        this.description = desccription;
         this.sound_path = sound_path;
         this.duration = duration;
         this.played = played;
@@ -224,7 +243,7 @@ public class HomeModel implements Serializable
         values.put(DbHelper.HOMEFEED_COL_USER_ID, user_id);
         values.put(DbHelper.HOMEFEED_COL_TITLE, title);
         values.put(DbHelper.HOMEFEED_COL_THUMBNAIL, thumbnail);
-        values.put(DbHelper.HOMEFEED_COL_DESCRIPTION, desccription);
+        values.put(DbHelper.HOMEFEED_COL_DESCRIPTION, description);
         values.put(DbHelper.HOMEFEED_COL_SOUND_PATH, sound_path);
         values.put(DbHelper.HOMEFEED_COL_DURATION, duration);
         values.put(DbHelper.HOMEFEED_COL_PLAYED, played);

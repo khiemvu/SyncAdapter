@@ -20,7 +20,7 @@
         <activity android:name=".filecache.HomeItemView"/>
         <activity android:name=".ui.activity.ProfileActivity_"
                   android:theme="@android:style/Theme.NoTitleBar"/>
-        <activity android:name=".fragment.AddComment_"
+        <activity android:name=".ui.fragment.AddComment_"
                   android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".ui.activity.SlidebarActivity_"
                   android:theme="@android:style/Theme.NoTitleBar"/>

@@ -17,8 +17,13 @@
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="false">
-        <processorPath useClasspath="true" />
+      <profile default="true" name="Default" enabled="true">
+        <sourceOutputDir name="gen" />
+        <sourceTestOutputDir name="gen_tests" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/Desktop/androidannotations-bundle-2.7.1/androidannotations-2.7.1.jar" />
+        </processorPath>
       </profile>
     </annotationProcessing>
   </component>

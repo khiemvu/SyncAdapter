@@ -19,7 +19,7 @@ import android.widget.RelativeLayout;
 import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.adapter.Sidebar;
-import com.qsoft.onlinedio.fragment.HomeFragment_;
+import com.qsoft.onlinedio.ui.fragment.HomeFragment_;
 import com.qsoft.onlinedio.validate.Constant;
 
 /**

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.qsoft.onlinedio.R;
-import com.qsoft.onlinedio.fragment.HomeFragment;
+import com.qsoft.onlinedio.ui.fragment.HomeFragment;
 
 /**
  * User: khiemvx

@@ -17,7 +17,8 @@ public class HomeFeedSyncService extends Service
     public void onCreate() {
         synchronized (sSyncAdapterLock) {
             if (sSyncAdapter == null)
-                sSyncAdapter = new HomeFeedSyncAdapter(getApplicationContext(), true);
+//                sSyncAdapter = new HomeFeedSyncAdapter(getApplicationContext(),true);
+                sSyncAdapter = new HomeFeedSyncAdapter(getApplicationContext());
         }
     }
 

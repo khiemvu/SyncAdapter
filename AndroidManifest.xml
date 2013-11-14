@@ -38,7 +38,7 @@
         </service>
 
         <service
-                android:name=".syncadapter.HomeFeedSyncService"
+                android:name=".syncadapter.HomeFeedSyncService_"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.content.SyncAdapter" />

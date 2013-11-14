@@ -3,15 +3,19 @@ package com.qsoft.onlinedio.syncadapter;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import com.googlecode.androidannotations.annotations.Bean;
+import com.googlecode.androidannotations.annotations.EService;
 
 /**
  * User: khiemvx
  * Date: 10/31/13
  */
+@EService
 public class HomeFeedSyncService extends Service
 {
-    private static final Object sSyncAdapterLock = new Object();
-    private static HomeFeedSyncAdapter sSyncAdapter = null;
+    public static final Object sSyncAdapterLock = new Object();
+    @Bean
+    public static HomeFeedSyncAdapter sSyncAdapter;
 
     @Override
     public void onCreate() {

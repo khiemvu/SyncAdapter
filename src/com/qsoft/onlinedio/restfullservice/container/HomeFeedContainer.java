@@ -1,4 +1,4 @@
-package com.qsoft.onlinedio.restfullservice;
+package com.qsoft.onlinedio.restfullservice.container;
 
 import com.qsoft.onlinedio.database.entity.HomeModel;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class HomeFeedContainer
 {
     @JsonProperty("code")
-    public String code;
+    public int code;
 
     @JsonProperty("status")
     public String status;
@@ -36,12 +36,12 @@ public class HomeFeedContainer
         this.data = data;
     }
 
-    public String getCode()
+    public int getCode()
     {
         return code;
     }
 
-    public void setCode(String code)
+    public void setCode(int code)
     {
         this.code = code;
     }

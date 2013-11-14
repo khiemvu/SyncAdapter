@@ -28,53 +28,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="071aeaba-095b-48c2-be85-6b4b14f4f1ee" name="Default" comment="sup">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/jackson-core-asl-1.9.11.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/jackson-mapper-asl-1.9.11.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/spring-android-core-1.0.0.RELEASE.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/spring-android-rest-template-1.0.0.RELEASE.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/AddComment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/AddNewCommentController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/HomeFeedContainer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProgramFragment" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClient.java" />
-      <change type="DELETED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\gen\com\qsoft\onlinedio\fragment\AddComment_.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\gen\com\qsoft\onlinedio\fragment\Comment_.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\gen\com\qsoft\onlinedio\fragment\DetailFragment_.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\gen\com\qsoft\onlinedio\fragment\HomeFragment_.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\gen\com\qsoft\onlinedio\fragment\ThumbnailFragment_.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\fragment\AddComment.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/ProfileContainer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClientProfile.java" />
+      <change type="DELETED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\ui\controller\ProgramController.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/CommentController.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/CommentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/activity/FirstLaunchActivity.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/activity/FirstLaunchActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/FirstLaunchController.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/FirstLaunchController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedParseToServer.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedParseToServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncService.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/adapter/HomeFeeds.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/adapter/HomeFeeds.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/filecache/HomeItemView.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/filecache/HomeItemView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/HomeModel.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/HomeModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/authenticate/ParseToServerAuthenticate.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/authenticate/ParseToServerAuthenticate.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProfileController.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProfileController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProgramController.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProgramController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/activity/SlidebarActivity.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/activity/SlidebarActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Team3.iml" afterPath="$PROJECT_DIR$/Team3.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/ProfileModel.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/ProfileModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/ProfileParseToServer.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/ProfileParseToServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\fragment\Comment.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/Comment.java" />
-      <change type="MOVED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\fragment\DetailFragment.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/DetailFragment.java" />
-      <change type="MOVED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\fragment\HomeFragment.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/HomeFragment.java" />
-      <change type="MOVED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\fragment\ProgramFragment.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/ProgramFragment.java" />
-      <change type="MOVED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\fragment\ThumbnailFragment.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/ThumbnailFragment.java" />
+      <change type="MOVED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\restfullservice\HomeFeedContainer.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/HomeFeedContainer.java" />
+      <change type="MOVED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\restfullservice\RestClient.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClientHomeFeed.java" />
     </list>
     <ignored path="OnlineDio.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="$PROJECT_DIR$/SocialNetwork/.idea/scopes/scope_settings.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1381714531242" ignored="false" />
     <file path="$PROJECT_DIR$/SocialNetwork/.idea/workspace.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1381714531605" ignored="false" />
     <file path="$PROJECT_DIR$/SocialNetwork/.idea/copyright/profiles_settings.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1381714531242" ignored="false" />
-    <file path="/fragment.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384338173776" ignored="false" />
+    <file path="/fragment.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425081910" ignored="false" />
     <file path="/ProgramFragment.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383886192857" ignored="false" />
     <file path="/program_comment_layout.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383971690909" ignored="false" />
     <file path="/CommentFragment.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382346533500" ignored="false" />
-    <file path="/AndroidManifest.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384312971054" ignored="false" />
-    <file path="/Dummy.txt" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384338656231" ignored="false" />
+    <file path="/AndroidManifest.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384394070193" ignored="false" />
+    <file path="/Dummy.txt" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384391637952" ignored="false" />
     <file path="/AddCommentFragmentActivity.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382351126349" ignored="false" />
     <file path="E:/ORLite/HelloAndroid/project.properties" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382407402964" ignored="false" />
     <file path="E:/KataMySelf/ORMLite/AndroidManifest.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382410096306" ignored="false" />
@@ -105,13 +86,13 @@
     <file path="E:/Trainning/workspace/SQLite/build.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382413559606" ignored="false" />
     <file path="E:/Trainning/workspace/SQLite/res/layout/main.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382413585557" ignored="false" />
     <file path="E:/Trainning/workspace/SQLite/res/values/strings.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382413586811" ignored="false" />
-    <file path="/HomeFragment.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384326019044" ignored="false" />
+    <file path="/HomeFragment.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384401299915" ignored="false" />
     <file path="/ProfileActivity.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384133065978" ignored="false" />
     <file path="/HomeFeeds.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383797597288" ignored="false" />
     <file path="/HomeFeedParseToServer.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383794371636" ignored="false" />
     <file path="/ImageLoader.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383796425617" ignored="false" />
-    <file path="/a.dummy" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384330272527" ignored="false" />
-    <file path="/HomeFeedSyncAdapter.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336283577" ignored="false" />
+    <file path="/a.dummy" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384421075531" ignored="false" />
+    <file path="/HomeFeedSyncAdapter.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384392818716" ignored="false" />
     <file path="/ContentProvider.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383799625545" ignored="false" />
     <file path="/SlidebarActivity.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384133429661" ignored="false" />
     <file path="/LoginActivity.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383977616000" ignored="false" />
@@ -129,23 +110,40 @@
     <file path="$USER_HOME$/Desktop/ActionBar-PullToRefresh-master/samples/actionbarsherlock/project.properties" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383989847114" ignored="false" />
     <file path="$USER_HOME$/Desktop/ActionBar-PullToRefresh-master/samples/stock/project.properties" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383989847114" ignored="false" />
     <file path="$USER_HOME$/Desktop/ActionBar-PullToRefresh-master/samples/actionbarcompat/project.properties" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383989847114" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/BuildConfig.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384312977131" ignored="false" />
     <file path="/RestClient.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384338339433" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/ProfileActivity_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384316635677" ignored="false" />
-    <file path="/HomeFeedContainer.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336094030" ignored="false" />
+    <file path="/HomeFeedContainer.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384396627560" ignored="false" />
     <file path="/HomeFeed.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384316957104" ignored="false" />
-    <file path="/HomeFeedSyncService.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384327516488" ignored="false" />
+    <file path="/HomeFeedSyncService.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384394035687" ignored="false" />
     <file path="/FirstLaunchController.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336226909" ignored="false" />
-    <file path="/HomeModel.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384335515652" ignored="false" />
+    <file path="/HomeModel.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384396423218" ignored="false" />
     <file path="/interceptor.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384333753497" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/AddComment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336719804" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/Comment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336719804" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/DetailFragment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336719804" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/HomeFragment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336719804" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/ProgramFragment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336719804" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/LoginActivity_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336719804" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/ThumbnailFragment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336719804" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/SlidebarActivity_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384336719804" ignored="false" />
+    <file path="/RestClientProfile.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384421808808" ignored="false" />
+    <file path="/ProfileContainer.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384397562272" ignored="false" />
+    <file path="/ProfileController.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425450258" ignored="false" />
+    <file path="/ManagerAccount.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384401278186" ignored="false" />
+    <file path="/ProfileModel.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384413726393" ignored="false" />
+    <file path="E:/Dropbox/Project/DBCatalog_Team2/sprint1_ver2/dssaf/src/com/example/dssaf/MyActivity.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384413778098" ignored="false" />
+    <file path="E:/Dropbox/Project/DBCatalog_Team2/sprint1_ver2/dssaf/build.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384413778098" ignored="false" />
+    <file path="E:/Dropbox/Project/DBCatalog_Team2/sprint1_ver2/dssaf/res/layout/main.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384413778098" ignored="false" />
+    <file path="E:/Dropbox/Project/DBCatalog_Team2/sprint1_ver2/dssaf/res/values/strings.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384413778098" ignored="false" />
+    <file path="E:/Dropbox/Project/DBCatalog_Team2/sprint1_ver2/dssaf/AndroidManifest.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384413778098" ignored="false" />
+    <file path="/RestClientLogin.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384420543658" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/syncadapter/HomeFeedSyncService_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289907" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/CommentController_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289907" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/FirstLaunchController_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289907" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/LoginController_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289907" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/AddComment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/Comment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/DetailFragment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/HomeFragment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/FirstLaunchActivity_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/ProgramFragment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/LoginActivity_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/ThumbnailFragment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/ProfileActivity_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/SlidebarActivity_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289908" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/AddNewCommentController_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384425289909" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +158,79 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/FirstLaunchController.java" line="87" class="com.qsoft.onlinedio.ui.controller.FirstLaunchController" package="com.qsoft.onlinedio.ui.controller">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProfileController.java" line="191" class="com.qsoft.onlinedio.ui.controller.ProfileController" package="com.qsoft.onlinedio.ui.controller">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProfileController.java" line="201" class="com.qsoft.onlinedio.ui.controller.ProfileController" package="com.qsoft.onlinedio.ui.controller">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClientProfile_.java" line="45" class="com.qsoft.onlinedio.restfullservice.RestClientProfile_" package="com.qsoft.onlinedio.restfullservice">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClientProfile_.java" line="50" class="com.qsoft.onlinedio.restfullservice.RestClientProfile_" package="com.qsoft.onlinedio.restfullservice">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -194,65 +265,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncService.java" line="20" class="com.qsoft.onlinedio.syncadapter.HomeFeedSyncService" package="com.qsoft.onlinedio.syncadapter">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/FirstLaunchController.java" line="88" class="com.qsoft.onlinedio.ui.controller.FirstLaunchController" package="com.qsoft.onlinedio.ui.controller">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java" line="73" class="com.qsoft.onlinedio.syncadapter.HomeFeedSyncAdapter" package="com.qsoft.onlinedio.syncadapter">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java" line="75" class="com.qsoft.onlinedio.syncadapter.HomeFeedSyncAdapter" package="com.qsoft.onlinedio.syncadapter">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -262,10 +274,69 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HomeFeedSyncAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java">
+      <file leaf-file-name="ProfileController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProfileController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="72" selection-start="2677" selection-end="2677" vertical-scroll-proportion="0.0">
+            <state line="196" column="0" selection-start="7913" selection-end="7913" vertical-scroll-proportion="-3.64">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Activity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/android sdk/sdk/sources/android-18/android/app/Activity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3042" column="8" selection-start="129336" selection-end="129428" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfileActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/activity/ProfileActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="13" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestClientProfile_.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClientProfile_.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="0" selection-start="1984" selection-end="1984" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1827#1843#0" expanded="true" />
+                <element signature="e#2047#2061#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestClientProfile.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClientProfile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="970" selection-end="970" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfileModel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/ProfileModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="18" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfileContainer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/ProfileContainer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="13" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -274,92 +345,30 @@
         </entry>
       </file>
       <file leaf-file-name="HomeFeedContainer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/HomeFeedContainer.java">
+        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/HomeFeedContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="13" selection-start="340" selection-end="340" vertical-scroll-proportion="12.14">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/HomeModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="81" selection-start="749" selection-end="749" vertical-scroll-proportion="1.68">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProgramController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProgramController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="33" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0">
+            <state line="13" column="13" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddNewCommentController.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/AddNewCommentController.java">
+      <file leaf-file-name="ProfileParseToServer.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/ProfileParseToServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="55" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.81040895">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RestClient.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="10" selection-start="759" selection-end="759" vertical-scroll-proportion="0.0">
+            <state line="85" column="60" selection-start="2881" selection-end="3471" vertical-scroll-proportion="0.13043478">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2803#2818#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/activity/LoginActivity.java">
+      <file leaf-file-name="HomeFeedParseToServer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedParseToServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FirstLaunchController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/FirstLaunchController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="0" selection-start="3443" selection-end="3443" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RestClient_.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClient_.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1321" selection-end="1321" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#1554#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#1104#1120#0" expanded="true" />
-                <element signature="e#1378#1386#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeFeedSyncService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
+            <state line="22" column="67" selection-start="698" selection-end="698" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -383,22 +392,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/EventList.java" />
-        <option value="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/HomeFragment_.java" />
-        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/HomeFeed.java" />
-        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/HomeFragment.java" />
-        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncService.java" />
-        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/activity/FirstLaunchActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/Data.java" />
-        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/interceptor.java" />
-        <option value="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/FirstLaunchController_.java" />
-        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/FirstLaunchController.java" />
-        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java" />
-        <option value="$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClient_.java" />
         <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClient.java" />
-        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/HomeFeedContainer.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClientHomeFeed.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/HomeFeedContainer.java" />
         <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/HomeModel.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/ProfileContainer.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/util/ManagerAccount.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClientProfile_.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/ProfileModel.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClientLogin.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/authenticate/ParseToServerAuthenticate.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClientProfile.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedParseToServer.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/ProfileParseToServer.java" />
+        <option value="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProfileController.java" />
       </list>
     </option>
   </component>
@@ -509,10 +518,6 @@
               <option name="myItemId" value="ui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fragment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -575,6 +580,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -664,7 +673,105 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="filecache" />
+              <option name="myItemId" value="restfullservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="container" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OnlineDio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SyncAdapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qsoft" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onlinedio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OnlineDio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SyncAdapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qsoft" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onlinedio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OnlineDio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SyncAdapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qsoft" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onlinedio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="authenticate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -694,16 +801,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OnlineDio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SyncAdapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qsoft" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onlinedio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="restfullservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/com/qsoft" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -721,8 +858,8 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -731,6 +868,9 @@
       <recent name="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\util" />
       <recent name="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\ui" />
       <recent name="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\syncadapter" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.qsoft.onlinedio.restfullservice.container" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.Team3">
@@ -765,19 +905,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -804,6 +931,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -931,7 +1071,11 @@
       <created>1383995599818</created>
       <updated>1383995599818</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor">
+      <created>1384338759599</created>
+      <updated>1384338759599</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -961,24 +1105,24 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329806" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41880342" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3863248" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43915343" sideWeight="0.49010655" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.49695587" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42051283" sideWeight="0.49695587" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4356261" sideWeight="0.5045662" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41709402" sideWeight="0.49695587" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43247864" sideWeight="0.5045662" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27321157" sideWeight="0.5811966" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5255732" sideWeight="0.4939117" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27321157" sideWeight="0.61367524" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52307695" sideWeight="0.4939117" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32267883" sideWeight="0.8957265" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1026,7 +1170,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="update home feeds" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1045,6 +1189,7 @@
     <MESSAGE value="support multi user" />
     <MESSAGE value="fix bug" />
     <MESSAGE value="update home feeds" />
+    <MESSAGE value="refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1054,130 +1199,130 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/DetailFragment.java">
+    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
+        <state line="17" column="50" selection-start="467" selection-end="479" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android sdk/sdk/sources/android-18/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="615" column="0" selection-start="25731" selection-end="25731" vertical-scroll-proportion="0.33110368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android sdk/sdk/sources/android-18/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16966" column="0" selection-start="658155" selection-end="658155" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/HomeFragment_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/ProfileController_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="0" selection-start="5009" selection-end="5009" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#5184#5185#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/HomeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="13" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.0">
+        <state line="38" column="49" selection-start="1325" selection-end="1325" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#3469#3892#0" expanded="true" />
+            <element signature="e#3881#3882#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/activity/ProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/ProgramFragment.java">
+    <entry file="file://D:/android sdk/sdk/sources/android-18/android/app/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="13" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
+        <state line="3042" column="8" selection-start="129336" selection-end="129428" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/ProfileModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="18" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/HomeFeedContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/ProfileContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClientProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="970" selection-end="970" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedParseToServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="23" selection-start="965" selection-end="972" vertical-scroll-proportion="0.0">
+        <state line="22" column="67" selection-start="698" selection-end="698" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/activity/FirstLaunchActivity.java">
+    <entry file="file://$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClientProfile_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="48" selection-start="810" selection-end="810" vertical-scroll-proportion="0.0">
+        <state line="49" column="0" selection-start="1984" selection-end="1984" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1827#1843#0" expanded="true" />
+            <element signature="e#2047#2061#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/activity/LoginActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProfileController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0">
+        <state line="196" column="0" selection-start="7913" selection-end="7913" vertical-scroll-proportion="-3.64">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/ProfileParseToServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="72" selection-start="2677" selection-end="2677" vertical-scroll-proportion="0.0">
+        <state line="85" column="60" selection-start="2881" selection-end="3471" vertical-scroll-proportion="0.13043478">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2803#2818#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/FirstLaunchController_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="2924" selection-end="2924" vertical-scroll-proportion="0.33105803">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/FirstLaunchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="3443" selection-end="3443" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClient_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1321" selection-end="1321" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#1554#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#1104#1120#0" expanded="true" />
-            <element signature="e#1378#1386#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="10" selection-start="759" selection-end="759" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/HomeFeedContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="340" selection-end="340" vertical-scroll-proportion="12.14">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/HomeModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="81" selection-start="749" selection-end="749" vertical-scroll-proportion="1.68">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProgramController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="33" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/AddNewCommentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="55" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.81040895">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1239,6 +1384,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

@@ -2,7 +2,6 @@ package com.qsoft.onlinedio.syncadapter;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.app.Activity;
 import android.content.*;
 import android.database.Cursor;
 import android.net.Uri;
@@ -11,14 +10,13 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
 import com.googlecode.androidannotations.annotations.EBean;
-import com.googlecode.androidannotations.annotations.RootContext;
 import com.googlecode.androidannotations.annotations.rest.RestService;
 import com.qsoft.onlinedio.authenticate.AccountGeneral;
 import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.DbHelper;
 import com.qsoft.onlinedio.database.entity.HomeModel;
-import com.qsoft.onlinedio.restfullservice.HomeFeedContainer;
-import com.qsoft.onlinedio.restfullservice.RestClient;
+import com.qsoft.onlinedio.restfullservice.container.HomeFeedContainer;
+import com.qsoft.onlinedio.restfullservice.RestClientHomeFeed;
 import com.qsoft.onlinedio.ui.fragment.HomeFragment;
 
 import java.util.ArrayList;
@@ -32,10 +30,7 @@ import java.util.HashMap;
 public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
 {
     @RestService
-    RestClient restClient;
-
-    @RootContext
-    Activity context;
+    RestClientHomeFeed restClient;
 
     private static final String TAG = "HomeFeedSyncAdapter";
     public static final String DONE = "Done";
@@ -70,7 +65,7 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
                     AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS);
 
             Log.i(TAG, "Get data from server");
-            HomeFeedParseToServer parseComService = new HomeFeedParseToServer();
+//            HomeFeedParseToServer parseComService = new HomeFeedParseToServer();
 //            ArrayList<HomeModel> remoteData = parseComService.getShows(authToken);
             HomeFeedContainer homeFeedContainer= restClient.getHomeFeeds(authToken);
             ArrayList<HomeModel> remoteData = homeFeedContainer.getData();
@@ -111,7 +106,7 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
                                 .withValue(DbHelper.HOMEFEED_COL_DESCRIPTION, checkUpdate.getDescription())
                                 .withValue(DbHelper.HOMEFEED_COL_SOUND_PATH, checkUpdate.getSound_path())
                                 .withValue(DbHelper.HOMEFEED_COL_DURATION, checkUpdate.getDuration())
-                                .withValue(DbHelper.HOMEFEED_COL_PLAYED, checkUpdate.isPlayed())
+                                .withValue(DbHelper.HOMEFEED_COL_PLAYED, checkUpdate.getPlayed())
                                 .withValue(DbHelper.HOMEFEED_COL_CREATED_AT, checkUpdate.getCreated_at())
                                 .withValue(DbHelper.HOMEFEED_COL_UPDATED_AT, checkUpdate.getUpdated_at())
                                 .withValue(DbHelper.HOMEFEED_COL_LIKES, checkUpdate.getLikes())
@@ -148,7 +143,7 @@ public class HomeFeedSyncAdapter extends AbstractThreadedSyncAdapter
                         .withValue(DbHelper.HOMEFEED_COL_DESCRIPTION, homeModel.getDescription())
                         .withValue(DbHelper.HOMEFEED_COL_SOUND_PATH, homeModel.getSound_path())
                         .withValue(DbHelper.HOMEFEED_COL_DURATION, homeModel.getDuration())
-                        .withValue(DbHelper.HOMEFEED_COL_PLAYED, homeModel.isPlayed())
+                        .withValue(DbHelper.HOMEFEED_COL_PLAYED, homeModel.getPlayed())
                         .withValue(DbHelper.HOMEFEED_COL_CREATED_AT, homeModel.getCreated_at())
                         .withValue(DbHelper.HOMEFEED_COL_UPDATED_AT, homeModel.getUpdated_at())
                         .withValue(DbHelper.HOMEFEED_COL_LIKES, homeModel.getLikes())

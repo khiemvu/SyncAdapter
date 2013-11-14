@@ -3,6 +3,8 @@ package com.qsoft.onlinedio.database.entity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.qsoft.onlinedio.database.DbHelper;
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.io.Serializable;
 
@@ -10,29 +12,51 @@ import java.io.Serializable;
  * User: khiemvx
  * Date: 11/5/13
  */
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE)
 public class ProfileModel implements Serializable
 {
-    private int id;
-    private int facebook_id;
-    private String username;
-    private String password;
-    private String avatar;
-    private String cover_image;
-    private String display_name;
-    private String full_name;
-    private String phone;
-    private String birthday;
-    private int gender;
-    private String country_id;
-    private int storage_plan_id;
-    private String description;
-    private String created_at;
-    private String updated_at;
-    private int sounds;
-    private int favorites;
-    private int likes;
-    private int followings;
-    private int audiences;
+    @JsonProperty
+    public int id;
+    @JsonProperty
+    public int facebook_id;
+    @JsonProperty
+    public String username;
+    @JsonProperty
+    public String password;
+    @JsonProperty
+    public String avatar;
+    @JsonProperty
+    public String cover_image;
+    @JsonProperty
+    public String display_name;
+    @JsonProperty
+    public String full_name;
+    @JsonProperty
+    public String phone;
+    @JsonProperty
+    public String birthday;
+    @JsonProperty
+    public int gender;
+    @JsonProperty
+    public String country_id;
+    @JsonProperty
+    public int storage_plan_id;
+    @JsonProperty
+    public String description;
+    @JsonProperty
+    public String created_at;
+    @JsonProperty
+    public String updated_at;
+    @JsonProperty
+    public int sounds;
+    @JsonProperty
+    public int favorites;
+    @JsonProperty
+    public int likes;
+    @JsonProperty
+    public int followings;
+    @JsonProperty
+    public int audiences;
 
     public int getId()
     {

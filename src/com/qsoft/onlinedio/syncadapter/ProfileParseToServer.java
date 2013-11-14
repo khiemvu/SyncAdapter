@@ -22,9 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * User: khiemvx
- * Date: 11/5/13
- */
+* User: khiemvx
+* Date: 11/5/13
+*/
 public class ProfileParseToServer
 {
     String TAG = "ProfileParseToServer";

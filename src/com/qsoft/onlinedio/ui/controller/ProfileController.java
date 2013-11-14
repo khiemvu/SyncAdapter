@@ -1,7 +1,7 @@
 package com.qsoft.onlinedio.ui.controller;
 
 import android.accounts.Account;
-import android.app.Activity;
+import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -21,10 +21,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 import com.googlecode.androidannotations.annotations.*;
+import com.googlecode.androidannotations.annotations.rest.RestService;
 import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.entity.ProfileModel;
 import com.qsoft.onlinedio.filecache.ImageLoader;
+import com.qsoft.onlinedio.restfullservice.RestClientProfile;
+import com.qsoft.onlinedio.restfullservice.container.ProfileContainer;
 import com.qsoft.onlinedio.syncadapter.ProfileParseToServer;
 import com.qsoft.onlinedio.ui.activity.ProfileActivity;
 import com.qsoft.onlinedio.ui.activity.SlidebarActivity_;
@@ -37,6 +40,12 @@ import com.qsoft.onlinedio.validate.Constant;
 @EBean
 public class ProfileController
 {
+    @RestService
+    RestClientProfile restClientProfile;
+
+    @SystemService
+    AccountManager mAccountManager;
+
     private ProfileParseToServer parseToServer = new ProfileParseToServer();
     private String[] countries;
     private String[] countries_code;
@@ -57,9 +66,6 @@ public class ProfileController
     @RootContext
     ProfileActivity context;
 
-    @RootContext
-    Activity activity;
-
     ImageLoader imageLoader = new ImageLoader(context);
 
     public void prepareData()
@@ -69,6 +75,7 @@ public class ProfileController
         countries_code = context.getResources().getStringArray(R.array.country_code);
     }
 
+    @Background
     public void getTokenAndAccount()
     {
         Intent intent = context.getIntent();
@@ -83,7 +90,8 @@ public class ProfileController
         Log.i(TAG, "Get data for show on view");
         try
         {
-            model = parseToServer.getShows(user_id, auth_token);
+            ProfileContainer container = restClientProfile.getProfiles(user_id, auth_token);
+            model = container.getData();
             context.getContentResolver().delete(Contract.CONTENT_URI_PROFILE, null, null);
             context.getContentResolver().insert(Contract.CONTENT_URI_PROFILE, model.getContentValues());
         }
@@ -160,7 +168,7 @@ public class ProfileController
                 context.getPr_edPhone().setText("");
                 break;
             case R.id.pr_edBirthday:
-                activity.showDialog(DATE_DIALOG_ID);
+                context.showDialog(DATE_DIALOG_ID);
                 break;
             case R.id.pr_edCountry:
                 showDialogCountry();
@@ -181,7 +189,8 @@ public class ProfileController
 
                 try
                 {
-                    parseToServer.putShow(auth_token, user_id, profileUpdate);
+                    restClientProfile.updateProfiles(auth_token, user_id, profileUpdate);
+//                    parseToServer.putShow(auth_token, user_id, profileUpdate);
                 }
                 catch (Exception e)
                 {
@@ -189,7 +198,8 @@ public class ProfileController
                 }
                 try
                 {
-                    model = parseToServer.getShows(user_id, auth_token);
+                    ProfileContainer container = restClientProfile.getProfiles(user_id, auth_token);
+                    model = container.getData();
                 }
                 catch (Exception e)
                 {

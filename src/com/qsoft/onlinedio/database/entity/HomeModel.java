@@ -3,8 +3,6 @@ package com.qsoft.onlinedio.database.entity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.qsoft.onlinedio.database.DbHelper;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.io.Serializable;
 
@@ -12,40 +10,23 @@ import java.io.Serializable;
  * User: khiemvx
  * Date: 10/31/13
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class HomeModel implements Serializable
 {
-    @JsonProperty("id")
     private Long id;
-    @JsonProperty("user_id")
     private Long user_id;
-    @JsonProperty("title")
     private String title;
-    @JsonProperty("thumbnail")
     private String thumbnail;
-    @JsonProperty("description")
     private String description;
-    @JsonProperty("sound_path")
     private String sound_path;
-    @JsonProperty("duration")
     private int duration;
-    @JsonProperty("played")
-    private boolean played;
-    @JsonProperty("created_at")
+    private int played;
     private String created_at;
-    @JsonProperty("updated_at")
     private String updated_at;
-    @JsonProperty("viewed")
     private int viewed;
-    @JsonProperty("username")
     private String username;
-    @JsonProperty("likes")
     private int likes;
-    @JsonProperty("comments")
     private int comments;
-    @JsonProperty("display_name")
     private String display_name;
-    @JsonProperty("avatar")
     private String avatar;
 
     public Long getId()
@@ -118,12 +99,12 @@ public class HomeModel implements Serializable
         this.duration = duration;
     }
 
-    public boolean isPlayed()
+    public int getPlayed()
     {
         return played;
     }
 
-    public void setPlayed(boolean played)
+    public void setPlayed(int played)
     {
         this.played = played;
     }
@@ -209,7 +190,7 @@ public class HomeModel implements Serializable
     }
 
     public HomeModel(Long id, Long user_id, String title, String thumbnail, String desccription,
-                     String sound_path, int duration, boolean played, String created_at,
+                     String sound_path, int duration, int played, String created_at,
                      String updated_at, int viewed, String username, int likes, int comments,
                      String display_name, String avatar)
     {
@@ -268,7 +249,7 @@ public class HomeModel implements Serializable
         String description = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_DESCRIPTION));
         String sound_path = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_SOUND_PATH));
         int duration = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_DURATION));
-        boolean played = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_PLAYED)) > 0;
+        int played = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_PLAYED));
         String created_at = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_CREATED_AT));
         String updated_at = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_UPDATED_AT));
         int likes = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_LIKES));

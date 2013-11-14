@@ -14,8 +14,7 @@ import com.googlecode.androidannotations.annotations.*;
 import com.googlecode.androidannotations.annotations.rest.RestService;
 import com.qsoft.onlinedio.R;
 import com.qsoft.onlinedio.authenticate.AccountGeneral;
-import com.qsoft.onlinedio.restfullservice.HomeFeedContainer;
-import com.qsoft.onlinedio.restfullservice.RestClient;
+import com.qsoft.onlinedio.restfullservice.RestClientHomeFeed;
 import com.qsoft.onlinedio.ui.activity.SlidebarActivity_;
 import com.qsoft.onlinedio.validate.Constant;
 
@@ -34,7 +33,7 @@ public class FirstLaunchController
     AccountManager mAccountManager;
 
     @RestService
-    RestClient restClient;
+    RestClientHomeFeed restClient;
 
     @RootContext
     Activity context;
@@ -43,7 +42,7 @@ public class FirstLaunchController
     protected void btLoginClicked()
     {
         getTokenForAccountCreateIfNeeded(AccountGeneral.ACCOUNT_TYPE, AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS);
-        getHomeFeed();
+//        getHomeFeed();
     }
 
     private void getTokenForAccountCreateIfNeeded(String accountType, String authTokenType)
@@ -83,11 +82,11 @@ public class FirstLaunchController
                 }
                 , null);
     }
-    @Background
-    public void getHomeFeed(){
-
-        HomeFeedContainer remoteData = restClient.getHomeFeeds("d5dd8c59e549526548ccc37d546e86aeeb8e6f36");
-    }
+//    @Background
+//    public void getHomeFeed(){
+//
+//        HomeFeedContainer remoteData = restClient.getHomeFeeds("fe316ad151be110e8c7aedbc1b8385e523fb7530");
+//    }
     @UiThread
     protected void showMessage(final String msg)
     {

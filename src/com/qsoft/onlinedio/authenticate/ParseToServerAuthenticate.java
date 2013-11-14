@@ -109,12 +109,9 @@ public class ParseToServerAuthenticate implements ServerAuthenticate
         return loggedUser;
     }
 
-
     public static class ParseComError implements Serializable
     {
         public int code;
         public String error;
     }
-
-
 }

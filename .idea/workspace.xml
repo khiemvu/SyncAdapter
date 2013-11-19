@@ -27,35 +27,29 @@
     <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="071aeaba-095b-48c2-be85-6b4b14f4f1ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/provider/ContentProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/common/dbhelper/GenericDatabaseHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/dto/HomeFeedDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/LoginContainer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/dto/ProfileDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClientLogin.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/library.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ormlite_core_4_47.xml" />
-      <change type="DELETED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\database\ContentProvider.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Android\KataMySelf\OnlineDio\SyncAdapter\src\com\qsoft\onlinedio\database\DbHelper.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/validate/Constant.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/validate/Constant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/Contract.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/Contract.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/FirstLaunchController.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/FirstLaunchController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/HomeFeedContainer.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/container/HomeFeedContainer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/adapter/HomeFeeds.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/adapter/HomeFeeds.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/HomeFragment.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/fragment/HomeFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/HomeModel.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/HomeModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProfileController.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/ui/controller/ProfileController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/ProfileModel.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/database/entity/ProfileModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/ProfileParseToServer.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/syncadapter/ProfileParseToServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClientProfile.java" afterPath="$PROJECT_DIR$/src/com/qsoft/onlinedio/restfullservice/RestClientProfile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Team3.iml" afterPath="$PROJECT_DIR$/Team3.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/androidannotations_api_2_7_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/androidannotations_api_2_7_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/syncadapter.xml" afterPath="$PROJECT_DIR$/res/xml/syncadapter.xml" />
+    <list default="true" id="071aeaba-095b-48c2-be85-6b4b14f4f1ee" name="Default" comment="add ormlite">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/AddComment_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/AddNewCommentController_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/CommentController_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/Comment_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/DetailFragment_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/FirstLaunchActivity_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/FirstLaunchController_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/syncadapter/HomeFeedSyncService_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/HomeFragment_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/database/entity/HomeModelContract.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/LoginActivity_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/LoginController_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/ProfileActivity_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/controller/ProfileController_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/database/entity/ProfileModelContract.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/ProgramFragment_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClientHomeFeed_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClientLogin_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/restfullservice/RestClientProfile_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/SlidebarActivity_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/ThumbnailFragment_.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="OnlineDio.iws" />
@@ -68,7 +62,7 @@
     <file path="/program_comment_layout.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1383971690909" ignored="false" />
     <file path="/CommentFragment.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382346533500" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384763534768" ignored="false" />
-    <file path="/Dummy.txt" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384856153185" ignored="false" />
+    <file path="/Dummy.txt" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384857277687" ignored="false" />
     <file path="/AddCommentFragmentActivity.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382351126349" ignored="false" />
     <file path="E:/ORLite/HelloAndroid/project.properties" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382407402964" ignored="false" />
     <file path="E:/KataMySelf/ORMLite/AndroidManifest.xml" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1382410096306" ignored="false" />
@@ -155,11 +149,6 @@
     <file path="/HomeFeedDTO.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384849098384" ignored="false" />
     <file path="/ProfileDTO.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384835365127" ignored="false" />
     <file path="$PROJECT_DIR$/../../Pilo Project/SyncAdapter-master/src/com/qsoft/onlinedio/syncadapter/HomeFeedSyncAdapter.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384856430189" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/ProgramFragment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384856836224" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/Comment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384856836225" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/ProfileActivity_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384856836225" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/activity/SlidebarActivity_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384856836226" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/qsoft/onlinedio/ui/fragment/HomeFragment_.java" changelist="071aeaba-095b-48c2-be85-6b4b14f4f1ee" time="1384856836226" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -938,6 +927,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OnlineDio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SyncAdapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qsoft" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onlinedio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="syncadapter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1255,7 +1278,11 @@
       <created>1384426530519</created>
       <updated>1384426530519</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add ormlite">
+      <created>1384857057364</created>
+      <updated>1384857057364</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1300,7 +1327,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29832572" sideWeight="0.42051283" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29832572" sideWeight="0.42051283" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52307695" sideWeight="0.4939117" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32267883" sideWeight="0.8957265" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1350,7 +1377,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="add restfull service" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ormlite" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1371,6 +1398,7 @@
     <MESSAGE value="update home feeds" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add restfull service" />
+    <MESSAGE value="add ormlite" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

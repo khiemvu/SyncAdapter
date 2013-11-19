@@ -9,7 +9,7 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.qsoft.onlinedio.R;
-import com.qsoft.onlinedio.database.DbHelper;
+import com.qsoft.onlinedio.database.entity.HomeModelContract;
 import com.qsoft.onlinedio.filecache.ImageLoader;
 import com.qsoft.onlinedio.ui.fragment.HomeFragment;
 
@@ -98,17 +98,17 @@ public class HomeFeeds extends CursorAdapter
     public void bindView(View view, Context context, Cursor cursor)
     {
         tvTitle = (TextView) view.findViewById(R.id.tvTitle);
-        tvTitle.setText(cursor.getString(cursor.getColumnIndex(DbHelper.HOMEFEED_COL_TITLE)));
+        tvTitle.setText(cursor.getString(cursor.getColumnIndex(HomeModelContract.TITLE)));
         tvUserName = (TextView) view.findViewById(R.id.tvName);
-        tvUserName.setText(cursor.getString(cursor.getColumnIndex(DbHelper.HOMEFEED_COL_USERNAME)));
+        tvUserName.setText(cursor.getString(cursor.getColumnIndex(HomeModelContract.USERNAME)));
         tvLike = (TextView) view.findViewById(R.id.tvLike);
-        tvLike.setText(cursor.getInt(cursor.getColumnIndex(DbHelper.HOMEFEED_COL_LIKES)));
+        tvLike.setText(cursor.getInt(cursor.getColumnIndex(HomeModelContract.LIKES)));
         tvComment = (TextView) view.findViewById(R.id.tvComment);
-        tvComment.setText(cursor.getInt(cursor.getColumnIndex(DbHelper.HOMEFEED_COL_COMMENTS)));
+        tvComment.setText(cursor.getInt(cursor.getColumnIndex(HomeModelContract.COMMENTS)));
         tvTime = (TextView) view.findViewById(R.id.tvTime);
-        tvTime.setText(cursor.getString(cursor.getColumnIndex(DbHelper.HOMEFEED_COL_UPDATED_AT)));
+        tvTime.setText(cursor.getString(cursor.getColumnIndex(HomeModelContract.UPDATED_AT)));
         imView = (ImageView) view.findViewById(R.id.ivAvatar);
-        String urlImage = cursor.getString(cursor.getColumnIndex(DbHelper.HOMEFEED_COL_AVATAR));
+        String urlImage = cursor.getString(cursor.getColumnIndex(HomeModelContract.AVATAR));
         imageLoader.DisplayImage(urlImage,imView);
     }
 }

@@ -24,8 +24,12 @@
                   android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".ui.activity.SlidebarActivity_"
                   android:theme="@android:style/Theme.NoTitleBar"/>
-        <provider android:authorities="com.qsoft.onlinedio.homefeed.provider"
-                  android:name=".database.ContentProvider"
+        <!--<provider android:authorities="com.qsoft.onlinedio.homefeed.provider"-->
+                  <!--android:name=".database.ContentProvider"-->
+                  <!--android:label="@string/provider_name"-->
+                  <!--android:exported="false"/>-->
+        <provider android:authorities="com.qsoft.onlinedio.database.dao"
+                  android:name=".database.provider.ContentProvider"
                   android:label="@string/provider_name"
                   android:exported="false"/>
 

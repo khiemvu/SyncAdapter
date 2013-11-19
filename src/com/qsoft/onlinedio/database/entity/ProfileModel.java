@@ -2,7 +2,11 @@ package com.qsoft.onlinedio.database.entity;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.qsoft.onlinedio.database.DbHelper;
+import android.provider.BaseColumns;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import com.qsoft.onlinedio.database.Contract;
+import com.tojc.ormlite.android.annotation.AdditionalAnnotation;
 import org.codehaus.jackson.annotate.JsonAutoDetect;
 import org.codehaus.jackson.annotate.JsonProperty;
 
@@ -10,52 +14,81 @@ import java.io.Serializable;
 
 /**
  * User: khiemvx
- * Date: 11/5/13
+ * Date: 11/18/13
  */
+
+@AdditionalAnnotation.Contract
+@DatabaseTable(tableName = "profiles")
+@AdditionalAnnotation.DefaultContentUri(authority= Contract.AUTHORITY, path= Contract.PROFILE_CONTENT_URI_PATH)
+@AdditionalAnnotation.DefaultContentMimeTypeVnd(name= Contract.PROFILE_MIMETYPE_NAME, type= Contract.PROFILE_MIMETYPE_TYPE)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE)
 public class ProfileModel implements Serializable
 {
+    @DatabaseField(columnName = BaseColumns._ID, generatedId = true)
+    @AdditionalAnnotation.DefaultSortOrder
+    private Long _id;
     @JsonProperty
+    @DatabaseField
     public int id;
     @JsonProperty
+    @DatabaseField
     public int facebook_id;
     @JsonProperty
+    @DatabaseField
     public String username;
     @JsonProperty
+    @DatabaseField
     public String password;
     @JsonProperty
+    @DatabaseField
     public String avatar;
     @JsonProperty
+    @DatabaseField
     public String cover_image;
     @JsonProperty
+    @DatabaseField
     public String display_name;
     @JsonProperty
+    @DatabaseField
     public String full_name;
     @JsonProperty
+    @DatabaseField
     public String phone;
     @JsonProperty
+    @DatabaseField
     public String birthday;
     @JsonProperty
+    @DatabaseField
     public int gender;
     @JsonProperty
+    @DatabaseField
     public String country_id;
     @JsonProperty
+    @DatabaseField
     public int storage_plan_id;
     @JsonProperty
+    @DatabaseField
     public String description;
     @JsonProperty
+    @DatabaseField
     public String created_at;
     @JsonProperty
+    @DatabaseField
     public String updated_at;
     @JsonProperty
+    @DatabaseField
     public int sounds;
     @JsonProperty
+    @DatabaseField
     public int favorites;
     @JsonProperty
+    @DatabaseField
     public int likes;
     @JsonProperty
+    @DatabaseField
     public int followings;
     @JsonProperty
+    @DatabaseField
     public int audiences;
 
     public int getId()
@@ -303,54 +336,54 @@ public class ProfileModel implements Serializable
     public ContentValues getContentValues()
     {
         ContentValues values = new ContentValues();
-        values.put(DbHelper.PROFILE_COL_ID, id);
-        values.put(DbHelper.PROFILE_COL_FACEBOOK_ID, facebook_id);
-        values.put(DbHelper.PROFILE_COL_USERNAME, username);
-        values.put(DbHelper.PROFILE_COL_PASSWORD, password);
-        values.put(DbHelper.PROFILE_COL_AVATAR, avatar);
-        values.put(DbHelper.PROFILE_COL_COVER_IMAGE, cover_image);
-        values.put(DbHelper.PROFILE_COL_DISPLAY_NAME, display_name);
-        values.put(DbHelper.PROFILE_COL_FULL_NAME, full_name);
-        values.put(DbHelper.PROFILE_COL_PHONE, phone);
-        values.put(DbHelper.PROFILE_COL_BIRTHDAY, birthday);
-        values.put(DbHelper.PROFILE_COL_GENDER, gender);
-        values.put(DbHelper.PROFILE_COL_COUNTRY_ID, country_id);
-        values.put(DbHelper.PROFILE_COL_STORAGE_PLAN_ID, storage_plan_id);
-        values.put(DbHelper.PROFILE_COL_DESCRIPTION, description);
-        values.put(DbHelper.PROFILE_COL_CREATED_AT, created_at);
-        values.put(DbHelper.PROFILE_COL_UPDATED_AT, updated_at);
-        values.put(DbHelper.PROFILE_COL_SOUND, sounds);
-        values.put(DbHelper.PROFILE_COL_FAVORITE, favorites);
-        values.put(DbHelper.PROFILE_COL_LIKE, likes);
-        values.put(DbHelper.PROFILE_COL_FOLLOWING, followings);
-        values.put(DbHelper.PROFILE_COL_AUDIENCE, audiences);
+        values.put(ProfileModelContract.ID, id);
+        values.put(ProfileModelContract.FACEBOOK_ID, facebook_id);
+        values.put(ProfileModelContract.USERNAME, username);
+        values.put(ProfileModelContract.PASSWORD, password);
+        values.put(ProfileModelContract.AVATAR, avatar);
+        values.put(ProfileModelContract.COVER_IMAGE, cover_image);
+        values.put(ProfileModelContract.DISPLAY_NAME, display_name);
+        values.put(ProfileModelContract.FULL_NAME, full_name);
+        values.put(ProfileModelContract.PHONE, phone);
+        values.put(ProfileModelContract.BIRTHDAY, birthday);
+        values.put(ProfileModelContract.GENDER, gender);
+        values.put(ProfileModelContract.COUNTRY_ID, country_id);
+        values.put(ProfileModelContract.STORAGE_PLAN_ID, storage_plan_id);
+        values.put(ProfileModelContract.DESCRIPTION, description);
+        values.put(ProfileModelContract.CREATED_AT, created_at);
+        values.put(ProfileModelContract.UPDATED_AT, updated_at);
+        values.put(ProfileModelContract.SOUNDS, sounds);
+        values.put(ProfileModelContract.FAVORITES, favorites);
+        values.put(ProfileModelContract.LIKES, likes);
+        values.put(ProfileModelContract.FOLLOWINGS, followings);
+        values.put(ProfileModelContract.AUDIENCES, audiences);
         return values;
     }
 
     // Create a object from a cursor
     public static ProfileModel fromCursor(Cursor cur)
     {
-        int id = cur.getInt(cur.getColumnIndex(DbHelper.PROFILE_COL_ID));
-        int facebook_id = cur.getInt(cur.getColumnIndex(DbHelper.PROFILE_COL_FACEBOOK_ID));
-        String username = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_USERNAME));
-        String password = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_PASSWORD));
-        String avatar = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_AVATAR));
-        String cover_image = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_COVER_IMAGE));
-        String display_name = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_DISPLAY_NAME));
-        String full_name = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_FULL_NAME));
-        String phone = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_PHONE));
-        String birthday = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_BIRTHDAY));
-        int gender = cur.getInt(cur.getColumnIndex(DbHelper.PROFILE_COL_GENDER));
-        String country_id = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_COUNTRY_ID));
-        int storage_plan_id = cur.getInt(cur.getColumnIndex(DbHelper.PROFILE_COL_STORAGE_PLAN_ID));
-        String description = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_DESCRIPTION));
-        String created_at = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_CREATED_AT));
-        String updated_at = cur.getString(cur.getColumnIndex(DbHelper.PROFILE_COL_UPDATED_AT));
-        int sounds = cur.getInt(cur.getColumnIndex(DbHelper.PROFILE_COL_SOUND));
-        int favorites = cur.getInt(cur.getColumnIndex(DbHelper.PROFILE_COL_FAVORITE));
-        int likes = cur.getInt(cur.getColumnIndex(DbHelper.PROFILE_COL_LIKE));
-        int followings = cur.getInt(cur.getColumnIndex(DbHelper.PROFILE_COL_FOLLOWING));
-        int audiences = cur.getInt(cur.getColumnIndex(DbHelper.PROFILE_COL_AUDIENCE));
+        int id = cur.getInt(cur.getColumnIndex(ProfileModelContract.ID));
+        int facebook_id = cur.getInt(cur.getColumnIndex(ProfileModelContract.FACEBOOK_ID));
+        String username = cur.getString(cur.getColumnIndex(ProfileModelContract.USERNAME));
+        String password = cur.getString(cur.getColumnIndex(ProfileModelContract.PASSWORD));
+        String avatar = cur.getString(cur.getColumnIndex(ProfileModelContract.AVATAR));
+        String cover_image = cur.getString(cur.getColumnIndex(ProfileModelContract.COVER_IMAGE));
+        String display_name = cur.getString(cur.getColumnIndex(ProfileModelContract.DISPLAY_NAME));
+        String full_name = cur.getString(cur.getColumnIndex(ProfileModelContract.FULL_NAME));
+        String phone = cur.getString(cur.getColumnIndex(ProfileModelContract.PHONE));
+        String birthday = cur.getString(cur.getColumnIndex(ProfileModelContract.BIRTHDAY));
+        int gender = cur.getInt(cur.getColumnIndex(ProfileModelContract.GENDER));
+        String country_id = cur.getString(cur.getColumnIndex(ProfileModelContract.COUNTRY_ID));
+        int storage_plan_id = cur.getInt(cur.getColumnIndex(ProfileModelContract.STORAGE_PLAN_ID));
+        String description = cur.getString(cur.getColumnIndex(ProfileModelContract.DESCRIPTION));
+        String created_at = cur.getString(cur.getColumnIndex(ProfileModelContract.CREATED_AT));
+        String updated_at = cur.getString(cur.getColumnIndex(ProfileModelContract.UPDATED_AT));
+        int sounds = cur.getInt(cur.getColumnIndex(ProfileModelContract.SOUNDS));
+        int favorites = cur.getInt(cur.getColumnIndex(ProfileModelContract.FAVORITES));
+        int likes = cur.getInt(cur.getColumnIndex(ProfileModelContract.LIKES));
+        int followings = cur.getInt(cur.getColumnIndex(ProfileModelContract.FOLLOWINGS));
+        int audiences = cur.getInt(cur.getColumnIndex(ProfileModelContract.AUDIENCES));
         return new ProfileModel(id, facebook_id, username, password, avatar, cover_image, display_name, full_name,
                 phone, birthday, gender, country_id, storage_plan_id, description, created_at, updated_at,
                 sounds, favorites, likes, followings, audiences);

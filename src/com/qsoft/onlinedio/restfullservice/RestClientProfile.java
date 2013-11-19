@@ -5,7 +5,7 @@ import com.googlecode.androidannotations.annotations.rest.Get;
 import com.googlecode.androidannotations.annotations.rest.Put;
 import com.googlecode.androidannotations.annotations.rest.Rest;
 import com.googlecode.androidannotations.api.rest.MediaType;
-import com.qsoft.onlinedio.database.entity.ProfileModel;
+import com.qsoft.onlinedio.database.dto.ProfileDTO;
 import com.qsoft.onlinedio.restfullservice.container.ProfileContainer;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 
@@ -21,5 +21,6 @@ public interface RestClientProfile
     ProfileContainer getProfiles(String userId,String auth);
 
     @Put("{userId}?access_token={auth}")
-    void updateProfiles(String auth, String userId, ProfileModel profile);
+//    void updateProfiles(String auth, String userId, ProfileModel profile);
+    void updateProfiles(String auth, String userId, ProfileDTO profile);
 }

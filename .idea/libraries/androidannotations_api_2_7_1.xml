@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="androidannotations-api-2.7.1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Desktop/androidannotations-bundle-2.7.1/androidannotations-api-2.7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../library/androidannotations-bundle-2.7.1/androidannotations-api-2.7.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

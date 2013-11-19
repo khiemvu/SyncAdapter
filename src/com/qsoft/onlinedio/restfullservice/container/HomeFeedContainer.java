@@ -1,6 +1,6 @@
 package com.qsoft.onlinedio.restfullservice.container;
 
-import com.qsoft.onlinedio.database.entity.HomeModel;
+import com.qsoft.onlinedio.database.dto.HomeFeedDTO;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
@@ -20,18 +20,18 @@ public class HomeFeedContainer
     public String status;
 
     @JsonProperty("data")
-    public ArrayList<HomeModel> data;
+    public ArrayList<HomeFeedDTO> data;
 
     public HomeFeedContainer()
     {
     }
 
-    public ArrayList<HomeModel> getData()
+    public ArrayList<HomeFeedDTO> getData()
     {
         return data;
     }
 
-    public void setData(ArrayList<HomeModel> data)
+    public void setData(ArrayList<HomeFeedDTO> data)
     {
         this.data = data;
     }

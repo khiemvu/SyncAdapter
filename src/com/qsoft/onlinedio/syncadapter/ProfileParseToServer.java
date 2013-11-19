@@ -3,8 +3,8 @@ package com.qsoft.onlinedio.syncadapter;
 import android.util.Log;
 import com.google.gson.Gson;
 import com.qsoft.onlinedio.authenticate.ParseToServerAuthenticate;
-import com.qsoft.onlinedio.database.DbHelper;
 import com.qsoft.onlinedio.database.entity.ProfileModel;
+import com.qsoft.onlinedio.database.entity.ProfileModelContract;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -77,13 +77,13 @@ public class ProfileParseToServer
 
         HttpPut httpPut = new HttpPut(new URI(url));
         List<NameValuePair> pairs = new ArrayList<NameValuePair>();
-        pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_DISPLAY_NAME, profile.getDisplay_name()));
-        pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_FULL_NAME, profile.getFull_name()));
-        pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_PHONE, profile.getPhone()));
-        pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_BIRTHDAY, profile.getBirthday()));
-        pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_GENDER, profile.getGender()+""));
-        pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_COUNTRY_ID, profile.getCountry_id()));
-        pairs.add(new BasicNameValuePair(DbHelper.PROFILE_COL_DESCRIPTION, profile.getDescription()));
+        pairs.add(new BasicNameValuePair(ProfileModelContract.DISPLAY_NAME, profile.getDisplay_name()));
+        pairs.add(new BasicNameValuePair(ProfileModelContract.FULL_NAME, profile.getFull_name()));
+        pairs.add(new BasicNameValuePair(ProfileModelContract.PHONE, profile.getPhone()));
+        pairs.add(new BasicNameValuePair(ProfileModelContract.BIRTHDAY, profile.getBirthday()));
+        pairs.add(new BasicNameValuePair(ProfileModelContract.GENDER, profile.getGender()+""));
+        pairs.add(new BasicNameValuePair(ProfileModelContract.COUNTRY_ID, profile.getCountry_id()));
+        pairs.add(new BasicNameValuePair(ProfileModelContract.DESCRIPTION, profile.getDescription()));
 
         httpPut.setEntity(new UrlEncodedFormEntity(pairs));
         try

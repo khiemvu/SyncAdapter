@@ -2,32 +2,71 @@ package com.qsoft.onlinedio.database.entity;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.qsoft.onlinedio.database.DbHelper;
+import android.provider.BaseColumns;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import com.qsoft.onlinedio.database.Contract;
+import com.tojc.ormlite.android.annotation.AdditionalAnnotation;
+import com.tojc.ormlite.android.annotation.AdditionalAnnotation.DefaultSortOrder;
 
 import java.io.Serializable;
 
 /**
  * User: khiemvx
- * Date: 10/31/13
+ * Date: 11/18/13
  */
+
+@AdditionalAnnotation.Contract
+@DatabaseTable(tableName = "homefeeds")
+@AdditionalAnnotation.DefaultContentUri(authority= Contract.AUTHORITY, path= Contract.HOME_CONTENT_URI_PATH)
+@AdditionalAnnotation.DefaultContentMimeTypeVnd(name= Contract.HOME_MIMETYPE_NAME, type= Contract.HOME_MIMETYPE_TYPE)
 public class HomeModel implements Serializable
 {
+    @DatabaseField(columnName = BaseColumns._ID, generatedId = true)
+    @DefaultSortOrder
+    private Long _id;
+    @DatabaseField
     private Long id;
+    @DatabaseField
     private Long user_id;
+    @DatabaseField
     private String title;
+    @DatabaseField
     private String thumbnail;
+    @DatabaseField
     private String description;
+    @DatabaseField
     private String sound_path;
+    @DatabaseField
     private int duration;
+    @DatabaseField
     private int played;
+    @DatabaseField
     private String created_at;
+    @DatabaseField
     private String updated_at;
+    @DatabaseField
     private int viewed;
+    @DatabaseField
     private String username;
+    @DatabaseField
     private int likes;
+    @DatabaseField
     private int comments;
+    @DatabaseField
     private String display_name;
+    @DatabaseField
     private String avatar;
+
+    public Long get_id()
+    {
+        return _id;
+    }
+
+    public void set_id(Long _id)
+    {
+        this._id = _id;
+    }
 
     public Long getId()
     {
@@ -220,44 +259,44 @@ public class HomeModel implements Serializable
     public ContentValues getContentValues()
     {
         ContentValues values = new ContentValues();
-        values.put(DbHelper.HOMEFEED_COL_ID, id);
-        values.put(DbHelper.HOMEFEED_COL_USER_ID, user_id);
-        values.put(DbHelper.HOMEFEED_COL_TITLE, title);
-        values.put(DbHelper.HOMEFEED_COL_THUMBNAIL, thumbnail);
-        values.put(DbHelper.HOMEFEED_COL_DESCRIPTION, description);
-        values.put(DbHelper.HOMEFEED_COL_SOUND_PATH, sound_path);
-        values.put(DbHelper.HOMEFEED_COL_DURATION, duration);
-        values.put(DbHelper.HOMEFEED_COL_PLAYED, played);
-        values.put(DbHelper.HOMEFEED_COL_CREATED_AT, created_at);
-        values.put(DbHelper.HOMEFEED_COL_UPDATED_AT, updated_at);
-        values.put(DbHelper.HOMEFEED_COL_LIKES, likes);
-        values.put(DbHelper.HOMEFEED_COL_VIEWED, viewed);
-        values.put(DbHelper.HOMEFEED_COL_COMMENTS, comments);
-        values.put(DbHelper.HOMEFEED_COL_USERNAME, username);
-        values.put(DbHelper.HOMEFEED_COL_DISPLAY_NAME, display_name);
-        values.put(DbHelper.HOMEFEED_COL_AVATAR, avatar);
+        values.put(HomeModelContract.ID, id);
+        values.put(HomeModelContract.USER_ID, user_id);
+        values.put(HomeModelContract.TITLE, title);
+        values.put(HomeModelContract.THUMBNAIL, thumbnail);
+        values.put(HomeModelContract.DESCRIPTION, description);
+        values.put(HomeModelContract.SOUND_PATH, sound_path);
+        values.put(HomeModelContract.DURATION, duration);
+        values.put(HomeModelContract.PLAYED, played);
+        values.put(HomeModelContract.CREATED_AT, created_at);
+        values.put(HomeModelContract.UPDATED_AT, updated_at);
+        values.put(HomeModelContract.LIKES, likes);
+        values.put(HomeModelContract.VIEWED, viewed);
+        values.put(HomeModelContract.COMMENTS, comments);
+        values.put(HomeModelContract.USERNAME, username);
+        values.put(HomeModelContract.DISPLAY_NAME, display_name);
+        values.put(HomeModelContract.AVATAR, avatar);
         return values;
     }
 
     // Create a object from a cursor
     public static HomeModel fromCursor(Cursor curHomeFeeds)
     {
-        Long id = curHomeFeeds.getLong(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_ID));
-        Long user_id = curHomeFeeds.getLong(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_USER_ID));
-        String title = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_TITLE));
-        String thumbnail = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_THUMBNAIL));
-        String description = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_DESCRIPTION));
-        String sound_path = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_SOUND_PATH));
-        int duration = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_DURATION));
-        int played = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_PLAYED));
-        String created_at = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_CREATED_AT));
-        String updated_at = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_UPDATED_AT));
-        int likes = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_LIKES));
-        int viewed = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_VIEWED));
-        int comment = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_COMMENTS));
-        String userName = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_USERNAME));
-        String displayName = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_DISPLAY_NAME));
-        String avatar = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(DbHelper.HOMEFEED_COL_AVATAR));
+        Long id = curHomeFeeds.getLong(curHomeFeeds.getColumnIndex(HomeModelContract.ID));
+        Long user_id = curHomeFeeds.getLong(curHomeFeeds.getColumnIndex(HomeModelContract.USER_ID));
+        String title = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(HomeModelContract.TITLE));
+        String thumbnail = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(HomeModelContract.THUMBNAIL));
+        String description = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(HomeModelContract.DESCRIPTION));
+        String sound_path = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(HomeModelContract.SOUND_PATH));
+        int duration = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(HomeModelContract.DURATION));
+        int played = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(HomeModelContract.PLAYED));
+        String created_at = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(HomeModelContract.CREATED_AT));
+        String updated_at = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(HomeModelContract.UPDATED_AT));
+        int likes = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(HomeModelContract.LIKES));
+        int viewed = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(HomeModelContract.VIEWED));
+        int comment = curHomeFeeds.getInt(curHomeFeeds.getColumnIndex(HomeModelContract.COMMENTS));
+        String userName = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(HomeModelContract.USERNAME));
+        String displayName = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(HomeModelContract.DISPLAY_NAME));
+        String avatar = curHomeFeeds.getString(curHomeFeeds.getColumnIndex(HomeModelContract.AVATAR));
 
         return new HomeModel(id, user_id, title, thumbnail, description, sound_path, duration, played, created_at,
                 updated_at, viewed, userName, likes, comment, displayName, avatar);

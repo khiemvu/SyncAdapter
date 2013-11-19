@@ -4,8 +4,8 @@ public enum Constant
 {
     CONNECT_TITLE("Connect error"),
     CONNECT_MESSAGE("Please connect first"),
-    EMAIL("qsoft@gmail.com"),
-    PASSWORD("123456"),
+    EMAIL("testing@gmail.com"),
+    PASSWORD("123456789"),
     NOT_CONNECTED_TO_INTERNET("Not connected to Internet"),
     TITLE_MESSAGE("Error Signing In"),
     MESSAGE_CONNECTION_INTERNET("There is no connection to the internet"),

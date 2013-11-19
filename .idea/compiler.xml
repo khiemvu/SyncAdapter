@@ -22,7 +22,12 @@
         <sourceTestOutputDir name="gen_tests" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/Desktop/androidannotations-bundle-2.7.1/androidannotations-2.7.1.jar" />
+          <entry name="$PROJECT_DIR$/../../../library_ormlite/ormlite/androidannotations-2.7.1.jar" />
+          <entry name="$PROJECT_DIR$/../../../library_ormlite/ormlite/ormlite-android-4.47.jar" />
+          <entry name="$PROJECT_DIR$/../../../library_ormlite/ormlite/ormlite-core-4.47.jar" />
+          <entry name="$PROJECT_DIR$/../../../library_ormlite/ormlite/ormlite-content-provider-library-1.0.3.jar" />
+          <entry name="$PROJECT_DIR$/../../../library_ormlite/ormlite/ormlite-content-provider-compiler-1.0.3.jar" />
+          <entry name="$PROJECT_DIR$/../../../library_ormlite/ormlite/javawriter-2.2.1.jar" />
         </processorPath>
       </profile>
     </annotationProcessing>

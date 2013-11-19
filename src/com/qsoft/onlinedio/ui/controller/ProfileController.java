@@ -23,7 +23,8 @@ import android.widget.Toast;
 import com.googlecode.androidannotations.annotations.*;
 import com.googlecode.androidannotations.annotations.rest.RestService;
 import com.qsoft.onlinedio.R;
-import com.qsoft.onlinedio.database.Contract;
+import com.qsoft.onlinedio.database.entity.ProfileModelContract;
+import com.qsoft.onlinedio.database.dto.ProfileDTO;
 import com.qsoft.onlinedio.database.entity.ProfileModel;
 import com.qsoft.onlinedio.filecache.ImageLoader;
 import com.qsoft.onlinedio.restfullservice.RestClientProfile;
@@ -92,8 +93,10 @@ public class ProfileController
         {
             ProfileContainer container = restClientProfile.getProfiles(user_id, auth_token);
             model = container.getData();
-            context.getContentResolver().delete(Contract.CONTENT_URI_PROFILE, null, null);
-            context.getContentResolver().insert(Contract.CONTENT_URI_PROFILE, model.getContentValues());
+//            context.getContentResolver().delete(Contract.CONTENT_URI_PROFILE, null, null);
+            context.getContentResolver().delete(ProfileModelContract.CONTENT_URI, null, null);
+//            context.getContentResolver().insert(Contract.CONTENT_URI_PROFILE, model.getContentValues());
+            context.getContentResolver().insert(ProfileModelContract.CONTENT_URI, model.getContentValues());
         }
         catch (Exception e)
         {
@@ -105,7 +108,7 @@ public class ProfileController
     @UiThread
     protected void showDataView()
     {
-        Cursor cur = context.getContentResolver().query(Contract.CONTENT_URI_PROFILE, null, null, null, null);
+        Cursor cur = context.getContentResolver().query(ProfileModelContract.CONTENT_URI, null, null, null, null);
         ProfileModel temp = new ProfileModel();
         if (cur != null)
         {
@@ -185,7 +188,8 @@ public class ProfileController
                 callBackSlidebarActivity();
                 break;
             case R.id.pr_btSave:
-                ProfileModel profileUpdate = getProfileModel();
+//                ProfileModel profileUpdate = getProfileModel();
+                ProfileDTO profileUpdate = getProfileModel();
 
                 try
                 {
@@ -205,17 +209,19 @@ public class ProfileController
                 {
                     e.printStackTrace();
                 }
-                context.getContentResolver().update(Contract.CONTENT_URI_PROFILE, model.getContentValues(), null, null);
-                Toast.makeText(context.getApplicationContext(), "Update successfull", 1);
+//                context.getContentResolver().update(Contract.CONTENT_URI_PROFILE, model.getContentValues(), null, null);
+                context.getContentResolver().update(ProfileModelContract.CONTENT_URI, model.getContentValues(), null, null);
+                Toast.makeText(context.getApplicationContext(), "Update successfully", 1);
                 callBackSlidebarActivity();
                 break;
         }
     }
 
-    private ProfileModel getProfileModel()
+//    private ProfileModel getProfileModel()
+    private ProfileDTO getProfileModel()
     {
-        ProfileModel profileUpdate = new ProfileModel();
-        profileUpdate.setId(Integer.parseInt(user_id));
+//        ProfileModel profileUpdate = new ProfileModel();
+        ProfileDTO profileUpdate = new ProfileDTO();
         profileUpdate.setFull_name(context.getPr_edFullName().getText().toString());
         profileUpdate.setDisplay_name(context.getPr_etDisplayName().getText().toString());
         profileUpdate.setDescription(context.getPr_etDescription().getText().toString());

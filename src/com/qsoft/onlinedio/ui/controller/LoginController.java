@@ -44,8 +44,8 @@ public class LoginController
 
     public void prepareData()
     {
-        context.getEtEmail().setText("qsoft@gmail.com");
-        context.getEtPass().setText("123456");
+        context.getEtEmail().setText(Constant.EMAIL.getValue());
+        context.getEtPass().setText(Constant.PASSWORD.getValue());
     }
 
     @Click({R.id.login_btBack, R.id.login_btLogin, R.id.tvResetPass, R.id.ibtDelEmail, R.id.ibtDelPass})
@@ -66,6 +66,16 @@ public class LoginController
                 else
                 {
                     checkLogin();
+//                    ContentValues values = new ContentValues();
+//                    values.put(HomeModelContract.ID, 1L);
+//
+//                    context.getContentResolver().insert(HomeModelContract.CONTENT_URI,values);
+//                    Cursor c = context.getContentResolver().query(HomeModelContract.CONTENT_URI, null, null, null, null);
+//                    assert c != null;
+//                    while (c.moveToNext())
+//                    {
+//                        HomeModel temp = HomeModel.fromCursor(c);
+//                    }
                 }
                 break;
             case R.id.tvResetPass:

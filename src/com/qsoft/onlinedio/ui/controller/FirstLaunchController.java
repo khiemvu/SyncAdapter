@@ -42,7 +42,6 @@ public class FirstLaunchController
     protected void btLoginClicked()
     {
         getTokenForAccountCreateIfNeeded(AccountGeneral.ACCOUNT_TYPE, AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS);
-//        getHomeFeed();
     }
 
     private void getTokenForAccountCreateIfNeeded(String accountType, String authTokenType)
@@ -82,11 +81,7 @@ public class FirstLaunchController
                 }
                 , null);
     }
-//    @Background
-//    public void getHomeFeed(){
-//
-//        HomeFeedContainer remoteData = restClient.getHomeFeeds("fe316ad151be110e8c7aedbc1b8385e523fb7530");
-//    }
+
     @UiThread
     protected void showMessage(final String msg)
     {

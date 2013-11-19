@@ -21,6 +21,7 @@ import com.qsoft.onlinedio.adapter.HomeFeeds;
 import com.qsoft.onlinedio.authenticate.AccountGeneral;
 import com.qsoft.onlinedio.database.Contract;
 import com.qsoft.onlinedio.database.entity.HomeModel;
+import com.qsoft.onlinedio.database.entity.HomeModelContract;
 import com.qsoft.onlinedio.syncadapter.HomeFeedSyncAdapter;
 import com.qsoft.onlinedio.ui.activity.SlidebarActivity;
 import com.qsoft.onlinedio.util.DateTime;
@@ -131,6 +132,7 @@ public class HomeFragment extends Fragment
 
     private void requestSyncData()
     {
+//        String authority = Contract.AUTHORITY;
         String authority = Contract.AUTHORITY;
         Bundle bundle = new Bundle();
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
@@ -181,7 +183,7 @@ public class HomeFragment extends Fragment
     private static void setUpDataToHomeListView()
     {
         arraylist = new ArrayList<HashMap<String, String>>();
-        Cursor cur = SlidebarActivity.context.getContentResolver().query(Contract.CONTENT_URI, null, null, null, null);
+        Cursor cur = SlidebarActivity.context.getContentResolver().query(HomeModelContract.CONTENT_URI, null, null, null, null);
         HomeModel temp = new HomeModel();
         if (cur != null)
         {
